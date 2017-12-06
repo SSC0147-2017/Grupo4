@@ -343,7 +343,6 @@ _update_shape_index = 0
 
 [node name="Ground" type="MeshInstance" parent="."]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.539325, 0 )
 visibility/visible = false
