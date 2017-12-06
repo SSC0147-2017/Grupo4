@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Scripts/controls.gd" type="Script" id=1]
+[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://Source/Menu/Logo.png" type="Texture" id=3]
+[ext_resource path="res://Source/Menu/background.tex" type="Texture" id=4]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+
+visibility/behind_parent = true
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 411.0
+margin/top = 340.0
+margin/right = 623.0
+margin/bottom = 504.0
+alignment = 0
+script/script = ExtResource( 1 )
+
+[node name="MenuButton" type="MenuButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 212.0
+margin/bottom = 52.0
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 0
+shortcut = null
+text = "New Game"
+flat = true
+items = [  ]
+
+[node name="MenuButton2" type="MenuButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 2
+margin/left = 50.0
+margin/top = 56.0
+margin/right = 162.0
+margin/bottom = 108.0
+custom_fonts/font = ExtResource( 2 )
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 0
+shortcut = null
+text = "Quit"
+flat = true
+items = [  ]
+
+[node name="Logo" type="Sprite" parent="."]
+
+transform/pos = Vector2( 108.14, -234.968 )
+texture = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+
+visibility/behind_parent = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 112.0
+margin/right = 212.0
+margin/bottom = 112.0
+
+[node name="background" type="Sprite" parent="MarginContainer"]
+
+transform/pos = Vector2( 90.3727, -151.109 )
+transform/scale = Vector2( 1.11, 1.11 )
+texture = ExtResource( 4 )
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
+
+[connection signal="pressed" from="MenuButton2" to="." method="_on_MenuButton2_pressed"]
+
+
