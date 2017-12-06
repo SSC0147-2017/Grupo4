@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scripts/controls.gd" type="Script" id=1]
 [ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://Source/Menu/Logo.png" type="Texture" id=3]
+[ext_resource path="res://Source/Menu/background.tex" type="Texture" id=4]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 
+visibility/behind_parent = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -59,6 +61,24 @@ items = [  ]
 
 transform/pos = Vector2( 108.14, -234.968 )
 texture = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+
+visibility/behind_parent = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 112.0
+margin/right = 212.0
+margin/bottom = 112.0
+
+[node name="background" type="Sprite" parent="MarginContainer"]
+
+transform/pos = Vector2( 90.3727, -151.109 )
+transform/scale = Vector2( 1.11, 1.11 )
+texture = ExtResource( 4 )
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
 
