@@ -92,8 +92,8 @@ func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shap
 			if distGrid(isSelected,posx,posz)>isSelected.getMovDist():
 				return 0
 			
-			
 			isSelected.move_to(Vector3(posx*2-9,4.6,posz*2-9))
+			rotate(isSelected,posx,posz)
 			isSelected.setMov(0)
 			isSelected.setPos(posx, posz)
 			
@@ -156,6 +156,7 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 					alvo = b
 					menordist = distancia
 	if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
+		rotate(a,alvo.getPosX(),alvo.getPosZ())
 		isTarget = alvo
 		target = 1
 		attackEnemy("Inimigo atacou1")
@@ -166,6 +167,7 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 		enemyMove(a, alvo)
 		print(a.getPosX(), a.getPosZ()) 
 		if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
+			rotate(a,alvo.getPosX(),alvo.getPosZ())
 			isTarget = alvo
 			target = 1
 			attackEnemy("Inimigo atacou2")	
@@ -230,9 +232,10 @@ func enemyMove(a, b):
 						az = az - 1
 						token = 0
 			i = i + 1
-	a.setPos(ax, az)
 	a.move_to(Vector3(ax*2-9,4.6,az*2-9))
+	rotate(a,ax,az)
 	a.setMov(0)
+	a.setPos(ax, az)
 
 func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if turn == 0:
@@ -262,3 +265,16 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 				target = 1
 				attackEnemy("Aliado atacou")
 	pass # replace with function body
+	
+func rotate(a,x,z):
+	if(abs(x-a.getPosX())>abs(z-a.getPosZ())):
+		if(x>a.getPosX()):
+			a.set_rotation_deg(Vector3(0,90,0))
+		if(x<a.getPosX()):
+			a.set_rotation_deg(Vector3(0,270,0))
+	else:
+		if(z>a.getPosZ()):
+			a.set_rotation_deg(Vector3(0,0,0))
+		if(z<a.getPosZ()):
+			a.set_rotation_deg(Vector3(0,180,0))
+	pass
