@@ -5,7 +5,7 @@ var posz
 var hp = 10 #Vida
 var def = 0 #Defesa
 var mov = 1 #Se pode mover
-var movDist = 4 #Quanto ele pode se mover
+var movDist = 1 #Quanto ele pode se mover
 var attack = 1 #Se pode atacar
 var dmg = 1 #Dano do ataque
 

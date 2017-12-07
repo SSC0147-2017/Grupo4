@@ -231,13 +231,13 @@ func enemyMove(a, b):
 	bx = b.getPosX()
 	az = a.getPosZ()
 	bz = b.getPosZ()
+	colMat[ax][az]=0
 	var nx
 	var nz
 	var menordist=99
-	if colMat[bx][bz+1]==0:
-		menordist = distGrid(a, bx-1, bz)
-		nx = limit_pos(bx-1)
-		nz = limit_pos(bz)
+	menordist = distGrid(a, bx-1, bz)
+	nx = limit_pos(bx-1)
+	nz = limit_pos(bz)
 	if distGrid(a, bx, bz+1) < menordist && colMat[bx][bz+1]==0:
 		menordist = distGrid(a, bx, bz+1)
 		nx = limit_pos(bx)
@@ -284,6 +284,7 @@ func enemyMove(a, b):
 			i = i + 1
 	rotate(a,ax,az)
 	a.move_to(Vector3(ax*2-9,4.6,az*2-9))
+	colMat[ax][az]=1;
 	a.setMov(0)
 	a.setPos(ax, az)
 
