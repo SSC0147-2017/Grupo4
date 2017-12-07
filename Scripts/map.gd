@@ -65,9 +65,9 @@ func _ready():
 		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
 		x.setPos(pos1,pos2)
 		colMat[pos1][pos2]=3;
-	for x in range(10):
-		for y in range(10):
-			print(colMat[x][y])
+#	for x in range(10):
+#		for y in range(10):
+#			print(colMat[x][y])
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
@@ -92,7 +92,7 @@ func _fixed_process(delta):
 		for x in get_tree().get_root().get_node("Battle/Allies").get_children():
 			x.setMov(1)
 			x.setAttack(1)
-		print (turnNumber)
+		print ("Ally Turn  : ",turnNumber)
 		turn = 1
 	if enemies <= 0:
 		turnNumber = turnNumber + 1
@@ -100,7 +100,7 @@ func _fixed_process(delta):
 		for x in get_tree().get_root().get_node("Battle/Enemies").get_children():
 			x.setMov(1)
 			x.setAttack(1)
-		print (turnNumber)
+		print ("Enemy Turn : ",turnNumber)
 		turn = 0
 	if turn == 1:
 		var vector = enemyTeam.get_children()
@@ -213,7 +213,7 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 		selected = 0
 	else:
 		enemyMove(a, alvo)
-		print(a.getPosX(), a.getPosZ()) 
+#		print(a.getPosX(), a.getPosZ()) 
 		if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
 			rotate(a,alvo.getPosX(),alvo.getPosZ())
 			isTarget = alvo
