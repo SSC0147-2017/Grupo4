@@ -4,13 +4,20 @@ var turnNumber = 0
 var turn = 0
 var allies
 var enemies
+var obstructions
 var selected = 0
 var isSelected
 var target = 0
 var isTarget
+var pos1
+var pos2
 
 var enemyTeam
 var allyTeam
+var obstructionTeam
+
+var colMat = []
+
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -22,8 +29,45 @@ func _ready():
 	set_process_input(true)
 	allies = get_tree().get_root().get_node("Battle/Allies").get_child_count()
 	enemies = get_tree().get_root().get_node("Battle/Enemies").get_child_count()
+	obstructions = get_tree().get_root().get_node("Battle/Obstructions").get_child_count()
 	enemyTeam = get_tree().get_root().get_node("Battle/Enemies")
 	allyTeam = get_tree().get_root().get_node("Battle/Allies")
+	obstructionTeam = get_tree().get_root().get_node("Battle/Obstructions")
+# Criando a matriz de poscisionamento.
+	for x in range(11):
+		colMat.append([])
+		for y in range(11):
+			colMat[x].append(0)
+#Definindo a poscição inicial de cada unidade aliada e a pondo na matriz.
+	for x in allyTeam.get_children():
+		pos1=x.get_translation().x
+		pos2=x.get_translation().z
+		pos1 = calc_pos(pos1)
+		pos2 = calc_pos(pos2)
+		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
+		x.setPos(pos1,pos2)
+		colMat[pos1][pos2]=1;
+#Definindo a poscição inicial de cada unidade inimiga e a pondo na matriz.
+	for x in enemyTeam.get_children():
+		pos1=x.get_translation().x
+		pos2=x.get_translation().z
+		pos1 = calc_pos(pos1)
+		pos2 = calc_pos(pos2)
+		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
+		x.setPos(pos1,pos2)
+		colMat[pos1][pos2]=2;
+#Definindo a poscição inicial de cada obstruction e a pondo na matriz.
+	for x in obstructionTeam.get_children():
+		pos1=x.get_translation().x
+		pos2=x.get_translation().z
+		pos1 = calc_pos(pos1)
+		pos2 = calc_pos(pos2)
+		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
+		x.setPos(pos1,pos2)
+		colMat[pos1][pos2]=3;
+	for x in range(10):
+		for y in range(10):
+			print(colMat[x][y])
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
@@ -91,11 +135,15 @@ func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shap
 			posz = calc_pos(posz)
 			if distGrid(isSelected,posx,posz)>isSelected.getMovDist():
 				return 0
+			if(colMat[posx][posz]!=0):
+				return 0
 			
+			colMat[isSelected.getPosX()][isSelected.getPosZ()]=0;
 			isSelected.move_to(Vector3(posx*2-9,4.6,posz*2-9))
 			rotate(isSelected,posx,posz)
 			isSelected.setMov(0)
 			isSelected.setPos(posx, posz)
+			colMat[posx][posz]=1;
 			
 			if isSelected.get_parent() == allyTeam:
 				allies = allies - 1
@@ -150,7 +198,7 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 		var distancia = distGrid(b, a.getPosX(), a.getPosZ()) #se dois aliados tiverem à mesma distância, ele foca no que tiver menos vida
 		if distancia < menordist:
 				if distancia == menordist:
-					if alvo.getHp() > b.getHp():
+					if alvo.getHp() > b.getHp() && checkAllSides(b):
 						alvo = b
 				else:
 					alvo = b
@@ -185,18 +233,20 @@ func enemyMove(a, b):
 	bz = b.getPosZ()
 	var nx
 	var nz
-	var menordist = distGrid(a, bx-1, bz)
-	nx = limit_pos(bx-1)
-	nz = limit_pos(bz)
-	if distGrid(a, bx, bz+1) < menordist:
+	var menordist=99
+	if colMat[bx][bz+1]==0:
+		menordist = distGrid(a, bx-1, bz)
+		nx = limit_pos(bx-1)
+		nz = limit_pos(bz)
+	if distGrid(a, bx, bz+1) < menordist && colMat[bx][bz+1]==0:
 		menordist = distGrid(a, bx, bz+1)
 		nx = limit_pos(bx)
 		nz = limit_pos(bz+1)
-	if distGrid(a, bx+1, bz) < menordist:
+	if distGrid(a, bx+1, bz) < menordist && colMat[bx+1][bz]==0:
 		menordist = distGrid(a, bx+1, bz)
 		nx = limit_pos(bx+1)
 		nz = limit_pos(bz)
-	if distGrid(a, bx, bz-1) < menordist:
+	if distGrid(a, bx, bz-1) < menordist && colMat[bx][bz-1]==0:
 		menordist = distGrid(a, bx, bz-1)
 		nx = limit_pos(bx)
 		nz = limit_pos(bz-1)
@@ -215,25 +265,25 @@ func enemyMove(a, b):
 		while i < a.getMovDist(): #CHECAR POR OBSTÁCULOS AQUI!
 			token = 1
 			if ax < nx:
-				if token == 1:
+				if token == 1 && colMat[ax+1][az]==0:
 					ax = ax + 1
 					token = 0
 			if ax > nx:
-				if token == 1:
+				if token == 1 && colMat[ax-1][az]==0:
 					ax = ax - 1
 					token = 0
 			if ax == nx:
 				if az < nz :
-					if token == 1:
+					if token == 1 && colMat[ax][az+1]==0:
 						az = az + 1
 						token = 0
 				if az > nz:
-					if token == 1:
+					if token == 1 && colMat[ax][az-1]==0:
 						az = az - 1
 						token = 0
 			i = i + 1
-	a.move_to(Vector3(ax*2-9,4.6,az*2-9))
 	rotate(a,ax,az)
+	a.move_to(Vector3(ax*2-9,4.6,az*2-9))
 	a.setMov(0)
 	a.setPos(ax, az)
 
@@ -278,3 +328,10 @@ func rotate(a,x,z):
 		if(z<a.getPosZ()):
 			a.set_rotation_deg(Vector3(0,180,0))
 	pass
+# Retorna 1 caso o objeto tenha algum bloco ao lado não obstruido
+func checkAllSides(a):
+	var posX=a.getPosX()
+	var posZ=a.getPosZ()
+	if(colMat[posX+1][posZ]==0 or colMat[posX][posZ+1]==0 or colMat[posX][posZ-1]==0 or colMat[posX-1][posZ]==0):
+		return 1
+	return 0

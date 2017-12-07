@@ -5,7 +5,7 @@ var posz
 var hp = 10 #Vida
 var def = 0 #Defesa
 var mov = 1 #Se pode mover
-var movDist = 1 #Quanto ele pode se mover
+var movDist = 4 #Quanto ele pode se mover
 var attack = 1 #Se pode atacar
 var dmg = 1 #Dano do ataque
 
@@ -13,11 +13,7 @@ var dmg = 1 #Dano do ataque
 # var a = 2
 # var b = "textvar"
 func _ready():
-	posx=get_translation().x
-	posz=get_translation().z
-	posx = calc_pos(posx)
-	posz = calc_pos(posz)
-	move_to(Vector3(posx*2-9,4.6,posz*2-9))
+	
 	pass
 	
 func setMov(value):

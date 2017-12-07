@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=1]
+[gd_scene load_steps=26 format=1]
 
 [ext_resource path="res://Converted/Models/Terrain/Meshes.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Scripts/map.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Source/Allies/Yellow.png" type="Texture" id=12]
 [ext_resource path="res://Converted/Textures/Bandit.tex" type="Texture" id=13]
 [ext_resource path="res://Converted/Models/Enemies/Criminal2.msh" type="Mesh" id=14]
+[ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=15]
+[ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=16]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -504,7 +506,7 @@ shadow/zoffset_scale = 2.0
 [node name="Ally1" type="KinematicBody" parent="Allies"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( -3, 0, -2.62268e-07, 0, 5, 0, 2.62268e-07, 0, -3, 0, 4.6, 9 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, -3, 0.8, 4.6, 9 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
@@ -557,7 +559,7 @@ material/2 = SubResource( 8 )
 [node name="Enemy1" type="KinematicBody" parent="Enemies"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 0, 4.6, -9 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 0.8, 4.6, -9 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
@@ -597,6 +599,57 @@ material/0 = null
 material/1 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstructions" type="Node" parent="."]
+
+[node name="Enemy1" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 0.8, 4.6, 5.19236 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 2
+collision/mask = 2
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 15 )
+
+[node name="Criminal" type="MeshInstance" parent="Obstructions/Enemy1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 16 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Enemy1"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )

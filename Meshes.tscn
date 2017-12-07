@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://Converted/Textures/CubeGrass.tex" type="Texture" id=1]
 [ext_resource path="res://Converted/Models/Terrain/Cube.msh" type="Mesh" id=2]
@@ -92,11 +92,7 @@ textures/glow_tc = 0
 textures/normal_tc = 0
 textures/shade_param_tc = 0
 
-[sub_resource type="SphereShape" id=5]
-
-radius = 1.0
-
-[sub_resource type="FixedMaterial" id=6]
+[sub_resource type="FixedMaterial" id=5]
 
 flags/visible = true
 flags/double_sided = false
@@ -134,11 +130,11 @@ textures/glow_tc = 0
 textures/normal_tc = 0
 textures/shade_param_tc = 0
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape" id=6]
 
 extents = Vector3( 1, 1, 1 )
 
-[sub_resource type="FixedMaterial" id=8]
+[sub_resource type="FixedMaterial" id=7]
 
 flags/visible = true
 flags/double_sided = false
@@ -322,8 +318,8 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48443, 4.7115 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Transform( 1.24596, 0, 0, 0, 1.24596, 0, 0, 0, 1.24596, 0, 0, -0.0669436 )
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392091, 0.0484114 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -336,17 +332,18 @@ collision/margin = 0.001
 [node name="CollisionShape" type="CollisionShape" parent="RockBody"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1.24596, 0, 0, 0, 1.24596, 0, 0, 0, 1.24596, 0, 0, -0.0669436 )
-shape = SubResource( 5 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392091, 0.0484114 )
+shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
 [node name="Rock" type="MeshInstance" parent="RockBody"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00836086, 0.0148563, -0.00759172 )
 layers = 1
 geometry/visible = true
-geometry/material_override = SubResource( 6 )
+geometry/material_override = SubResource( 5 )
 geometry/cast_shadow = 1
 geometry/receive_shadows = true
 geometry/range_begin = 0.0
@@ -369,7 +366,7 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48443, 4.7115 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Transform( 10, 0, 0, 0, 0.3, 0, 0, 0, 10, 0, -1.96318, -4.71216 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -384,7 +381,7 @@ collision/margin = 0.001
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 10, 0, 0, 0, 0.3, 0, 0, 0, 10, 0, -1.96318, -4.71216 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
 
@@ -394,7 +391,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.48443, -4.7115 )
 layers = 1
 geometry/visible = true
-geometry/material_override = SubResource( 8 )
+geometry/material_override = SubResource( 7 )
 geometry/cast_shadow = 1
 geometry/receive_shadows = true
 geometry/range_begin = 0.0

@@ -64,6 +64,7 @@ texture = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 
+editor/display_folded = true
 visibility/behind_parent = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
