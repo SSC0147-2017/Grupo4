@@ -54,13 +54,15 @@ func receiveDmg(dmg):
 	if total > 0:
 		hp = hp - total
 			
-func calc_pos(pos):
-	pos = floor(pos)
-	pos  = pos / 2
-	pos = pos + 5
-
-	if floor(pos) == 10:
-		return 9
-	if floor(pos) == -1:
-		return 0
-	return floor(pos)
+func rotate(x,z):
+	if(abs(x-posx)>abs(z-posz)):
+		if(x>posx):
+			set_rotation_deg(Vector3(0,90,0))
+		if(x<posx):
+			set_rotation_deg(Vector3(0,270,0))
+	else:
+		if(z>posz):
+			set_rotation_deg(Vector3(0,0,0))
+		if(z<posz):
+			set_rotation_deg(Vector3(0,180,0))
+	pass

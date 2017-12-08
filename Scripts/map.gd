@@ -53,6 +53,7 @@ func _ready():
 		pos2=x.get_translation().z
 		pos1 = calc_pos(pos1)
 		pos2 = calc_pos(pos2)
+		x.receiveDmg(5)#Should change to something not as retarded
 		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
 		x.setPos(pos1,pos2)
 		colMat[pos1][pos2]=2;
@@ -124,6 +125,7 @@ func _fixed_process(delta):
 	
 func attackEnemy(a):
 	if dist(isSelected, isTarget) == 1 and isSelected.getAttack() == 1:
+		isSelected.rotate(isTarget.getPosX(),isTarget.getPosZ())
 		isTarget.receiveDmg(int(isSelected.getDmg()))
 		isSelected.setAttack(0)
 		print ("Vida agora:")
@@ -150,7 +152,7 @@ func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shap
 			
 			colMat[isSelected.getPosX()][isSelected.getPosZ()]=0;
 			isSelected.move_to(Vector3(posx*2-9,4.6,posz*2-9))
-			rotate(isSelected,posx,posz)
+			isSelected.rotate(posx,posz)
 			isSelected.setMov(0)
 			isSelected.setPos(posx, posz)
 			colMat[posx][posz]=1;
@@ -214,7 +216,6 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 					alvo = b
 					menordist = distancia
 	if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
-		rotate(a,alvo.getPosX(),alvo.getPosZ())
 		isTarget = alvo
 		target = 1
 		attackEnemy("Inimigo atacou1")
@@ -225,7 +226,6 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 		enemyMove(a, alvo)
 #		print(a.getPosX(), a.getPosZ()) 
 		if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
-			rotate(a,alvo.getPosX(),alvo.getPosZ())
 			isTarget = alvo
 			target = 1
 			attackEnemy("Inimigo atacou2")	
@@ -292,7 +292,7 @@ func enemyMove(a, b):
 						az = az - 1
 						token = 0
 			i = i + 1
-	rotate(a,ax,az)
+	a.rotate(ax,az)
 	a.move_to(Vector3(ax*2-9,4.6,az*2-9))
 	colMat[ax][az]=1;
 	a.setMov(0)
@@ -326,19 +326,6 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 				target = 1
 				attackEnemy("Aliado atacou")
 	pass # replace with function body
-	
-func rotate(a,x,z):
-	if(abs(x-a.getPosX())>abs(z-a.getPosZ())):
-		if(x>a.getPosX()):
-			a.set_rotation_deg(Vector3(0,90,0))
-		if(x<a.getPosX()):
-			a.set_rotation_deg(Vector3(0,270,0))
-	else:
-		if(z>a.getPosZ()):
-			a.set_rotation_deg(Vector3(0,0,0))
-		if(z<a.getPosZ()):
-			a.set_rotation_deg(Vector3(0,180,0))
-	pass
 # Retorna 1 caso o objeto tenha algum bloco ao lado não obstruido
 func checkAllSides(a):
 	var posX=a.getPosX()
