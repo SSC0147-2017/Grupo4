@@ -7,6 +7,7 @@ extends VBoxContainer
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	get_node("Music").play()
 	pass
 
 
