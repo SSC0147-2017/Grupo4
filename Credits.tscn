@@ -1,0 +1,259 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://Source/Music/Dawn's Battle (Instrumental) .ogg" type="AudioStream" id=2]
+
+[node name="ColorFrame" type="ColorFrame"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -8.0
+margin/top = -6.0
+margin/right = 1053.0
+margin/bottom = 634.0
+color = Color( 0.154907, 0.367188, 0.272656, 1 )
+
+[node name="Autores" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.8, 0.8 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 93.0
+margin/top = 29.0
+margin/right = 343.0
+margin/bottom = 75.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.742188, 0.6987, 0.6987, 1 )
+text = "Developers"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Hiero" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.7, 0.7 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 183.0
+margin/top = 77.0
+margin/right = 583.0
+margin/bottom = 123.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.741176, 0.698039, 0.698039, 1 )
+text = "Hiero Martinelli"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Pedro" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.7, 0.7 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 181.0
+margin/top = 117.0
+margin/right = 581.0
+margin/bottom = 163.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.741176, 0.698039, 0.698039, 1 )
+text = "Pedro Rocha"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Rafael" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.7, 0.7 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 181.0
+margin/top = 157.0
+margin/right = 581.0
+margin/bottom = 203.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.741176, 0.698039, 0.698039, 1 )
+text = "Rafael Nissi"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Sandro" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.7, 0.7 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 181.0
+margin/top = 197.0
+margin/right = 581.0
+margin/bottom = 243.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.741176, 0.698039, 0.698039, 1 )
+text = "Sandro Alves"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Music" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.8, 0.8 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 93.0
+margin/top = 238.0
+margin/right = 268.0
+margin/bottom = 284.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.742188, 0.6987, 0.6987, 1 )
+text = "Music"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Dawn's Battle" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.7, 0.7 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 178.0
+margin/top = 282.0
+margin/right = 1203.0
+margin/bottom = 328.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.741176, 0.698039, 0.698039, 1 )
+text = "Dawn's Battle (Instrumental) by Ivan Chew"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Dawn's Battle License" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.4, 0.4 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 203.0
+margin/top = 318.0
+margin/right = 1728.0
+margin/bottom = 462.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.741176, 0.698039, 0.698039, 1 )
+text = "(c) copyright 2016
+Licensed under a Creative Commons Attribution (3.0) license. 
+http://dig.ccmixter.org/files/ramblinglibrarian/52995 "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Földhullám" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.7, 0.7 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 181.0
+margin/top = 378.0
+margin/right = 781.0
+margin/bottom = 424.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.741176, 0.698039, 0.698039, 1 )
+text = "Földhullám by Grizzly616"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Földhullám License" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.4, 0.4 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 203.0
+margin/top = 414.0
+margin/right = 2103.0
+margin/bottom = 558.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.741176, 0.698039, 0.698039, 1 )
+text = "(c) copyright 2010 
+Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. 
+http://dig.ccmixter.org/files/Grizzly616/25142 "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HDR" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.8, 0.8 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 93.0
+margin/top = 478.0
+margin/right = 318.0
+margin/bottom = 524.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.742188, 0.6987, 0.6987, 1 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HDR License" type="Label" parent="."]
+
+visibility/blend_mode = 1
+rect/scale = Vector2( 0.4, 0.4 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 203.0
+margin/top = 520.0
+margin/right = 2253.0
+margin/bottom = 664.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.741176, 0.698039, 0.698039, 1 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 2 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 9.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+
