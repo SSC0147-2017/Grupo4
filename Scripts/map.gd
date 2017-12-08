@@ -108,6 +108,12 @@ func attackEnemy(a):
 		if int(isTarget.getHp()) <= 0:
 			isTarget.queue_free()
 			isTarget = 0
+#			if get_tree().get_root().get_node("Battle/Allies").get_child_count()==0:
+#				print("You LOSE!")
+#				get_tree().change_scene("res://MainMenu.tscn")
+#			if get_tree().get_root().get_node("Battle/Enemies").get_child_count()==0:
+#				print("You WIN!")
+#				get_tree().change_scene("res://MainMenu.tscn")
 	else:
 		print("Ataque falhou!")
 
@@ -301,7 +307,7 @@ func checkAllSides(a):
 		return 1
 	return 0
 #Coloca o time a na Matriz de colisões, deve ser posto no ready, x é o numero do time.
-func setTeamOnMat(a,x):
+func setTeamOnMat(a,n):
 	var pos1
 	var pos2
 	for x in a.get_children():
@@ -311,4 +317,4 @@ func setTeamOnMat(a,x):
 		pos2 = calc_pos(pos2)
 		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
 		x.setPos(pos1,pos2)
-		colMat[pos1][pos2]=2;
+		colMat[pos1][pos2]=n;

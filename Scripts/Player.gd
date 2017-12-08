@@ -1,5 +1,5 @@
 extends Spatial
-
+var team
 var posx  #Posicao atual
 var posz 
 var hp = 10 #Vida
@@ -13,7 +13,10 @@ var dmg = 1 #Dano do ataque
 # var a = 2
 # var b = "textvar"
 func _ready():
-	
+	team=get_children()
+	for x in team:
+		if(x.get_name()=="Loli"):
+			dmg=6
 	pass
 	
 func setMov(value):
