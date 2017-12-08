@@ -844,4 +844,6 @@ stream/buffering_ms = 500
 
 [connection signal="input_event" from="Enemies/Enemy1" to="KinematicBody/GridMap" method="_on_Enemy1_input_event"]
 
+[connection signal="input_event" from="Enemies/Enemy2" to="KinematicBody/GridMap" method="_on_Enemy2_input_event"]
+
 

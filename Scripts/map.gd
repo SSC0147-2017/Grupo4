@@ -107,9 +107,9 @@ func attackEnemy(a):
 		isSelected.setAttack(0)
 		print ("Vida agora: ",int(isTarget.getHp()))
 		if int(isTarget.getHp()) <= 0:
+			colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
 			isTarget.queue_free()
 			isTarget = 0
-			print(get_tree().get_root().get_node("Battle/Enemies").get_child_count())
 #			if get_tree().get_root().get_node("Battle/Allies").get_child_count()==0:
 #				print("You LOSE!")
 #				get_tree().change_scene("res://MainMenu.tscn")
@@ -301,6 +301,21 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 				target = 1
 				attackEnemy("Aliado atacou")
 	pass # replace with function body
+	
+func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx ):
+	if turn == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 0:
+				isSelected = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
+				selected = 1
+				
+	if turn == 0:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 2 and event.is_pressed():
+			if selected == 1:
+				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
+				target = 1
+				attackEnemy("Aliado atacou")
+	pass # replace with function body
 # Retorna 1 caso o objeto tenha algum bloco ao lado não obstruido
 func checkAllSides(a):
 	var posX=a.getPosX()
@@ -320,3 +335,5 @@ func setTeamOnMat(a,n):
 		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
 		x.setPos(pos1,pos2)
 		colMat[pos1][pos2]=n;
+
+
