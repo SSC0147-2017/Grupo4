@@ -18,3 +18,8 @@ func _on_MenuButton_pressed():
 func _on_MenuButton2_pressed():
 	get_tree().quit()
 	pass # replace with function body
+
+
+func _on_Credits_pressed():
+	get_tree().change_scene("res://Credits.tscn")
+	pass # replace with function body
