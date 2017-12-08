@@ -76,12 +76,22 @@ func _input(event):
 	if event.type == InputEvent.KEY:
 		if event.is_action_pressed("ui_camera_N"):
 			get_tree().get_root().get_node("Battle/Camera1").make_current()
+			get_tree().get_root().get_node("Battle/DirectionalLight").set_enabled(true)
+			get_tree().get_root().get_node("Battle/DirectionalLight1").set_enabled(false)
 		if event.is_action_pressed("ui_camera_W"):
 			get_tree().get_root().get_node("Battle/Camera2").make_current()
+			get_tree().get_root().get_node("Battle/DirectionalLight").set_enabled(false)
+			get_tree().get_root().get_node("Battle/DirectionalLight1").set_enabled(true)
 		if event.is_action_pressed("ui_camera_E"):
 			get_tree().get_root().get_node("Battle/Camera3").make_current()
+			get_tree().get_root().get_node("Battle/DirectionalLight").set_enabled(true)
+			get_tree().get_root().get_node("Battle/DirectionalLight1").set_enabled(false)
 		if event.is_action_pressed("ui_camera_S"):
-			get_tree().get_root().get_node("Battle/Camera4").make_current()	
+			get_tree().get_root().get_node("Battle/Camera4").make_current()
+			get_tree().get_root().get_node("Battle/DirectionalLight").set_enabled(false)
+			get_tree().get_root().get_node("Battle/DirectionalLight1").set_enabled(true)
+			
+			
 	else:
 		return 0
 
