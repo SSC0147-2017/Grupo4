@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scripts/controls.gd" type="Script" id=1]
 [ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://Source/Menu/Logo.png" type="Texture" id=3]
 [ext_resource path="res://Source/Menu/background.tex" type="Texture" id=4]
+[ext_resource path="res://Source/Music/Dawn's Battle (Instrumental) .ogg" type="AudioStream" id=5]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 
@@ -80,6 +81,17 @@ margin/bottom = 112.0
 transform/pos = Vector2( 90.3727, -151.109 )
 transform/scale = Vector2( 1.11, 1.11 )
 texture = ExtResource( 4 )
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 5 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 9.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
 

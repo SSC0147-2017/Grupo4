@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=1]
+[gd_scene load_steps=27 format=1]
 
 [ext_resource path="res://Converted/Models/Terrain/Meshes.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Scripts/map.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Converted/Models/Enemies/Criminal2.msh" type="Mesh" id=14]
 [ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=15]
 [ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=16]
+[ext_resource path="res://Source/Music/Földhullám.ogg" type="AudioStream" id=17]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -705,6 +706,17 @@ transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 17 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 9.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [connection signal="input_event" from="KinematicBody" to="KinematicBody/GridMap" method="_on_KinematicBody_input_event"]
 
