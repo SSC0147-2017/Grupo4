@@ -32,6 +32,7 @@ func _ready():
 	allyTeam = get_tree().get_root().get_node("Battle/Allies")
 	obstructionTeam = get_tree().get_root().get_node("Battle/Obstructions")
 # Criando a matriz de poscisionamento.
+	print(get_tree().get_root().get_node("Battle/Enemies").get_child_count())
 	for x in range(11):
 		colMat.append([])
 		for y in range(11):
@@ -108,6 +109,7 @@ func attackEnemy(a):
 		if int(isTarget.getHp()) <= 0:
 			isTarget.queue_free()
 			isTarget = 0
+			print(get_tree().get_root().get_node("Battle/Enemies").get_child_count())
 #			if get_tree().get_root().get_node("Battle/Allies").get_child_count()==0:
 #				print("You LOSE!")
 #				get_tree().change_scene("res://MainMenu.tscn")
