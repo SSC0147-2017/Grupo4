@@ -9,8 +9,6 @@ var selected = 0
 var isSelected
 var target = 0
 var isTarget
-var pos1
-var pos2
 
 var enemyTeam
 var allyTeam
@@ -34,37 +32,17 @@ func _ready():
 	allyTeam = get_tree().get_root().get_node("Battle/Allies")
 	obstructionTeam = get_tree().get_root().get_node("Battle/Obstructions")
 # Criando a matriz de poscisionamento.
+	print(get_tree().get_root().get_node("Battle/Enemies").get_child_count())
 	for x in range(11):
 		colMat.append([])
 		for y in range(11):
 			colMat[x].append(0)
 #Definindo a poscição inicial de cada unidade aliada e a pondo na matriz.
-	for x in allyTeam.get_children():
-		pos1=x.get_translation().x
-		pos2=x.get_translation().z
-		pos1 = calc_pos(pos1)
-		pos2 = calc_pos(pos2)
-		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
-		x.setPos(pos1,pos2)
-		colMat[pos1][pos2]=1;
+	setTeamOnMat(allyTeam,1)
 #Definindo a poscição inicial de cada unidade inimiga e a pondo na matriz.
-	for x in enemyTeam.get_children():
-		pos1=x.get_translation().x
-		pos2=x.get_translation().z
-		pos1 = calc_pos(pos1)
-		pos2 = calc_pos(pos2)
-		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
-		x.setPos(pos1,pos2)
-		colMat[pos1][pos2]=2;
+	setTeamOnMat(enemyTeam,2)
 #Definindo a poscição inicial de cada obstruction e a pondo na matriz.
-	for x in obstructionTeam.get_children():
-		pos1=x.get_translation().x
-		pos2=x.get_translation().z
-		pos1 = calc_pos(pos1)
-		pos2 = calc_pos(pos2)
-		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
-		x.setPos(pos1,pos2)
-		colMat[pos1][pos2]=3;
+	setTeamOnMat(obstructionTeam,3)
 #	for x in range(10):
 #		for y in range(10):
 #			print(colMat[x][y])
@@ -97,20 +75,20 @@ func _input(event):
 
 func _fixed_process(delta):
 	if allies <= 0:
+		print ("Ally Turn  : ",turnNumber + 1)
 		turnNumber = turnNumber + 1
 		allies = get_tree().get_root().get_node("Battle/Allies").get_child_count()
 		for x in get_tree().get_root().get_node("Battle/Allies").get_children():
 			x.setMov(1)
 			x.setAttack(1)
-		print ("Ally Turn  : ",turnNumber)
 		turn = 1
 	if enemies <= 0:
+		print ("Enemy Turn : ",turnNumber + 1)
 		turnNumber = turnNumber + 1
 		enemies = get_tree().get_root().get_node("Battle/Enemies").get_child_count()
 		for x in get_tree().get_root().get_node("Battle/Enemies").get_children():
 			x.setMov(1)
 			x.setAttack(1)
-		print ("Enemy Turn : ",turnNumber)
 		turn = 0
 	if turn == 1:
 		var vector = enemyTeam.get_children()
@@ -124,16 +102,22 @@ func _fixed_process(delta):
 	
 func attackEnemy(a):
 	if dist(isSelected, isTarget) == 1 and isSelected.getAttack() == 1:
+		isSelected.rotate(isTarget.getPosX(),isTarget.getPosZ())
 		isTarget.receiveDmg(int(isSelected.getDmg()))
 		isSelected.setAttack(0)
-		print ("Vida agora:")
-		print (int(isTarget.getHp()))
+		print ("Vida agora: ",int(isTarget.getHp()))
 		if int(isTarget.getHp()) <= 0:
+			colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
 			isTarget.queue_free()
 			isTarget = 0
+#			if get_tree().get_root().get_node("Battle/Allies").get_child_count()==0:
+#				print("You LOSE!")
+#				get_tree().change_scene("res://MainMenu.tscn")
+#			if get_tree().get_root().get_node("Battle/Enemies").get_child_count()==0:
+#				print("You WIN!")
+#				get_tree().change_scene("res://MainMenu.tscn")
 	else:
 		print("Ataque falhou!")
-	print(a)
 
 
 func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shape_idx ):
@@ -150,7 +134,7 @@ func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shap
 			
 			colMat[isSelected.getPosX()][isSelected.getPosZ()]=0;
 			isSelected.move_to(Vector3(posx*2-9,4.6,posz*2-9))
-			rotate(isSelected,posx,posz)
+			isSelected.rotate(posx,posz)
 			isSelected.setMov(0)
 			isSelected.setPos(posx, posz)
 			colMat[posx][posz]=1;
@@ -184,7 +168,6 @@ func limit_pos(pos):
 	return floor(pos)
 	
 func dist(a, b):
-	print(int(a.getAttack()))
 	var d1 = abs(int(a.getPosX()) - int(b.getPosX()))
 	var d2 = abs(int(a.getPosZ()) - int(b.getPosZ()))
 	return d1 + d2
@@ -214,7 +197,6 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 					alvo = b
 					menordist = distancia
 	if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
-		rotate(a,alvo.getPosX(),alvo.getPosZ())
 		isTarget = alvo
 		target = 1
 		attackEnemy("Inimigo atacou1")
@@ -225,7 +207,6 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 		enemyMove(a, alvo)
 #		print(a.getPosX(), a.getPosZ()) 
 		if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
-			rotate(a,alvo.getPosX(),alvo.getPosZ())
 			isTarget = alvo
 			target = 1
 			attackEnemy("Inimigo atacou2")	
@@ -263,12 +244,6 @@ func enemyMove(a, b):
 	if menordist <= a.getMovDist():
 		ax = nx
 		az = nz
-		
-		print("Esse e o NX e NZ")
-		print(nx)
-		print(nz)
-		print(ax)
-		print(az)
 	else: 
 		var i = 0
 		var token
@@ -292,7 +267,7 @@ func enemyMove(a, b):
 						az = az - 1
 						token = 0
 			i = i + 1
-	rotate(a,ax,az)
+	a.rotate(ax,az)
 	a.move_to(Vector3(ax*2-9,4.6,az*2-9))
 	colMat[ax][az]=1;
 	a.setMov(0)
@@ -327,18 +302,20 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 				attackEnemy("Aliado atacou")
 	pass # replace with function body
 	
-func rotate(a,x,z):
-	if(abs(x-a.getPosX())>abs(z-a.getPosZ())):
-		if(x>a.getPosX()):
-			a.set_rotation_deg(Vector3(0,90,0))
-		if(x<a.getPosX()):
-			a.set_rotation_deg(Vector3(0,270,0))
-	else:
-		if(z>a.getPosZ()):
-			a.set_rotation_deg(Vector3(0,0,0))
-		if(z<a.getPosZ()):
-			a.set_rotation_deg(Vector3(0,180,0))
-	pass
+func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx ):
+	if turn == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 0:
+				isSelected = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
+				selected = 1
+				
+	if turn == 0:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 2 and event.is_pressed():
+			if selected == 1:
+				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
+				target = 1
+				attackEnemy("Aliado atacou")
+	pass # replace with function body
 # Retorna 1 caso o objeto tenha algum bloco ao lado não obstruido
 func checkAllSides(a):
 	var posX=a.getPosX()
@@ -346,3 +323,17 @@ func checkAllSides(a):
 	if(colMat[posX+1][posZ]==0 or colMat[posX][posZ+1]==0 or colMat[posX][posZ-1]==0 or colMat[posX-1][posZ]==0):
 		return 1
 	return 0
+#Coloca o time a na Matriz de colisões, deve ser posto no ready, x é o numero do time.
+func setTeamOnMat(a,n):
+	var pos1
+	var pos2
+	for x in a.get_children():
+		pos1=x.get_translation().x
+		pos2=x.get_translation().z
+		pos1 = calc_pos(pos1)
+		pos2 = calc_pos(pos2)
+		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
+		x.setPos(pos1,pos2)
+		colMat[pos1][pos2]=n;
+
+

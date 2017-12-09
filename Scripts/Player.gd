@@ -1,5 +1,5 @@
 extends Spatial
-
+var team
 var posx  #Posicao atual
 var posz 
 var hp = 10 #Vida
@@ -13,7 +13,10 @@ var dmg = 1 #Dano do ataque
 # var a = 2
 # var b = "textvar"
 func _ready():
-	
+	team=get_children()
+	for x in team:
+		if(x.get_name()=="Loli"):
+			dmg=6
 	pass
 	
 func setMov(value):
@@ -54,13 +57,15 @@ func receiveDmg(dmg):
 	if total > 0:
 		hp = hp - total
 			
-func calc_pos(pos):
-	pos = floor(pos)
-	pos  = pos / 2
-	pos = pos + 5
-
-	if floor(pos) == 10:
-		return 9
-	if floor(pos) == -1:
-		return 0
-	return floor(pos)
+func rotate(x,z):
+	if(abs(x-posx)>abs(z-posz)):
+		if(x>posx):
+			set_rotation_deg(Vector3(0,90,0))
+		if(x<posx):
+			set_rotation_deg(Vector3(0,270,0))
+	else:
+		if(z>posz):
+			set_rotation_deg(Vector3(0,0,0))
+		if(z<posz):
+			set_rotation_deg(Vector3(0,180,0))
+	pass
