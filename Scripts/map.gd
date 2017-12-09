@@ -14,12 +14,14 @@ var enemyTeam
 var allyTeam
 var obstructionTeam
 
+var buttonMove = 0
+var buttonAttack = 0
+
 var colMat = []
 
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-
 
 
 func _ready():
@@ -121,7 +123,7 @@ func attackEnemy(a):
 
 
 func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shape_idx ):
-	if selected == 1:
+	if selected == 1 and buttonMove == 1:
 		if isSelected.getMov() == 1 and event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			var posx = click_pos.x
 			var posz = click_pos.z
@@ -145,8 +147,9 @@ func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shap
 				enemies = enemies - 1
 			selected = 0
 			isSelected = 0
-			
+			buttonMove = 0
 	
+
 	pass # replace with function body
 	
 func calc_pos(pos):
@@ -294,12 +297,13 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 				isSelected = get_tree().get_root().get_node("Battle/Enemies/Enemy1")
 				selected = 1
 				
-	if turn == 0:
-		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 2 and event.is_pressed():
+	if turn == 0 and buttonAttack == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy1")
 				target = 1
 				attackEnemy("Aliado atacou")
+			buttonAttack = 0
 	pass # replace with function body
 	
 func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx ):
@@ -309,12 +313,13 @@ func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx )
 				isSelected = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
 				selected = 1
 				
-	if turn == 0:
-		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 2 and event.is_pressed():
+	if turn == 0 and buttonAttack == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
 				target = 1
 				attackEnemy("Aliado atacou")
+			buttonAttack = 0
 	pass # replace with function body
 # Retorna 1 caso o objeto tenha algum bloco ao lado não obstruido
 func checkAllSides(a):
