@@ -97,6 +97,7 @@ func _fixed_process(delta):
 		for a in vector:
 			enemyAI(a)
 			
+			
 		
 		
 			

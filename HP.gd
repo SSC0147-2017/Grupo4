@@ -32,3 +32,11 @@ func _on_Move_pressed():
 func _on_Attack_pressed():
 	grid.buttonAttack = 1
 	pass # replace with function body
+
+
+func _on_Pass_pressed():
+	grid.isSelected.setMov(0)
+	grid.isSelected.setAttack(0)
+	grid.allies = grid.allies - 1
+	grid.selected = 0
+	pass # replace with function body
