@@ -5,7 +5,7 @@ var posz
 var hp = 10 #Vida
 var def = 0 #Defesa
 var mov = 1 #Se pode mover
-var movDist = 1 #Quanto ele pode se mover
+var movDist = 3 #Quanto ele pode se mover
 var attack = 1 #Se pode atacar
 var dmg = 1 #Dano do ataque
 
@@ -69,3 +69,35 @@ func rotate(x,z):
 		if(z<posz):
 			set_rotation_deg(Vector3(0,180,0))
 	pass
+func move_in_path(colMat,nx,nz):
+	var i = 0
+	var token
+	var prevz
+	var prevx
+	while i < movDist:
+		prevx=posx
+		prevz=posz
+		token = 1
+		colMat[prevx][prevz]=0;
+		if prevx < nx:
+			if token == 1 && colMat[prevx+1][prevz]==0:
+				prevx = prevx + 1
+				token = 0
+		if prevx > nx:
+			if token == 1 && colMat[prevx-1][prevz]==0:
+				prevx = prevx - 1
+				token = 0
+		if prevz < nz :
+			if token == 1 && colMat[prevx][prevz+1]==0:
+				prevz = prevz + 1
+				token = 0
+		if prevz > nz:
+			if token == 1 && colMat[prevx][prevz-1]==0:
+				prevz = prevz - 1
+				token = 0
+		i = i + 1
+		rotate(prevx,prevz)
+		move_to(Vector3(prevx*2-9,4.6,prevz*2-9))
+		colMat[prevx][prevz]=1
+		posx=prevx
+		posz=prevz

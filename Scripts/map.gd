@@ -130,17 +130,14 @@ func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shap
 			var posz = click_pos.z
 			posx = calc_pos(posx)
 			posz = calc_pos(posz)
-			if distGrid(isSelected,posx,posz)>isSelected.getMovDist():
+			if specDistGrid(isSelected,posx,posz)>isSelected.getMovDist():
 				return 0
 			if(colMat[posx][posz]!=0):
 				return 0
 			
 			colMat[isSelected.getPosX()][isSelected.getPosZ()]=0;
-			isSelected.move_to(Vector3(posx*2-9,4.6,posz*2-9))
-			isSelected.rotate(posx,posz)
+			isSelected.move_in_path(colMat,posx,posz)
 			isSelected.setMov(0)
-			isSelected.setPos(posx, posz)
-			colMat[posx][posz]=1;
 			
 			if isSelected.get_parent() == allyTeam:
 				allies = allies - 1
@@ -180,6 +177,36 @@ func distGrid(a,posX,posZ):
 	var d1 = abs(int(a.getPosX()) - int(posX))
 	var d2 = abs(int(a.getPosZ()) - int(posZ))
 	return d1 + d2
+	
+func specDistGrid(a,posX,posZ):
+	var i = 0
+	var token
+	var prevz=a.getPosZ()
+	var prevx=a.getPosX()
+	while i < a.getMovDist():
+		token = 1
+		if prevx < posX:
+			if token == 1 && colMat[prevx+1][prevz]==0:
+				prevx = prevx + 1
+				token = 0
+		if prevx > posX:
+			if token == 1 && colMat[prevx-1][prevz]==0:
+				prevx = prevx - 1
+				token = 0
+		if prevx == posX:
+			if prevz < posZ :
+				if token == 1 && colMat[prevx][prevz+1]==0:
+					prevz = prevz + 1
+					token = 0
+			if prevz > posZ:
+				if token == 1 && colMat[prevx][prevz-1]==0:
+					prevz = prevz - 1
+					token = 0
+		i = i + 1
+	if prevx==posX && prevz==posZ:
+		return i
+	else:
+		return 99
 	
 	
 func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
@@ -230,9 +257,10 @@ func enemyMove(a, b):
 	var nx
 	var nz
 	var menordist=99
-	menordist = distGrid(a, bx-1, bz)
-	nx = limit_pos(bx-1)
-	nz = limit_pos(bz)
+	if distGrid(a, bx-1, bz) < menordist && colMat[bx-1][bz]==0:
+		menordist = distGrid(a, bx-1, bz)
+		nx = limit_pos(bx-1)
+		nz = limit_pos(bz)
 	if distGrid(a, bx, bz+1) < menordist && colMat[bx][bz+1]==0:
 		menordist = distGrid(a, bx, bz+1)
 		nx = limit_pos(bx)
