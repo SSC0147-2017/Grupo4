@@ -182,7 +182,7 @@ func distGrid(a,posX,posZ):
 	var token
 	var prevz=a.getPosZ()
 	var prevx=a.getPosX()
-	while i < a.getMovDist():
+	while (i < a.getMovDist())&&(prevx!=posX || prevz!=posZ):
 		token = 1
 		if prevx < posX:
 			if token == 1 && colMat[prevx+1][prevz]==0:
@@ -201,7 +201,7 @@ func distGrid(a,posX,posZ):
 				prevz = prevz - 1
 				token = 0
 		i = i + 1
-	if prevx==posX && prevz==posZ:
+	if (prevx==posX && prevz==posZ):
 		return i
 	else:
 		return 99
@@ -225,7 +225,7 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 				else:
 					alvo = b
 					menordist = distancia
-	if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
+	if dist(alvo, a) == 1:
 		isTarget = alvo
 		target = 1
 		attackEnemy("Inimigo atacou1")
@@ -235,7 +235,7 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 	else:
 		enemyMove(a, alvo)
 #		print(a.getPosX(), a.getPosZ()) 
-		if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
+		if dist(alvo, a) == 1:
 			isTarget = alvo
 			target = 1
 			attackEnemy("Inimigo atacou2")	
@@ -269,32 +269,8 @@ func enemyMove(a, b):
 		menordist = distGrid(a, bx, bz-1)
 		nx = limit_pos(bx)
 		nz = limit_pos(bz-1)
-	if menordist <= a.getMovDist():
-		ax = nx
-		az = nz
-	else: 
-		var i = 0
-		var token
-		while i < a.getMovDist(): #CHECAR POR OBSTÁCULOS AQUI!
-			token = 1
-			if ax < nx:
-				if token == 1 && colMat[ax+1][az]==0:
-					ax = ax + 1
-					token = 0
-			if ax > nx:
-				if token == 1 && colMat[ax-1][az]==0:
-					ax = ax - 1
-					token = 0
-			if ax == nx:
-				if az < nz :
-					if token == 1 && colMat[ax][az+1]==0:
-						az = az + 1
-						token = 0
-				if az > nz:
-					if token == 1 && colMat[ax][az-1]==0:
-						az = az - 1
-						token = 0
-			i = i + 1
+	ax = nx
+	az = nz
 	a.rotate(ax,az)
 	a.move_in_path(colMat,ax,az)
 	colMat[ax][az]=1;
