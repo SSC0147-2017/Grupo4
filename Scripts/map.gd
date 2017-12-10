@@ -96,12 +96,12 @@ func _fixed_process(delta):
 		var vector = enemyTeam.get_children()
 		for a in vector:
 			enemyAI(a)
-			
-			
-		
-		
-			
-			
+	if get_tree().get_root().get_node("Battle/Enemies").get_child_count() == 0:
+		get_tree().get_root().get_node("Battle/WinLosePanel").show()
+		get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU WIN!")
+	if get_tree().get_root().get_node("Battle/Allies").get_child_count() == 0:
+		get_tree().get_root().get_node("Battle/WinLosePanel").show()
+		get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU LOSE!")
 	
 func attackEnemy(a):
 	if dist(isSelected, isTarget) == 1 and isSelected.getAttack() == 1:
