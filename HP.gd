@@ -16,6 +16,14 @@ func _fixed_process(delta):
 	if grid.selected == 1:
 		HP.set_text(str(grid.isSelected.getHp()))
 		HUD.show()
+		if grid.isSelected.getAttack() == 0:
+			get_tree().get_root().get_node("Battle/HUD/Attack").hide()
+		else:
+			get_tree().get_root().get_node("Battle/HUD/Attack").show()
+		if grid.isSelected.getMov() == 0:
+			get_tree().get_root().get_node("Battle/HUD/Move").hide()
+		else:
+			get_tree().get_root().get_node("Battle/HUD/Move").show()
 	else:
 		HUD.hide()
 
