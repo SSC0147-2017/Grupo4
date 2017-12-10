@@ -130,7 +130,7 @@ func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shap
 			var posz = click_pos.z
 			posx = calc_pos(posx)
 			posz = calc_pos(posz)
-			if specDistGrid(isSelected,posx,posz)>isSelected.getMovDist():
+			if distGrid(isSelected,posx,posz)>isSelected.getMovDist():
 				return 0
 			if(colMat[posx][posz]!=0):
 				return 0
@@ -173,12 +173,8 @@ func dist(a, b):
 	var d2 = abs(int(a.getPosZ()) - int(b.getPosZ()))
 	return d1 + d2
 	
-func distGrid(a,posX,posZ):
-	var d1 = abs(int(a.getPosX()) - int(posX))
-	var d2 = abs(int(a.getPosZ()) - int(posZ))
-	return d1 + d2
 	
-func specDistGrid(a,posX,posZ):
+func distGrid(a,posX,posZ):
 	var i = 0
 	var token
 	var prevz=a.getPosZ()
@@ -253,13 +249,11 @@ func enemyMove(a, b):
 	az = a.getPosZ()
 	bz = b.getPosZ()
 	colMat[ax][az]=0
-	var nx
-	var nz
+	var nx = limit_pos(bx-1)
+	var nz = limit_pos(bz)
 	var menordist=99
 	if distGrid(a, bx-1, bz) < menordist && colMat[bx-1][bz]==0:
 		menordist = distGrid(a, bx-1, bz)
-		nx = limit_pos(bx-1)
-		nz = limit_pos(bz)
 	if distGrid(a, bx, bz+1) < menordist && colMat[bx][bz+1]==0:
 		menordist = distGrid(a, bx, bz+1)
 		nx = limit_pos(bx)
@@ -299,7 +293,7 @@ func enemyMove(a, b):
 						token = 0
 			i = i + 1
 	a.rotate(ax,az)
-	a.move_to(Vector3(ax*2-9,4.6,az*2-9))
+	a.move_in_path(colMat,ax,az)
 	colMat[ax][az]=1;
 	a.setMov(0)
 	a.setPos(ax, az)
