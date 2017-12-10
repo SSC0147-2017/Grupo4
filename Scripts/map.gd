@@ -102,6 +102,11 @@ func _fixed_process(delta):
 	if get_tree().get_root().get_node("Battle/Allies").get_child_count() == 0:
 		get_tree().get_root().get_node("Battle/WinLosePanel").show()
 		get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU LOSE!")
+	var checkCount = get_tree().get_root().get_node("Battle/Allies").get_children()
+	for x in checkCount:
+		if x.getAttack() == 0 and x.getMov() == 0:
+			allies = allies - 1
+	
 	
 func attackEnemy(a):
 	if dist(isSelected, isTarget) == 1 and isSelected.getAttack() == 1:
@@ -138,13 +143,6 @@ func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shap
 			colMat[isSelected.getPosX()][isSelected.getPosZ()]=0;
 			isSelected.move_in_path(colMat,posx,posz)
 			isSelected.setMov(0)
-			
-			if isSelected.get_parent() == allyTeam:
-				allies = allies - 1
-			else:
-				enemies = enemies - 1
-			selected = 0
-			isSelected = 0
 			buttonMove = 0
 	
 
