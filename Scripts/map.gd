@@ -193,15 +193,14 @@ func specDistGrid(a,posX,posZ):
 			if token == 1 && colMat[prevx-1][prevz]==0:
 				prevx = prevx - 1
 				token = 0
-		if prevx == posX:
-			if prevz < posZ :
-				if token == 1 && colMat[prevx][prevz+1]==0:
-					prevz = prevz + 1
-					token = 0
-			if prevz > posZ:
-				if token == 1 && colMat[prevx][prevz-1]==0:
-					prevz = prevz - 1
-					token = 0
+		if prevz < posZ :
+			if token == 1 && colMat[prevx][prevz+1]==0:
+				prevz = prevz + 1
+				token = 0
+		if prevz > posZ:
+			if token == 1 && colMat[prevx][prevz-1]==0:
+				prevz = prevz - 1
+				token = 0
 		i = i + 1
 	if prevx==posX && prevz==posZ:
 		return i
