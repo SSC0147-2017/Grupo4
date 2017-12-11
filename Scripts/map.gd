@@ -10,6 +10,7 @@ var isSelected
 var target = 0
 var isTarget
 
+
 var enemyTeam
 var allyTeam
 var obstructionTeam
@@ -19,10 +20,15 @@ var buttonAttack = 0
 
 var colMat = []
 
+var flarg = 0
+
+
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
 
+func wait():
+	flarg = 0
 
 func _ready():
 	set_fixed_process(true)
@@ -76,36 +82,49 @@ func _input(event):
 		return 0
 
 func _fixed_process(delta):
-	if allies <= 0:
-		print ("Ally Turn  : ",turnNumber + 1)
-		turnNumber = turnNumber + 1
-		allies = get_tree().get_root().get_node("Battle/Allies").get_child_count()
-		for x in get_tree().get_root().get_node("Battle/Allies").get_children():
-			x.setMov(1)
-			x.setAttack(1)
-		turn = 1
-	if enemies <= 0:
-		print ("Enemy Turn : ",turnNumber + 1)
-		turnNumber = turnNumber + 1
-		enemies = get_tree().get_root().get_node("Battle/Enemies").get_child_count()
-		for x in get_tree().get_root().get_node("Battle/Enemies").get_children():
-			x.setMov(1)
-			x.setAttack(1)
-		turn = 0
-	if turn == 1:
-		var vector = enemyTeam.get_children()
-		for a in vector:
-			enemyAI(a)
-	if get_tree().get_root().get_node("Battle/Enemies").get_child_count() == 0:
-		get_tree().get_root().get_node("Battle/WinLosePanel").show()
-		get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU WIN!")
-	if get_tree().get_root().get_node("Battle/Allies").get_child_count() == 0:
-		get_tree().get_root().get_node("Battle/WinLosePanel").show()
-		get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU LOSE!")
-	var checkCount = get_tree().get_root().get_node("Battle/Allies").get_children()
-	for x in checkCount:
-		if x.getAttack() == 0 and x.getMov() == 0:
-			allies = allies - 1
+	var a = get_tree().get_root().get_node("Battle/Allies").get_children()
+	var b = get_tree().get_root().get_node("Battle/Enemies").get_children()
+
+	flarg = 0
+	for x in a:
+		if x.moving == 1:
+				flarg = 1
+	for x in b:
+		if x.moving == 1:
+				flarg = 1
+	
+	if flarg == 0:
+		if allies <= 0:
+			print ("Ally Turn  : ",turnNumber + 1)
+			turnNumber = turnNumber + 1
+			allies = get_tree().get_root().get_node("Battle/Allies").get_child_count()
+			for x in get_tree().get_root().get_node("Battle/Allies").get_children():
+				x.setMov(1)
+				x.setAttack(1)
+			turn = 1
+		if enemies <= 0:
+			print ("Enemy Turn : ",turnNumber + 1)
+			turnNumber = turnNumber + 1
+			enemies = get_tree().get_root().get_node("Battle/Enemies").get_child_count()
+			for x in get_tree().get_root().get_node("Battle/Enemies").get_children():
+				x.setMov(1)
+				x.setAttack(1)
+			turn = 0
+		if turn == 1:
+			var vector = enemyTeam.get_children()
+			for a in vector:
+				if flarg == 0:
+					enemyAI(a)
+		if get_tree().get_root().get_node("Battle/Enemies").get_child_count() == 0:
+			get_tree().get_root().get_node("Battle/WinLosePanel").show()
+			get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU WIN!")
+		if get_tree().get_root().get_node("Battle/Allies").get_child_count() == 0:
+			get_tree().get_root().get_node("Battle/WinLosePanel").show()
+			get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU LOSE!")
+		var checkCount = get_tree().get_root().get_node("Battle/Allies").get_children()
+		for x in checkCount:
+			if x.getAttack() == 0 and x.getMov() == 0:
+				allies = allies - 1
 	
 	
 func attackEnemy(a):
@@ -270,7 +289,7 @@ func enemyMove(a, b):
 	a.move_in_path(colMat,ax,az)
 	colMat[ax][az]=1;
 	a.setMov(0)
-	a.setPos(ax, az)
+	#a.setPos(ax, az)
 
 func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if turn == 0:
