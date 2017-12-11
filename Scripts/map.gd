@@ -10,6 +10,7 @@ var isSelected
 var target = 0
 var isTarget
 
+
 var enemyTeam
 var allyTeam
 var obstructionTeam
@@ -19,10 +20,15 @@ var buttonAttack = 0
 
 var colMat = []
 
+var flarg = 0
+
+
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
 
+func wait():
+	flarg = 0
 
 func _ready():
 	set_fixed_process(true)
@@ -76,32 +82,50 @@ func _input(event):
 		return 0
 
 func _fixed_process(delta):
-	if allies <= 0:
-		print ("Ally Turn  : ",turnNumber + 1)
-		turnNumber = turnNumber + 1
-		allies = get_tree().get_root().get_node("Battle/Allies").get_child_count()
-		for x in get_tree().get_root().get_node("Battle/Allies").get_children():
-			x.setMov(1)
-			x.setAttack(1)
-		turn = 1
-	if enemies <= 0:
-		print ("Enemy Turn : ",turnNumber + 1)
-		turnNumber = turnNumber + 1
-		enemies = get_tree().get_root().get_node("Battle/Enemies").get_child_count()
-		for x in get_tree().get_root().get_node("Battle/Enemies").get_children():
-			x.setMov(1)
-			x.setAttack(1)
-		turn = 0
-	if turn == 1:
-		var vector = enemyTeam.get_children()
-		for a in vector:
-			enemyAI(a)
-	if get_tree().get_root().get_node("Battle/Enemies").get_child_count() == 0:
-		get_tree().get_root().get_node("Battle/WinLosePanel").show()
-		get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU WIN!")
-	if get_tree().get_root().get_node("Battle/Allies").get_child_count() == 0:
-		get_tree().get_root().get_node("Battle/WinLosePanel").show()
-		get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU LOSE!")
+	var a = get_tree().get_root().get_node("Battle/Allies").get_children()
+	var b = get_tree().get_root().get_node("Battle/Enemies").get_children()
+
+	flarg = 0
+	for x in a:
+		if x.moving == 1:
+				flarg = 1
+	for x in b:
+		if x.moving == 1:
+				flarg = 1
+	
+	if flarg == 0:
+		if allies <= 0:
+			print ("Ally Turn  : ",turnNumber + 1)
+			turnNumber = turnNumber + 1
+			allies = get_tree().get_root().get_node("Battle/Allies").get_child_count()
+			for x in get_tree().get_root().get_node("Battle/Allies").get_children():
+				x.setMov(1)
+				x.setAttack(1)
+			turn = 1
+		if enemies <= 0:
+			print ("Enemy Turn : ",turnNumber + 1)
+			turnNumber = turnNumber + 1
+			enemies = get_tree().get_root().get_node("Battle/Enemies").get_child_count()
+			for x in get_tree().get_root().get_node("Battle/Enemies").get_children():
+				x.setMov(1)
+				x.setAttack(1)
+			turn = 0
+		if turn == 1:
+			var vector = enemyTeam.get_children()
+			for a in vector:
+				if flarg == 0:
+					enemyAI(a)
+		if get_tree().get_root().get_node("Battle/Enemies").get_child_count() == 0:
+			get_tree().get_root().get_node("Battle/WinLosePanel").show()
+			get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU WIN!")
+		if get_tree().get_root().get_node("Battle/Allies").get_child_count() == 0:
+			get_tree().get_root().get_node("Battle/WinLosePanel").show()
+			get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU LOSE!")
+		var checkCount = get_tree().get_root().get_node("Battle/Allies").get_children()
+		for x in checkCount:
+			if x.getAttack() == 0 and x.getMov() == 0:
+				allies = allies - 1
+	
 	
 func attackEnemy(a):
 	if dist(isSelected, isTarget) == 1 and isSelected.getAttack() == 1:
@@ -136,18 +160,8 @@ func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shap
 				return 0
 			
 			colMat[isSelected.getPosX()][isSelected.getPosZ()]=0;
-			isSelected.move_to(Vector3(posx*2-9,4.6,posz*2-9))
-			isSelected.rotate(posx,posz)
+			isSelected.move_in_path(colMat,posx,posz)
 			isSelected.setMov(0)
-			isSelected.setPos(posx, posz)
-			colMat[posx][posz]=1;
-			
-			if isSelected.get_parent() == allyTeam:
-				allies = allies - 1
-			else:
-				enemies = enemies - 1
-			selected = 0
-			isSelected = 0
 			buttonMove = 0
 	
 
@@ -176,10 +190,35 @@ func dist(a, b):
 	var d2 = abs(int(a.getPosZ()) - int(b.getPosZ()))
 	return d1 + d2
 	
+	
 func distGrid(a,posX,posZ):
-	var d1 = abs(int(a.getPosX()) - int(posX))
-	var d2 = abs(int(a.getPosZ()) - int(posZ))
-	return d1 + d2
+	var i = 0
+	var token
+	var prevz=a.getPosZ()
+	var prevx=a.getPosX()
+	while (i < a.getMovDist())&&(prevx!=posX || prevz!=posZ):
+		token = 1
+		if prevx < posX:
+			if token == 1 && colMat[prevx+1][prevz]==0:
+				prevx = prevx + 1
+				token = 0
+		if prevx > posX:
+			if token == 1 && colMat[prevx-1][prevz]==0:
+				prevx = prevx - 1
+				token = 0
+		if prevz < posZ :
+			if token == 1 && colMat[prevx][prevz+1]==0:
+				prevz = prevz + 1
+				token = 0
+		if prevz > posZ:
+			if token == 1 && colMat[prevx][prevz-1]==0:
+				prevz = prevz - 1
+				token = 0
+		i = i + 1
+	if (prevx==posX && prevz==posZ):
+		return i
+	else:
+		return 99
 	
 	
 func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
@@ -200,7 +239,7 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 				else:
 					alvo = b
 					menordist = distancia
-	if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
+	if dist(alvo, a) == 1:
 		isTarget = alvo
 		target = 1
 		attackEnemy("Inimigo atacou1")
@@ -210,7 +249,7 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 	else:
 		enemyMove(a, alvo)
 #		print(a.getPosX(), a.getPosZ()) 
-		if distGrid(alvo, a.getPosX(), a.getPosZ()) == 1:
+		if dist(alvo, a) == 1:
 			isTarget = alvo
 			target = 1
 			attackEnemy("Inimigo atacou2")	
@@ -227,12 +266,11 @@ func enemyMove(a, b):
 	az = a.getPosZ()
 	bz = b.getPosZ()
 	colMat[ax][az]=0
-	var nx
-	var nz
+	var nx = limit_pos(bx-1)
+	var nz = limit_pos(bz)
 	var menordist=99
-	menordist = distGrid(a, bx-1, bz)
-	nx = limit_pos(bx-1)
-	nz = limit_pos(bz)
+	if distGrid(a, bx-1, bz) < menordist && colMat[bx-1][bz]==0:
+		menordist = distGrid(a, bx-1, bz)
 	if distGrid(a, bx, bz+1) < menordist && colMat[bx][bz+1]==0:
 		menordist = distGrid(a, bx, bz+1)
 		nx = limit_pos(bx)
@@ -245,37 +283,13 @@ func enemyMove(a, b):
 		menordist = distGrid(a, bx, bz-1)
 		nx = limit_pos(bx)
 		nz = limit_pos(bz-1)
-	if menordist <= a.getMovDist():
-		ax = nx
-		az = nz
-	else: 
-		var i = 0
-		var token
-		while i < a.getMovDist(): #CHECAR POR OBSTÁCULOS AQUI!
-			token = 1
-			if ax < nx:
-				if token == 1 && colMat[ax+1][az]==0:
-					ax = ax + 1
-					token = 0
-			if ax > nx:
-				if token == 1 && colMat[ax-1][az]==0:
-					ax = ax - 1
-					token = 0
-			if ax == nx:
-				if az < nz :
-					if token == 1 && colMat[ax][az+1]==0:
-						az = az + 1
-						token = 0
-				if az > nz:
-					if token == 1 && colMat[ax][az-1]==0:
-						az = az - 1
-						token = 0
-			i = i + 1
+	ax = nx
+	az = nz
 	a.rotate(ax,az)
-	a.move_to(Vector3(ax*2-9,4.6,az*2-9))
+	a.move_in_path(colMat,ax,az)
 	colMat[ax][az]=1;
 	a.setMov(0)
-	a.setPos(ax, az)
+	#a.setPos(ax, az)
 
 func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if turn == 0:

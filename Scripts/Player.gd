@@ -5,19 +5,38 @@ var posz
 var hp = 10 #Vida
 var def = 0 #Defesa
 var mov = 1 #Se pode mover
-var movDist = 1 #Quanto ele pode se mover
+var movDist = 3 #Quanto ele pode se mover
 var attack = 1 #Se pode atacar
 var dmg = 1 #Dano do ataque
+
+var moving = 0
+var oDirX
+var oDirZ
+var dirX
+var dirZ
+var sec = 0
 
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
 func _ready():
+	set_fixed_process(true)
 	team=get_children()
 	for x in team:
 		if(x.get_name()=="Loli"):
 			dmg=6
 	pass
+
+func _fixed_process(delta):
+	if moving == 1 and sec > 0:
+		move(Vector3(dirX,0,dirZ) * delta * 2/sqrt(pow(dirX, 2) + pow(dirZ, 2)))
+		sec = sec - delta
+	if sec <= 0:
+		moving = 0
+	
+		
+func wait(s):
+	sec = s
 	
 func setMov(value):
 	mov = value
@@ -69,3 +88,50 @@ func rotate(x,z):
 		if(z<posz):
 			set_rotation_deg(Vector3(0,180,0))
 	pass
+func move_in_path(colMat,nx,nz):
+	oDirX = posx
+	oDirZ = posz
+	var i = 0
+	var token
+	var prevz
+	var prevx
+	while i < movDist:
+		prevx=posx
+		prevz=posz
+		token = 1
+		colMat[prevx][prevz]=0;
+		if prevx < nx:
+			if token == 1 && colMat[prevx+1][prevz]==0:
+				prevx = prevx + 1
+				token = 0
+		if prevx > nx:
+			if token == 1 && colMat[prevx-1][prevz]==0:
+				prevx = prevx - 1
+				token = 0
+		if prevz < nz :
+			if token == 1 && colMat[prevx][prevz+1]==0:
+				prevz = prevz + 1
+				token = 0
+		if prevz > nz:
+			if token == 1 && colMat[prevx][prevz-1]==0:
+				prevz = prevz - 1
+				token = 0
+		rotate(prevx,prevz)
+		dirX = prevx - posx
+		if dirX != 0:
+			dirX = dirX/abs(dirX)
+		dirZ = prevz - posz
+		if dirZ != 0:
+			dirX = dirZ/abs(dirZ)
+
+		#move_to(Vector3(prevx*2-9,4.6,prevz*2-9))
+		i = i + 1
+		colMat[prevx][prevz]=1
+		posx=prevx
+		posz=prevz
+		
+	dirX = posx - oDirX
+	dirZ = posz - oDirZ
+	var Distancia = sqrt(pow(dirX, 2) + pow(dirZ, 2))
+	wait(Distancia)
+	moving = 1
