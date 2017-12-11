@@ -72,7 +72,10 @@ func _fixed_process(delta):
 		moving = 1
 		rotate(prevx,prevz)
 		it = it + 1
-		map.colMat[prevx][prevz]=1
+		if self.get_parent() == get_tree().get_root().get_node("Battle/Allies"):
+			map.colMat[prevx][prevz]=1
+		else:
+			map.colMat[prevx][prevz]=2
 		posx=prevx
 		posz=prevz
 		if token == 1 or it >= movDist:

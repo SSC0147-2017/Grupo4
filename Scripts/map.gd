@@ -294,7 +294,7 @@ func enemyMove(a, b):
 	az = nz
 	a.rotate(ax,az)
 	a.move_in_path(colMat,ax,az)
-	colMat[ax][az]=1;
+	#colMat[ax][az]=1;
 	a.setMov(0)
 	#a.setPos(ax, az)
 
