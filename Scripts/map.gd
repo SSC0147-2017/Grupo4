@@ -27,6 +27,12 @@ var flarg = 0
 # var a = 2
 # var b = "textvar"
 
+func printMat():
+	var x = 10
+	while x > 0:
+		print(colMat[x][0],colMat[x][1],colMat[x][2],colMat[x][3],colMat[x][4],colMat[x][5],colMat[x][6],colMat[x][7],colMat[x][8],colMat[x][9],colMat[x][10])
+		x = x - 1
+		
 func wait():
 	flarg = 0
 
@@ -56,6 +62,7 @@ func _ready():
 #			print(colMat[x][y])
 	# Called every time the node is added to the scene.
 	# Initialization here
+	printMat()
 	pass
 	
 func _input(event):
