@@ -10,6 +10,7 @@ var isSelected
 var target = 0
 var isTarget
 
+
 var enemyTeam
 var allyTeam
 var obstructionTeam
@@ -270,7 +271,7 @@ func enemyMove(a, b):
 	a.move_in_path(colMat,ax,az)
 	colMat[ax][az]=1;
 	a.setMov(0)
-	a.setPos(ax, az)
+	#a.setPos(ax, az)
 
 func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if turn == 0:
