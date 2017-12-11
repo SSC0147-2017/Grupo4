@@ -29,9 +29,8 @@ func _ready():
 
 func _fixed_process(delta):
 	if moving == 1 and sec > 0:
-		move(Vector3(dirX,0,dirZ) * delta * 2.1/sqrt(pow(dirX, 2) + pow(dirZ, 2)))
+		move(Vector3(dirX,0,dirZ) * delta * 2/sqrt(pow(dirX, 2) + pow(dirZ, 2)))
 		sec = sec - delta
-		print(sec)
 	if sec <= 0:
 		moving = 0
 	
