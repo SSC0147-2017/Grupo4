@@ -135,7 +135,7 @@ func _fixed_process(delta):
 	
 	
 func attackEnemy(a):
-	if dist(isSelected, isTarget) == 1 and isSelected.getAttack() == 1:
+	if dist(isSelected, isTarget) <= isSelected.getAttackDist() and isSelected.getAttack() == 1:
 		isSelected.rotate(isTarget.getPosX(),isTarget.getPosZ())
 		isTarget.receiveDmg(int(isSelected.getDmg()))
 		isSelected.setAttack(0)
@@ -246,23 +246,30 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 				else:
 					alvo = b
 					menordist = distancia
-	if dist(alvo, a) == 1:
-		isTarget = alvo
-		target = 1
-		attackEnemy("Inimigo atacou1")
-		enemies = enemies - 1
-		target = 0
-		selected = 0
-	else:
-		enemyMove(a, alvo)
-#		print(a.getPosX(), a.getPosZ()) 
-		if dist(alvo, a) == 1:
-			isTarget = alvo
-			target = 1
-			attackEnemy("Inimigo atacou2")	
-		enemies = enemies - 1
-		target = 0
-		selected = 0
+	isTarget = alvo
+	target = 1
+	attackEnemy("Inimigo atacou1")
+	enemyMove(a, alvo)
+	enemies = enemies - 1
+	target = 0
+	selected = 0
+#	if dist(alvo, a) == 1:
+#		isTarget = alvo
+#		target = 1
+#		attackEnemy("Inimigo atacou1")
+#		enemies = enemies - 1
+#		target = 0
+#		selected = 0
+#	else:
+#		#var x = enemyMove(a, alvo)
+#		enemyMove(a, alvo)
+#		if dist(alvo, a) == 1:
+#			isTarget = alvo
+#			target = 1
+#			attackEnemy("Inimigo atacou2")	
+#		enemies = enemies - 1
+#		target = 0
+#		selected = 0
 func enemyMove(a, b):
 	var ax
 	var az
@@ -275,7 +282,7 @@ func enemyMove(a, b):
 	colMat[ax][az]=0
 	var nx = limit_pos(bx-1)
 	var nz = limit_pos(bz)
-	var menordist=99
+	var menordist=a.getMovDist()
 	if distGrid(a, bx-1, bz) < menordist && colMat[bx-1][bz]==0:
 		menordist = distGrid(a, bx-1, bz)
 	if distGrid(a, bx, bz+1) < menordist && colMat[bx][bz+1]==0:
@@ -297,6 +304,7 @@ func enemyMove(a, b):
 	#colMat[ax][az]=1;
 	a.setMov(0)
 	#a.setPos(ax, az)
+	
 
 func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if turn == 0:

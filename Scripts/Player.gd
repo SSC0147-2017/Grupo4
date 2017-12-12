@@ -7,6 +7,7 @@ var def = 0 #Defesa
 var mov = 1 #Se pode mover
 var movDist = 3 #Quanto ele pode se mover
 var attack = 1 #Se pode atacar
+var attackDist = 1
 var dmg = 1 #Dano do ataque
 
 var moving = 0
@@ -34,6 +35,9 @@ func _ready():
 	for x in team:
 		if(x.get_name()=="Loli"):
 			dmg=6
+		if x.get_name() == "Criminal":
+			print("dasda")
+			attackDist = movDist + 1
 	pass
 
 func _fixed_process(delta):
@@ -82,13 +86,15 @@ func _fixed_process(delta):
 			it = 0
 			movStart = 0
 			map.printMat()
+			
 	
-	
-	
-	
+		
+func getAttackDist():
+	return attackDist
 		
 func wait(s):
 	sec = s
+	return s
 	
 func setMov(value):
 	mov = value
