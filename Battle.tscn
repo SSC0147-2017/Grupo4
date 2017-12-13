@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=1]
+[gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://HP.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Converted/Models/Terrain/Meshes.tres" type="MeshLibrary" id=2]
@@ -9,18 +9,14 @@
 [ext_resource path="res://Converted/Models/Terrain/Cube.msh" type="Mesh" id=7]
 [ext_resource path="res://Scripts/camera.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=9]
-[ext_resource path="res://Converted/Models/Allies/LoliDrills3.msh" type="Mesh" id=10]
-[ext_resource path="res://Converted/Textures/LoliDrills.tex" type="Texture" id=11]
-[ext_resource path="res://Converted/Textures/LoliDrillSkirt.tex" type="Texture" id=12]
-[ext_resource path="res://Source/Allies/Yellow.png" type="Texture" id=13]
-[ext_resource path="res://Converted/Textures/Bandit.tex" type="Texture" id=14]
-[ext_resource path="res://Converted/Models/Enemies/Criminal2.msh" type="Mesh" id=15]
-[ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=16]
-[ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=17]
-[ext_resource path="res://Source/Music/Földhullám.ogg" type="AudioStream" id=18]
-[ext_resource path="res://Source/Background/back.cube" type="CubeMap" id=19]
-[ext_resource path="res://WinLosePanel.gd" type="Script" id=20]
-[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=21]
+[ext_resource path="res://LoliDrills3.scn" type="PackedScene" id=10]
+[ext_resource path="res://Converted/Models/Enemies/Criminal2.scn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=12]
+[ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=13]
+[ext_resource path="res://Source/Music/Földhullám.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Source/Background/back.cube" type="CubeMap" id=15]
+[ext_resource path="res://WinLosePanel.gd" type="Script" id=16]
+[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=17]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -144,159 +140,7 @@ textures/shade_param_tc = 0
 
 extents = Vector3( 1, 1, 1 )
 
-[sub_resource type="FixedMaterial" id=6]
-
-flags/visible = true
-flags/double_sided = false
-flags/invert_faces = false
-flags/unshaded = false
-flags/on_top = false
-flags/lightmap_on_uv2 = true
-flags/colarray_is_srgb = true
-params/blend_mode = 0
-params/depth_draw = 1
-params/line_width = 0.0
-fixed_flags/use_alpha = false
-fixed_flags/use_color_array = false
-fixed_flags/use_point_size = false
-fixed_flags/discard_alpha = false
-fixed_flags/use_xy_normalmap = false
-params/diffuse = Color( 1, 1, 1, 1 )
-params/specular = Color( 0, 0, 0, 1 )
-params/emission = Color( 0, 0, 0, 1 )
-params/specular_exp = 40
-params/detail_mix = 1.0
-params/normal_depth = 1
-params/shader = 0
-params/shader_param = 0.5
-params/glow = 0
-params/point_size = 1.0
-uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-textures/diffuse = ExtResource( 11 )
-textures/diffuse_tc = 0
-textures/detail_tc = 0
-textures/specular_tc = 0
-textures/emission_tc = 0
-textures/specular_exp_tc = 0
-textures/glow_tc = 0
-textures/normal_tc = 0
-textures/shade_param_tc = 0
-
-[sub_resource type="FixedMaterial" id=7]
-
-flags/visible = true
-flags/double_sided = false
-flags/invert_faces = false
-flags/unshaded = false
-flags/on_top = false
-flags/lightmap_on_uv2 = true
-flags/colarray_is_srgb = true
-params/blend_mode = 0
-params/depth_draw = 1
-params/line_width = 0.0
-fixed_flags/use_alpha = false
-fixed_flags/use_color_array = false
-fixed_flags/use_point_size = false
-fixed_flags/discard_alpha = false
-fixed_flags/use_xy_normalmap = false
-params/diffuse = Color( 1, 1, 1, 1 )
-params/specular = Color( 0, 0, 0, 1 )
-params/emission = Color( 0, 0, 0, 1 )
-params/specular_exp = 40
-params/detail_mix = 1.0
-params/normal_depth = 1
-params/shader = 0
-params/shader_param = 0.5
-params/glow = 0
-params/point_size = 1.0
-uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-textures/diffuse = ExtResource( 12 )
-textures/diffuse_tc = 0
-textures/detail_tc = 0
-textures/specular_tc = 0
-textures/emission_tc = 0
-textures/specular_exp_tc = 0
-textures/glow_tc = 0
-textures/normal_tc = 0
-textures/shade_param_tc = 0
-
-[sub_resource type="FixedMaterial" id=8]
-
-flags/visible = true
-flags/double_sided = false
-flags/invert_faces = false
-flags/unshaded = false
-flags/on_top = false
-flags/lightmap_on_uv2 = true
-flags/colarray_is_srgb = true
-params/blend_mode = 0
-params/depth_draw = 1
-params/line_width = 0.0
-fixed_flags/use_alpha = false
-fixed_flags/use_color_array = false
-fixed_flags/use_point_size = false
-fixed_flags/discard_alpha = false
-fixed_flags/use_xy_normalmap = false
-params/diffuse = Color( 1, 1, 1, 1 )
-params/specular = Color( 0, 0, 0, 1 )
-params/emission = Color( 0, 0, 0, 1 )
-params/specular_exp = 40
-params/detail_mix = 1.0
-params/normal_depth = 1
-params/shader = 0
-params/shader_param = 0.5
-params/glow = 0
-params/point_size = 1.0
-uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-textures/diffuse = ExtResource( 13 )
-textures/diffuse_tc = 0
-textures/detail_tc = 0
-textures/specular_tc = 0
-textures/emission_tc = 0
-textures/specular_exp_tc = 0
-textures/glow_tc = 0
-textures/normal_tc = 0
-textures/shade_param_tc = 0
-
-[sub_resource type="FixedMaterial" id=9]
-
-flags/visible = true
-flags/double_sided = false
-flags/invert_faces = false
-flags/unshaded = false
-flags/on_top = false
-flags/lightmap_on_uv2 = true
-flags/colarray_is_srgb = true
-params/blend_mode = 0
-params/depth_draw = 1
-params/line_width = -1.0
-fixed_flags/use_alpha = false
-fixed_flags/use_color_array = false
-fixed_flags/use_point_size = false
-fixed_flags/discard_alpha = false
-fixed_flags/use_xy_normalmap = false
-params/diffuse = Color( 1, 1, 1, 1 )
-params/specular = Color( 0, 0, 0, 1 )
-params/emission = Color( 0, 0, 0, 1 )
-params/specular_exp = 40
-params/detail_mix = 1.0
-params/normal_depth = 1
-params/shader = 0
-params/shader_param = 0.5
-params/glow = 0
-params/point_size = 1.0
-uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-textures/diffuse = ExtResource( 14 )
-textures/diffuse_tc = 0
-textures/detail_tc = 0
-textures/specular_tc = 0
-textures/emission_tc = 0
-textures/specular_exp_tc = 0
-textures/glow_tc = 0
-textures/normal_tc = 0
-textures/shade_param_tc = 0
-
-[sub_resource type="Environment" id=10]
+[sub_resource type="Environment" id=6]
 
 ambient_light/enabled = false
 ambient_light/color = Color( 0, 0, 0, 1 )
@@ -304,7 +148,7 @@ ambient_light/energy = 1.0
 fxaa/enabled = false
 background/mode = 4
 background/color = Color( 0, 0, 0, 1 )
-background/cubemap = ExtResource( 19 )
+background/cubemap = ExtResource( 15 )
 background/energy = 1.0
 background/scale = 1.0
 background/glow = 0.0
@@ -582,7 +426,7 @@ shadow/zoffset_scale = 2.0
 [node name="Ally1" type="KinematicBody" parent="Allies"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, -3, 0.8, 4.6, 9 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, -3, -3.01539, 4.6, 9 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
@@ -598,6 +442,10 @@ collide_with/character = false
 collision/margin = 0.001
 script/script = ExtResource( 9 )
 
+[node name="Loli" parent="Allies/Ally1" instance=ExtResource( 10 )]
+
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.250774, 0 )
+
 [node name="CollisionShape" type="CollisionShape" parent="Allies/Ally1"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -606,86 +454,12 @@ shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Loli" type="MeshInstance" parent="Allies/Ally1"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.333333, 0, 3.55271e-15, 0, 0.2, 0, -3.55271e-15, 0, 0.333333, 0, -0.251848, 0 )
-layers = 1
-geometry/visible = true
-geometry/material_override = null
-geometry/cast_shadow = 1
-geometry/receive_shadows = true
-geometry/range_begin = 0.0
-geometry/range_end = 0.0
-geometry/extra_cull_margin = 0.0
-geometry/billboard = false
-geometry/billboard_y = false
-geometry/depth_scale = false
-geometry/visible_in_all_rooms = false
-geometry/use_baked_light = false
-geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 10 )
-mesh/skeleton = NodePath("..")
-material/0 = SubResource( 6 )
-material/1 = SubResource( 7 )
-material/2 = SubResource( 8 )
-
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy1" type="KinematicBody" parent="Enemies"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 0.8, 4.6, -9 )
-input/ray_pickable = true
-input/capture_on_drag = false
-shape_count = 1
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
-shapes/0/trigger = false
-collision/layers = 1024
-collision/mask = 1024
-collide_with/static = false
-collide_with/kinematic = false
-collide_with/rigid = false
-collide_with/character = false
-collision/margin = 0.001
-script/script = ExtResource( 9 )
-
-[node name="Criminal" type="MeshInstance" parent="Enemies/Enemy1"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
-layers = 1
-geometry/visible = true
-geometry/material_override = SubResource( 9 )
-geometry/cast_shadow = 1
-geometry/receive_shadows = true
-geometry/range_begin = 0.0
-geometry/range_end = 0.0
-geometry/extra_cull_margin = 0.0
-geometry/billboard = false
-geometry/billboard_y = false
-geometry/depth_scale = false
-geometry/visible_in_all_rooms = false
-geometry/use_baked_light = false
-geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 15 )
-mesh/skeleton = NodePath("..")
-material/0 = null
-material/1 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy1"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
-shape = SubResource( 5 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Enemy2" type="KinematicBody" parent="Enemies"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 3.48878, 4.6, -9 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -4.52878, 4.6, -9 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
@@ -701,28 +475,40 @@ collide_with/character = false
 collision/margin = 0.001
 script/script = ExtResource( 9 )
 
-[node name="Criminal" type="MeshInstance" parent="Enemies/Enemy2"]
+[node name="Criminal" parent="Enemies/Enemy1" instance=ExtResource( 11 )]
+
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.257666, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy1"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
-layers = 1
-geometry/visible = true
-geometry/material_override = SubResource( 9 )
-geometry/cast_shadow = 1
-geometry/receive_shadows = true
-geometry/range_begin = 0.0
-geometry/range_end = 0.0
-geometry/extra_cull_margin = 0.0
-geometry/billboard = false
-geometry/billboard_y = false
-geometry/depth_scale = false
-geometry/visible_in_all_rooms = false
-geometry/use_baked_light = false
-geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 15 )
-mesh/skeleton = NodePath("..")
-material/0 = null
-material/1 = null
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Enemy2" type="KinematicBody" parent="Enemies"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 2.95288, 4.6, -9 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 2048
+collision/mask = 2048
+collide_with/static = false
+collide_with/kinematic = false
+collide_with/rigid = false
+collide_with/character = false
+collision/margin = 0.001
+script/script = ExtResource( 9 )
+
+[node name="Criminal" parent="Enemies/Enemy2" instance=ExtResource( 11 )]
+
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.257666, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy2"]
 
@@ -733,6 +519,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="Obstructions" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="Obstructure1" type="KinematicBody" parent="Obstructions"]
 
@@ -751,7 +539,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 12 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure1"]
 
@@ -771,7 +559,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 13 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -800,7 +588,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 12 )
 
 [node name="LongGayRock" type="MeshInstance" parent="Obstructions/Obstructure2"]
 
@@ -820,7 +608,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 13 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -834,7 +622,7 @@ _update_shape_index = 0
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 18 )
+stream/stream = ExtResource( 14 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 9.0
@@ -846,7 +634,7 @@ stream/buffering_ms = 500
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-environment = SubResource( 10 )
+environment = SubResource( 6 )
 
 [node name="WinLosePanel" type="Panel" parent="."]
 
@@ -859,7 +647,7 @@ margin/left = 345.0
 margin/top = 182.0
 margin/right = 681.0
 margin/bottom = 366.0
-script/script = ExtResource( 20 )
+script/script = ExtResource( 16 )
 
 [node name="Return" type="MenuButton" parent="WinLosePanel"]
 
@@ -872,7 +660,7 @@ margin/left = 74.0
 margin/top = 121.0
 margin/right = 436.0
 margin/bottom = 173.0
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 17 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -891,7 +679,7 @@ margin/left = 76.0
 margin/top = 48.0
 margin/right = 251.0
 margin/bottom = 94.0
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 17 )
 text = "YOU WIN"
 percent_visible = 1.0
 lines_skipped = 0

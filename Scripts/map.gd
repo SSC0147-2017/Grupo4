@@ -46,7 +46,6 @@ func _ready():
 	allyTeam = get_tree().get_root().get_node("Battle/Allies")
 	obstructionTeam = get_tree().get_root().get_node("Battle/Obstructions")
 # Criando a matriz de poscisionamento.
-	print(get_tree().get_root().get_node("Battle/Enemies").get_child_count())
 	for x in range(11):
 		colMat.append([])
 		for y in range(11):
@@ -128,10 +127,6 @@ func _fixed_process(delta):
 		if get_tree().get_root().get_node("Battle/Allies").get_child_count() == 0:
 			get_tree().get_root().get_node("Battle/WinLosePanel").show()
 			get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU LOSE!")
-		var checkCount = get_tree().get_root().get_node("Battle/Allies").get_children()
-		for x in checkCount:
-			if x.getAttack() == 0 and x.getMov() == 0:
-				allies = allies - 1
 	
 	
 func attackEnemy(a):
@@ -139,17 +134,14 @@ func attackEnemy(a):
 		isSelected.rotate(isTarget.getPosX(),isTarget.getPosZ())
 		isTarget.receiveDmg(int(isSelected.getDmg()))
 		isSelected.setAttack(0)
+		isSelected.anim.play("AttackSword", -1, 1, false)
+		isTarget.rotate(isSelected.getPosX(), isSelected.getPosZ())
+		isTarget.anim.play("DamageTake", -1, 1, false)
 		print ("Vida agora: ",int(isTarget.getHp()))
 		if int(isTarget.getHp()) <= 0:
 			colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
 			isTarget.queue_free()
 			isTarget = 0
-#			if get_tree().get_root().get_node("Battle/Allies").get_child_count()==0:
-#				print("You LOSE!")
-#				get_tree().change_scene("res://MainMenu.tscn")
-#			if get_tree().get_root().get_node("Battle/Enemies").get_child_count()==0:
-#				print("You WIN!")
-#				get_tree().change_scene("res://MainMenu.tscn")
 	else:
 		print("Ataque falhou!")
 
@@ -248,28 +240,11 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 					menordist = distancia
 	isTarget = alvo
 	target = 1
-	attackEnemy("Inimigo atacou1")
 	enemyMove(a, alvo)
 	enemies = enemies - 1
 	target = 0
 	selected = 0
-#	if dist(alvo, a) == 1:
-#		isTarget = alvo
-#		target = 1
-#		attackEnemy("Inimigo atacou1")
-#		enemies = enemies - 1
-#		target = 0
-#		selected = 0
-#	else:
-#		#var x = enemyMove(a, alvo)
-#		enemyMove(a, alvo)
-#		if dist(alvo, a) == 1:
-#			isTarget = alvo
-#			target = 1
-#			attackEnemy("Inimigo atacou2")	
-#		enemies = enemies - 1
-#		target = 0
-#		selected = 0
+
 func enemyMove(a, b):
 	var ax
 	var az
@@ -320,6 +295,7 @@ func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 				attackEnemy("Inimigo atacou")
 	pass # replace with function body
 
+
 func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if turn == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
@@ -346,11 +322,13 @@ func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx )
 	if turn == 0 and buttonAttack == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
+				isSelected.anim.play("AttackSword", -1, 1, false)
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
 				target = 1
 				attackEnemy("Aliado atacou")
 			buttonAttack = 0
 	pass # replace with function body
+
 # Retorna 1 caso o objeto tenha algum bloco ao lado não obstruido
 func checkAllSides(a):
 	var posX=a.getPosX()
@@ -370,5 +348,8 @@ func setTeamOnMat(a,n):
 		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
 		x.setPos(pos1,pos2)
 		colMat[pos1][pos2]=n;
+
+
+
 
 
