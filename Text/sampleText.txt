@@ -1,17 +1,19 @@
 start_config|
+bg|
+forest|
 left|
-00|
+alice|
 right|
-01|
+rowan|
 end_config|
 Alice: HOW CAN THERE BE NO BATHS HERE!?
 I DEMAND TO TAKE A BATH RIGHT NOW!|
-John: Calm down, Alice.
+Rowan: Calm down, Alice.
 It's not like it's been days since you had a bath.|
 Alice: I will not stand for this!
 Sebastian! Build a bath right now!|
 start_config|
 right|
-02|
+criminal|
 end_config|
 Criminal: Hello there!|
