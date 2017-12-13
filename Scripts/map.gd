@@ -131,10 +131,6 @@ func _fixed_process(delta):
 		if get_tree().get_root().get_node("Battle/Allies").get_child_count() == 0:
 			get_tree().get_root().get_node("Battle/WinLosePanel").show()
 			get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU LOSE!")
-		var checkCount = get_tree().get_root().get_node("Battle/Allies").get_children()
-		for x in checkCount:
-			if x.getAttack() == 0 and x.getMov() == 0:
-				allies = allies - 1
 	
 	
 func attackEnemy(a):
@@ -142,6 +138,9 @@ func attackEnemy(a):
 		isSelected.rotate(isTarget.getPosX(),isTarget.getPosZ())
 		isTarget.receiveDmg(int(isSelected.getDmg()))
 		isSelected.setAttack(0)
+		isSelected.anim.play("AttackSword", -1, 1, false)
+		isTarget.rotate(isSelected.getPosX(), isSelected.getPosZ())
+		isTarget.anim.play("DamageTake", -1, 1, false)
 		print ("Vida agora: ",int(isTarget.getHp()))
 		if int(isTarget.getHp()) <= 0:
 			colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
@@ -251,7 +250,6 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 					menordist = distancia
 	isTarget = alvo
 	target = 1
-	attackEnemy("Inimigo atacou1")
 	enemyMove(a, alvo)
 	enemies = enemies - 1
 	target = 0
