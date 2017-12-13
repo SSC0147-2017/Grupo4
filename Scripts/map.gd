@@ -83,7 +83,11 @@ func _input(event):
 			get_tree().get_root().get_node("Battle/Camera4").make_current()
 			get_tree().get_root().get_node("Battle/DirectionalLight").set_enabled(false)
 			get_tree().get_root().get_node("Battle/DirectionalLight1").set_enabled(true)
-			
+		if event.is_action_pressed("ui_help"):
+			if !get_tree().get_root().get_node("Battle/HelpPanel").is_visible():
+				get_tree().get_root().get_node("Battle/HelpPanel").show()
+			else:
+				get_tree().get_root().get_node("Battle/HelpPanel").hide()
 			
 	else:
 		return 0
