@@ -321,6 +321,11 @@ func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	pass # replace with function body
 
 func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx ):
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyHPValue").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy1").getHp()))
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyInfoText2").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy1").get_child(0).get_name()))
+	get_tree().get_root().get_node("Battle/HUD").enemy = 1
+#	get_tree().get_root().get_node("Battle/HUD/Enemy").show()
+	
 	if turn == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 0:
@@ -337,6 +342,9 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 	pass # replace with function body
 	
 func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx ):
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyHPValue").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy2").getHp()))
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyInfoText2").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy2").get_child(0).get_name()))
+	get_tree().get_root().get_node("Battle/HUD").enemy = 1
 	if turn == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 0:
