@@ -10,3 +10,4 @@ func _ready():
 	 special = 2
 	 mode = 3#1 DEF 2 ATK 3 MOVE RANGE
 	 uses = 1
+	 name = "Faster buff"

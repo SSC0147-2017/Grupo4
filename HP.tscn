@@ -86,6 +86,8 @@ max_lines_visible = -1
 
 [node name="Player" type="Node2D" parent="."]
 
+editor/display_folded = true
+
 [node name="HPInfo" type="Panel" parent="Player"]
 
 visibility/opacity = 0.5
@@ -304,5 +306,11 @@ flat = false
 [connection signal="pressed" from="Player/Pass" to="." method="_on_Pass_pressed"]
 
 [connection signal="pressed" from="Player/Orbs" to="." method="_on_Orbs_pressed"]
+
+[connection signal="pressed" from="Orbs/Spell1/Spell1" to="." method="_on_Spell1_pressed"]
+
+[connection signal="pressed" from="Orbs/Spell2/Spell2" to="." method="_on_Spell2_pressed"]
+
+[connection signal="pressed" from="Orbs/Spell3/Spell3" to="." method="_on_Spell3_pressed"]
 
 

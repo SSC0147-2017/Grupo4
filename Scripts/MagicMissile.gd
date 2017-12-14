@@ -5,8 +5,9 @@ extends "res://Spells.gd"
 # var b = "textvar"
 
 func _ready(): #Instakill Single Use for test purposes
-	 rang = 100 #Final range = 8
-	 power = 10 #Final power = 1
-	 special = 0
-	 mode = 0
-	 uses = 1 #Final 5
+	name = "Magic Missiles"
+	rang = 8 #Final range = 8
+	power = 1 #Final power = 1
+	special = 0
+	mode = 0
+	uses = 5 #Final 5
