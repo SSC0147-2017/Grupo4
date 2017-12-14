@@ -147,15 +147,26 @@ func attackEnemy(a):
 		isTarget.anim.play("DamageTake", -1, 1, false)
 		print ("Vida agora: ",int(isTarget.getHp()))
 		if int(isTarget.getHp()) <= 0:
+			get_tree().get_root().get_node("Battle/HUD").enemy = 0
 			colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
 			isTarget.queue_free()
 			isTarget = 0
-#			if get_tree().get_root().get_node("Battle/Allies").get_child_count()==0:
-#				print("You LOSE!")
-#				get_tree().change_scene("res://MainMenu.tscn")
-#			if get_tree().get_root().get_node("Battle/Enemies").get_child_count()==0:
-#				print("You WIN!")
-#				get_tree().change_scene("res://MainMenu.tscn")
+	else:
+		print("Ataque falhou!")
+		
+func attackEnemyAI(a, b):
+	if dist(a, b) <= a.getAttackDist() and a.getAttack() == 1:
+		a.rotate(b.getPosX(),b.getPosZ())
+		b.receiveDmg(int(a.getDmg()))
+		a.setAttack(0)
+		a.anim.play("AttackSword", -1, 1, false)
+		b.rotate(a.getPosX(), a.getPosZ())
+		b.anim.play("DamageTake", -1, 1, false)
+		print ("Vida agora: ",int(b.getHp()))
+		if int(b.getHp()) <= 0:
+			colMat[b.getPosX()][b.getPosZ()] = 0
+			b.queue_free()
+			b = 0
 	else:
 		print("Ataque falhou!")
 
@@ -253,28 +264,13 @@ func enemyAI(a): #cada inimigo executa essa rotina no turno dos inimigos
 					alvo = b
 					menordist = distancia
 	isTarget = alvo
+	isSelected.myTarget = alvo
 	target = 1
 	enemyMove(a, alvo)
 	enemies = enemies - 1
 	target = 0
 	selected = 0
-#	if dist(alvo, a) == 1:
-#		isTarget = alvo
-#		target = 1
-#		attackEnemy("Inimigo atacou1")
-#		enemies = enemies - 1
-#		target = 0
-#		selected = 0
-#	else:
-#		#var x = enemyMove(a, alvo)
-#		enemyMove(a, alvo)
-#		if dist(alvo, a) == 1:
-#			isTarget = alvo
-#			target = 1
-#			attackEnemy("Inimigo atacou2")	
-#		enemies = enemies - 1
-#		target = 0
-#		selected = 0
+
 func enemyMove(a, b):
 	var ax
 	var az
@@ -326,6 +322,11 @@ func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	pass # replace with function body
 
 func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx ):
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyHPValue").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy1").getHp()))
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyInfoText2").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy1").get_child(0).get_name()))
+	get_tree().get_root().get_node("Battle/HUD").enemy = 1
+#	get_tree().get_root().get_node("Battle/HUD/Enemy").show()
+	
 	if turn == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 0:
@@ -342,6 +343,9 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 	pass # replace with function body
 	
 func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx ):
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyHPValue").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy2").getHp()))
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyInfoText2").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy2").get_child(0).get_name()))
+	get_tree().get_root().get_node("Battle/HUD").enemy = 1
 	if turn == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 0:
