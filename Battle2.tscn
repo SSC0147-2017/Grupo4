@@ -1,0 +1,1807 @@
+[gd_scene load_steps=28 format=1]
+
+[ext_resource path="res://HP.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Converted/Models/Terrain/Meshes.tres" type="MeshLibrary" id=2]
+[ext_resource path="res://Scripts/map.gd" type="Script" id=3]
+[ext_resource path="res://Converted/Textures/CubeDirt.tex" type="Texture" id=4]
+[ext_resource path="res://Converted/Models/Terrain/Surface.msh" type="Mesh" id=5]
+[ext_resource path="res://Converted/Textures/CubeGrass.tex" type="Texture" id=6]
+[ext_resource path="res://Converted/Models/Terrain/Cube.msh" type="Mesh" id=7]
+[ext_resource path="res://Scripts/camera.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=9]
+[ext_resource path="res://Converted/Models/Allies/LoliDrills3.scn" type="PackedScene" id=10]
+[ext_resource path="res://orb.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/Shield.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/Faster.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Shockbolt.gd" type="Script" id=14]
+[ext_resource path="res://Converted/Models/Enemies/Criminal2.scn" type="PackedScene" id=15]
+[ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=16]
+[ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=17]
+[ext_resource path="res://Source/Music/Földhullám.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Source/Background/back.cube" type="CubeMap" id=19]
+[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=20]
+[ext_resource path="res://WinLosePanel.gd" type="Script" id=21]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="FixedMaterial" id=2]
+
+flags/visible = true
+flags/double_sided = false
+flags/invert_faces = false
+flags/unshaded = false
+flags/on_top = false
+flags/lightmap_on_uv2 = true
+flags/colarray_is_srgb = true
+params/blend_mode = 0
+params/depth_draw = 1
+params/line_width = 0.0
+fixed_flags/use_alpha = false
+fixed_flags/use_color_array = false
+fixed_flags/use_point_size = false
+fixed_flags/discard_alpha = false
+fixed_flags/use_xy_normalmap = false
+params/diffuse = Color( 1, 1, 1, 1 )
+params/specular = Color( 0, 0, 0, 1 )
+params/emission = Color( 0, 0, 0, 1 )
+params/specular_exp = 40
+params/detail_mix = 1.0
+params/normal_depth = 1
+params/shader = 0
+params/shader_param = 0.5
+params/glow = 0
+params/point_size = 1.0
+uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+textures/diffuse = ExtResource( 4 )
+textures/diffuse_tc = 0
+textures/detail_tc = 0
+textures/specular_tc = 0
+textures/emission_tc = 0
+textures/specular_exp_tc = 0
+textures/glow_tc = 0
+textures/normal_tc = 0
+textures/shade_param_tc = 0
+
+[sub_resource type="FixedMaterial" id=3]
+
+flags/visible = true
+flags/double_sided = false
+flags/invert_faces = false
+flags/unshaded = false
+flags/on_top = false
+flags/lightmap_on_uv2 = true
+flags/colarray_is_srgb = true
+params/blend_mode = 0
+params/depth_draw = 1
+params/line_width = -1.0
+fixed_flags/use_alpha = false
+fixed_flags/use_color_array = false
+fixed_flags/use_point_size = false
+fixed_flags/discard_alpha = false
+fixed_flags/use_xy_normalmap = false
+params/diffuse = Color( 1, 1, 1, 1 )
+params/specular = Color( 0, 0, 0, 1 )
+params/emission = Color( 0, 0, 0, 1 )
+params/specular_exp = 40
+params/detail_mix = 1.0
+params/normal_depth = 1
+params/shader = 0
+params/shader_param = 0.5
+params/glow = 0
+params/point_size = 1.0
+uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+textures/diffuse = ExtResource( 6 )
+textures/diffuse_tc = 0
+textures/detail_tc = 0
+textures/specular_tc = 0
+textures/emission_tc = 0
+textures/specular_exp_tc = 0
+textures/glow_tc = 0
+textures/normal_tc = 0
+textures/shade_param_tc = 0
+
+[sub_resource type="FixedMaterial" id=4]
+
+flags/visible = true
+flags/double_sided = false
+flags/invert_faces = false
+flags/unshaded = false
+flags/on_top = false
+flags/lightmap_on_uv2 = true
+flags/colarray_is_srgb = true
+params/blend_mode = 0
+params/depth_draw = 1
+params/line_width = 0.0
+fixed_flags/use_alpha = false
+fixed_flags/use_color_array = false
+fixed_flags/use_point_size = false
+fixed_flags/discard_alpha = false
+fixed_flags/use_xy_normalmap = false
+params/diffuse = Color( 1, 1, 1, 1 )
+params/specular = Color( 0, 0, 0, 1 )
+params/emission = Color( 0, 0, 0, 1 )
+params/specular_exp = 40
+params/detail_mix = 1.0
+params/normal_depth = 1
+params/shader = 0
+params/shader_param = 0.5
+params/glow = 0
+params/point_size = 1.0
+uv_xform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+textures/diffuse = ExtResource( 4 )
+textures/diffuse_tc = 0
+textures/detail_tc = 0
+textures/specular_tc = 0
+textures/emission_tc = 0
+textures/specular_exp_tc = 0
+textures/glow_tc = 0
+textures/normal_tc = 0
+textures/shade_param_tc = 0
+
+[sub_resource type="BoxShape" id=5]
+
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="Environment" id=6]
+
+ambient_light/enabled = false
+ambient_light/color = Color( 0.179688, 0.171967, 0.171967, 1 )
+ambient_light/energy = 1.0
+fxaa/enabled = false
+background/mode = 4
+background/color = Color( 0, 0, 0, 1 )
+background/cubemap = ExtResource( 19 )
+background/energy = 1.0
+background/scale = 1.0
+background/glow = 0.0
+background/canvas_max_layer = null
+glow/enabled = false
+glow/blur_passes = 1
+glow/blur_scale = 1
+glow/blur_strength = 1
+glow/blur_blend_mode = null
+glow/bloom = 0.0
+glow/bloom_treshold = 0.5
+dof_blur/enabled = false
+dof_blur/blur_passes = 1
+dof_blur/begin = 100.0
+dof_blur/range = 10.0
+hdr/enabled = false
+hdr/tonemapper = 0
+hdr/exposure = 0.4
+hdr/white = 1.0
+hdr/glow_treshold = 0.95
+hdr/glow_scale = 0.2
+hdr/min_luminance = 0.4
+hdr/max_luminance = 8.0
+hdr/exposure_adj_speed = 0.5
+fog/enabled = false
+fog/begin = 100.0
+fog/begin_color = Color( 0, 0, 0, 1 )
+fog/end_color = Color( 0, 0, 0, 1 )
+fog/attenuation = 1.0
+fog/bg = true
+bcs/enabled = false
+bcs/brightness = 1.0
+bcs/contrast = 1.0
+bcs/saturation = 1.0
+srgb/enabled = false
+
+[node name="Battle" type="Spatial"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="HUD" parent="." instance=ExtResource( 1 )]
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 43.0585, 0, 0, 0, 9, 0, 0, 0, 43.0585, 0, 2.48149, 0.914854 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Transform( 0.235846, 0, 0, 0, 0.107379, 0, 0, 0, 0.235846, 0, -0.0134385, -0.0241316 )
+shapes/0/trigger = false
+collision/layers = 3
+collision/mask = 3
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+
+[node name="GridMap" type="GridMap" parent="KinematicBody"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.0232242, 0, 0, 0, 0.111111, 0, 0, 0, 0.0232242, 0, -0.275721, -0.0212468 )
+theme/theme = ExtResource( 2 )
+theme/bake = false
+lighting/bake = false
+cell/size = 2.0
+cell/octant_size = 4
+cell/center_x = true
+cell/center_y = true
+cell/center_z = true
+cell/scale = 1.0
+data = {
+"cells": IntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 65531, 2, 0, 65532, 2, 0, 65533, 2, 0, 65534, 2, 0, 65535, 2, 0, 65537, 2, 1, 65538, 2, 1, 65539, 2, 1, 65540, 2, 1, 131067, 2, 1, 131068, 2, 1, 131069, 2, 1, 131070, 2, 1, 131073, 2, 1, 131074, 2, 1, 131075, 2, 1, 131076, 2, 1, 196603, 2, 1, 196604, 2, 1, 196605, 2, 1, 196606, 2, 1, 196609, 2, 0, 196610, 2, 0, 196611, 2, 0, 196612, 2, 0, 262139, 2, 0, 262140, 2, 0, 262141, 2, 0, 262142, 2, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 65531, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 65531, 4, 0, 65532, 4, 0, 65533, 4, 0, 65534, 4, 0, 65535, 4, 0, 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 3, 65531, 0, 4, 65531, 0, 65531, 65531, 0, 65532, 65531, 0, 65533, 65531, 0, 65534, 65531, 0, 65535, 65531, 0, 0, 65532, 0, 1, 65532, 0, 2, 65532, 0, 3, 65532, 0, 4, 65532, 0, 65531, 65532, 0, 65532, 65532, 0, 65533, 65532, 0, 65534, 65532, 0, 65535, 65532, 0, 0, 65533, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 65531, 65533, 0, 65532, 65533, 0, 65533, 65533, 0, 65534, 65533, 0, 65535, 65533, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 3, 65534, 0, 4, 65534, 0, 65531, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 65531, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0 )
+}
+script/script = ExtResource( 3 )
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.235846, 0, 0, 0, 0.107379, 0, 0, 0, 0.235846, 0, -0.0134385, -0.0241316 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Ground" type="MeshInstance" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.539325, 0 )
+visibility/visible = false
+layers = 1
+geometry/visible = true
+geometry/material_override = SubResource( 2 )
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 5 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="Grass" type="MeshInstance" parent="Ground"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.539325, 0 )
+visibility/visible = false
+layers = 1
+geometry/visible = true
+geometry/material_override = SubResource( 3 )
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 7 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="Dirt" type="MeshInstance" parent="Ground"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.539325, 0 )
+visibility/visible = false
+layers = 1
+geometry/visible = true
+geometry/material_override = SubResource( 4 )
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 7 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="Camera1" type="Camera" parent="."]
+
+process/pause_mode = 1
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.700732, -0.383465, 0.601607, 0.0044085, 0.845576, 0.533837, -0.713412, -0.371423, 0.594212, 17, 17, 17 )
+projection = 0
+fov = 50.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = true
+visible_layers = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+script/script = ExtResource( 8 )
+
+[node name="Camera2" type="Camera" parent="."]
+
+process/pause_mode = 1
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -0.709751, -0.366502, 0.601607, -0.00709427, 0.85768, 0.514134, -0.704418, 0.360639, -0.611339, 17, 17, -15 )
+projection = 0
+fov = 50.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = false
+visible_layers = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+
+[node name="Camera3" type="Camera" parent="."]
+
+process/pause_mode = 1
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.727708, 0.375774, -0.57379, -0.0230024, 0.849466, 0.527142, 0.685502, -0.370406, 0.626807, -17, 17, 17 )
+projection = 0
+fov = 50.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = false
+visible_layers = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+
+[node name="Camera4" type="Camera" parent="."]
+
+process/pause_mode = 1
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -0.709751, 0.366502, -0.601607, 0.00709427, 0.85768, 0.514134, 0.704418, 0.360639, -0.611339, -17, 17, -16 )
+projection = 0
+fov = 50.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = false
+visible_layers = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 0.752966, 0.658059, 0, -0.658059, 0.752966, 0, 19.6873, 18.9587 )
+layers = 1
+params/enabled = true
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 1.5
+colors/diffuse = Color( 1, 1, 1, 1 )
+colors/specular = Color( 1, 1, 1, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+shadow/mode = 0
+shadow/max_distance = 0.0
+shadow/split_weight = 0.5
+shadow/zoffset_scale = 2.0
+
+[node name="DirectionalLight1" type="DirectionalLight" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, -0.752966, 0.658059, 0, -0.658059, -0.752966, 0, 19.6873, -18.9587 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 1.5
+colors/diffuse = Color( 1, 1, 1, 1 )
+colors/specular = Color( 1, 1, 1, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+shadow/mode = 0
+shadow/max_distance = 0.0
+shadow/split_weight = 0.5
+shadow/zoffset_scale = 2.0
+
+[node name="Allies" type="Node" parent="."]
+
+[node name="Ally1" type="KinematicBody" parent="Allies"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, -3, 0.585778, 4.6, 9 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collide_with/static = false
+collide_with/kinematic = false
+collide_with/rigid = false
+collide_with/character = false
+collision/margin = 0.001
+script/script = ExtResource( 9 )
+
+[node name="Loli" parent="Allies/Ally1" instance=ExtResource( 10 )]
+
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.256901, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Allies/Ally1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Orbs" type="Node" parent="Allies/Ally1"]
+
+script/script = ExtResource( 11 )
+
+[node name="Spell1" type="Node" parent="Allies/Ally1/Orbs"]
+
+script/script = ExtResource( 12 )
+
+[node name="Spell2" type="Node" parent="Allies/Ally1/Orbs"]
+
+script/script = ExtResource( 13 )
+
+[node name="Spell3" type="Node" parent="Allies/Ally1/Orbs"]
+
+script/script = ExtResource( 14 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy2" type="KinematicBody" parent="Enemies"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 9.05371, 4.6, -2.96183 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 2048
+collision/mask = 2048
+collide_with/static = false
+collide_with/kinematic = false
+collide_with/rigid = false
+collide_with/character = false
+collision/margin = 0.001
+script/script = ExtResource( 9 )
+
+[node name="Criminal" parent="Enemies/Enemy2" instance=ExtResource( 15 )]
+
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Enemy1" type="KinematicBody" parent="Enemies"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -9.15572, 4.6, -0.595673 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 2048
+collision/mask = 2048
+collide_with/static = false
+collide_with/kinematic = false
+collide_with/rigid = false
+collide_with/character = false
+collision/margin = 0.001
+script/script = ExtResource( 9 )
+
+[node name="Criminal" parent="Enemies/Enemy1" instance=ExtResource( 15 )]
+
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Enemy4" type="KinematicBody" parent="Enemies"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -9.14386, 4.6, -8.38996 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 2048
+collision/mask = 2048
+collide_with/static = false
+collide_with/kinematic = false
+collide_with/rigid = false
+collide_with/character = false
+collision/margin = 0.001
+script/script = ExtResource( 9 )
+
+[node name="Criminal" parent="Enemies/Enemy4" instance=ExtResource( 15 )]
+
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy4"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Enemy3" type="KinematicBody" parent="Enemies"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -1.02988, 4.6, -1.37102 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 2048
+collision/mask = 2048
+collide_with/static = false
+collide_with/kinematic = false
+collide_with/rigid = false
+collide_with/character = false
+collision/margin = 0.001
+script/script = ExtResource( 9 )
+
+[node name="Criminal" parent="Enemies/Enemy3" instance=ExtResource( 15 )]
+
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy3"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstructions" type="Node" parent="."]
+
+[node name="Obstructure1" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 8.59727, 4.6, 5.19236 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstructure11" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 8.59727, 4.6, 5.19236 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure11"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure11"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="LongRocks" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, 8.84683, 4.6, -8.83709 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="BigRock1" type="MeshInstance" parent="Obstructions/LongRocks"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.424645, -0.0632325, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="BigRock2" type="MeshInstance" parent="Obstructions/LongRocks"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.000396729, -0.0632325, -0.306282 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/LongRocks"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="SmallRocks" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 8.84683, 4.6, -6.85112 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="SmallRock1" type="MeshInstance" parent="Obstructions/SmallRocks"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.211012, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock2" type="MeshInstance" parent="Obstructions/SmallRocks"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.000396729, -1.45123, -0.413942 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/SmallRocks"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="BunchOfRocks" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 6.85518, 4.6, -0.490117 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="SmallRock1" type="MeshInstance" parent="Obstructions/BunchOfRocks"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.211012, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock3" type="MeshInstance" parent="Obstructions/BunchOfRocks"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, -0.220528, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock2" type="MeshInstance" parent="Obstructions/BunchOfRocks"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.000396729, -1.45123, -0.413942 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/BunchOfRocks"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="BunchOfRocks1" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 9.04279, 4.6, -0.490117 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="SmallRock1" type="MeshInstance" parent="Obstructions/BunchOfRocks1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.211012, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock3" type="MeshInstance" parent="Obstructions/BunchOfRocks1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, -0.220528, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock2" type="MeshInstance" parent="Obstructions/BunchOfRocks1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.000396729, -1.45123, -0.413942 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/BunchOfRocks1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="BunchOfRocks3" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 9.04279, 4.6, 9.5799 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="SmallRock1" type="MeshInstance" parent="Obstructions/BunchOfRocks3"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.211012, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock3" type="MeshInstance" parent="Obstructions/BunchOfRocks3"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, -0.220528, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock2" type="MeshInstance" parent="Obstructions/BunchOfRocks3"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.000396729, -1.45123, -0.413942 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/BunchOfRocks3"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="BunchOfRocks4" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 7.09273, 4.6, 9.5799 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="SmallRock1" type="MeshInstance" parent="Obstructions/BunchOfRocks4"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.211012, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock3" type="MeshInstance" parent="Obstructions/BunchOfRocks4"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, -0.220528, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock2" type="MeshInstance" parent="Obstructions/BunchOfRocks4"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.000396729, -1.45123, -0.413942 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/BunchOfRocks4"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="BunchOfRocks2" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 5.27382, 4.6, -0.490117 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="SmallRock1" type="MeshInstance" parent="Obstructions/BunchOfRocks2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.211012, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock3" type="MeshInstance" parent="Obstructions/BunchOfRocks2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, -0.220528, -1.35139, -0.151701 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="SmallRock2" type="MeshInstance" parent="Obstructions/BunchOfRocks2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.5, 0, -1.77636e-15, 0, 0.333333, 0.000396729, -1.45123, -0.413942 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/BunchOfRocks2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstructure8" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, -4.56914, 4.6, 5.19236 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure8"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure8"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstructure6" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, -6.49303, 4.6, 5.19236 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure6"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure6"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstructure7" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, -8.5217, 4.6, 5.19236 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure7"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure7"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstructure5" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, -2.71679, 4.6, 5.19236 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure5"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure5"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstructure4" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 2.98626, 4.6, 5.19236 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure4"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure4"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstructure3" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 4.80937, 4.6, 5.19236 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure3"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure3"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Obstructure2" type="KinematicBody" parent="Obstructions"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 6.76359, 4.6, 5.19236 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+collide_with/static = true
+collide_with/kinematic = true
+collide_with/rigid = true
+collide_with/character = true
+collision/margin = 0.001
+script/script = ExtResource( 16 )
+
+[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = ExtResource( 17 )
+mesh/skeleton = NodePath("..")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="StreamPlayer" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 18 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 9.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+environment = SubResource( 6 )
+
+[node name="TurnPanel" type="Panel" parent="."]
+
+visibility/opacity = 0.5
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -2.0
+margin/top = -1.0
+margin/right = 236.0
+margin/bottom = 102.0
+
+[node name="TurnLabel" type="Label" parent="TurnPanel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 30.0
+margin/top = 46.0
+margin/right = 205.0
+margin/bottom = 92.0
+custom_fonts/font = ExtResource( 20 )
+text = "Turno 0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="AELabel" type="Label" parent="TurnPanel"]
+
+rect/scale = Vector2( 0.6, 0.6 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 65.0
+margin/top = 11.0
+margin/right = 240.0
+margin/bottom = 57.0
+custom_fonts/font = ExtResource( 20 )
+text = "Aliados"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="WinLosePanel" type="Panel" parent="."]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 345.0
+margin/top = 182.0
+margin/right = 681.0
+margin/bottom = 366.0
+script/script = ExtResource( 21 )
+
+[node name="Return" type="MenuButton" parent="WinLosePanel"]
+
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 52.0
+margin/top = 117.0
+margin/right = 514.0
+margin/bottom = 169.0
+custom_fonts/font = ExtResource( 20 )
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 0
+shortcut = null
+text = "Voltar para o menu"
+flat = true
+items = [  ]
+
+[node name="WinLoseLabel" type="Label" parent="WinLosePanel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 71.0
+margin/top = 48.0
+margin/right = 271.0
+margin/bottom = 94.0
+custom_fonts/font = ExtResource( 20 )
+text = "VITÓRIA!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HelpPanel" type="Panel" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 41.0
+margin/top = 122.0
+margin/right = 991.0
+margin/bottom = 461.0
+
+[node name="HelpLabel" type="Label" parent="HelpPanel"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 25.0
+margin/top = 22.0
+margin/right = 928.0
+margin/bottom = 317.0
+custom_fonts/font = ExtResource( 20 )
+text = "Botão esquerdo do mouse: realiza ações ao clicar no personagem
+
+W, S, A, D: muda a direção da câmera
+
+H: abre/fecha essa tela"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="input_event" from="KinematicBody" to="KinematicBody/GridMap" method="_on_KinematicBody_input_event"]
+
+[connection signal="input_event" from="Allies/Ally1" to="KinematicBody/GridMap" method="_on_Ally1_input_event"]
+
+[connection signal="input_event" from="Enemies/Enemy2" to="KinematicBody/GridMap" method="_on_Enemy2_input_event"]
+
+[connection signal="input_event" from="Enemies/Enemy1" to="KinematicBody/GridMap" method="_on_Enemy1_input_event"]
+
+[connection signal="pressed" from="WinLosePanel/Return" to="WinLosePanel" method="_on_Return_pressed"]
+
+
