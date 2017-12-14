@@ -59,6 +59,6 @@ func readConfig(var file, var nextLine):
 
 func _on_Skip_pressed():
 	file.close()
-	var scene = preload("res://Battle.tscn")
-	Transition.fade_to("res://Battle.tscn")
+	var scene = preload("res://MainMenu.tscn")
+	Transition.fade_to("res://MainMenu.tscn")
 	pass # replace with function body
