@@ -12,7 +12,7 @@ func _ready():
 
 func _on_Return_pressed():
 	if get_node("Return").get_text().match("Voltar para o menu."):
-		get_tree().change_scene("res://MainMenu.tscn")
+		Transition.fade_to("res://MainMenu.tscn")
 	else:
-		get_tree().change_scene("res://AfterBattle1Cut.tscn")
+		Transition.fade_to("res://AfterBattle1Cut.tscn")
 	pass # replace with function body

@@ -11,5 +11,5 @@ func _ready():
 
 
 func _on_MenuButton_pressed():
-	get_tree().change_scene("res://MainMenu.tscn")
+	Transition.fade_to("res://MainMenu.tscn")
 	pass # replace with function body
