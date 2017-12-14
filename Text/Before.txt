@@ -7,8 +7,8 @@ right|
 rowan|
 end_config|
 Rowan: Finalmente a gente chegou, eu estava quase morrendo de tédio.| 
-Três dias de carruagem realmente põe em perspectiva quão fim de mundo nossa casa|
-realmente é.|
+Três dias de carruagem realmente põe em perspectiva quão fim de mundo nossa 
+casa realmente é.|
 Alice: Não entendo porque você está reclamando, você estava inconsciente|
 pelo menos metade do trajeto.|
 E na outra metade você ainda ficou jogando ""Eu espio com meu olhinho algo| 
@@ -18,8 +18,8 @@ a resposta é sempre mato.|
 Rowan: Olha, você também acharia que ele tinha finalmente mudado a palavra depois|
 da quarta ou quinta rodada.|
 ...A propósito, falando no líder, onde ele está?|
-Alice: Você esqueceu ou estava dormindo? Ele foi encontrar um lugar pra gente|
-ficar. Ou você quer dormir aqui fora, ao relento?|
+Alice: Você esqueceu ou estava dormindo? Ele foi encontrar um lugar 
+pra gente ficar. Ou você quer dormir aqui fora, ao relento?|
 Rowan: Eu fico com o canto debaixo do telhado daquela casa.|
 Alice: Eu genuinamente não sei se você está fazendo palhaçada ou se você|
 realmente está animado para dormir na rua.|
@@ -48,8 +48,8 @@ left|
 rowan|
 end_config|
 Rowan: ...Isso aconteça...|
-Criminoso: Então, cadê o dinheiro para pagar ""Um mês de estadia para três em uma|
-pousada de luxo""?|
+Criminoso: Então, cadê o dinheiro para pagar ""Um mês de estadia para três em|
+uma pousada de luxo""?|
 Se vocês passarem para cá agora eu vou até poupar vocês de um sequestro.|
 Rowan: Olha cara, se você acha que eu, futuro capitão de cavaleiros vou me|
 curvar a um mero ladrão?|
@@ -77,7 +77,7 @@ start_config|
 right|
 rowan_armed|
 end_config|
-Rowan: Pronta Alice?|
+Rowan: Pronta, Alice?|
 start_config|
 left|
 alice_armed|
