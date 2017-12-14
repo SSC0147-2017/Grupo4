@@ -147,6 +147,7 @@ func attackEnemy(a):
 		isTarget.anim.play("DamageTake", -1, 1, false)
 		print ("Vida agora: ",int(isTarget.getHp()))
 		if int(isTarget.getHp()) <= 0:
+			get_tree().get_root().get_node("Battle/HUD").enemy = 0
 			colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
 			isTarget.queue_free()
 			isTarget = 0

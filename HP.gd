@@ -3,6 +3,8 @@ var grid
 var HP
 var HUD
 var enemy = 0
+var orbs
+var orbsPressed = 0
 
 # class member variables go here, for example:
 # var a = 2
@@ -12,6 +14,8 @@ func _ready():
 	grid = get_tree().get_root().get_node("Battle/KinematicBody/GridMap")
 	HP = get_tree().get_root().get_node("Battle/HUD/Player/HPValue")
 	HUD = get_tree().get_root().get_node("Battle/HUD/Player")
+	orbs = get_tree().get_root().get_node("Battle/HUD/Orbs")
+	
 	set_fixed_process(true)
 func _fixed_process(delta):
 	if grid.selected == 1:
@@ -27,6 +31,7 @@ func _fixed_process(delta):
 			get_tree().get_root().get_node("Battle/HUD/Player/Move").show()
 	else:
 		HUD.hide()
+		orbs.hide()
 	if enemy == 1:
 		get_tree().get_root().get_node("Battle/HUD/Enemy").show()
 	else:
@@ -53,4 +58,14 @@ func _on_Pass_pressed():
 	grid.allies = grid.allies - 1
 	grid.selected = 0
 	enemy = 0
+	pass # replace with function body
+
+
+func _on_Orbs_pressed():
+	if orbsPressed == 0:
+		orbs.show()
+		orbsPressed = 1
+	else:
+		orbs.hide()
+		orbsPressed = 0
 	pass # replace with function body
