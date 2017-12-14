@@ -347,7 +347,7 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 	elif turn == 0 and buttonSpell == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
-				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
+				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy1")
 				target = 1
 				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
 	pass # replace with function body
