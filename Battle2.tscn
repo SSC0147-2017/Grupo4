@@ -480,6 +480,7 @@ script/script = ExtResource( 14 )
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 9.05371, 4.6, -2.96183 )
+visibility/visible = false
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
@@ -511,6 +512,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -9.15572, 4.6, -0.595673 )
+visibility/visible = false
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
@@ -1801,6 +1803,10 @@ max_lines_visible = -1
 [connection signal="input_event" from="Enemies/Enemy2" to="KinematicBody/GridMap" method="_on_Enemy2_input_event"]
 
 [connection signal="input_event" from="Enemies/Enemy1" to="KinematicBody/GridMap" method="_on_Enemy1_input_event"]
+
+[connection signal="input_event" from="Enemies/Enemy4" to="KinematicBody/GridMap" method="_on_Enemy4_input_event"]
+
+[connection signal="input_event" from="Enemies/Enemy3" to="KinematicBody/GridMap" method="_on_Enemy3_input_event"]
 
 [connection signal="pressed" from="WinLosePanel/Return" to="WinLosePanel" method="_on_Return_pressed"]
 

@@ -378,6 +378,60 @@ func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx )
 				target = 1
 				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
 	pass # replace with function body
+	
+func _on_Enemy3_input_event( camera, event, click_pos, click_normal, shape_idx ):
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyHPValue").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy3").getHp()))
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyInfoText2").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy3").get_child(0).get_name()))
+	get_tree().get_root().get_node("Battle/HUD").enemy = 1
+	if turn == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 0:
+				isSelected = get_tree().get_root().get_node("Battle/Enemies/Enemy3")
+				selected = 1
+				
+	if turn == 0 and buttonAttack == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 1:
+				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy3")
+				target = 1
+				attackEnemy("Aliado atacou")
+			buttonAttack = 0
+	elif turn == 0 and buttonSpell == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 1:
+				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy3")
+				target = 1
+				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
+	pass # replace with function body
+
+
+func _on_Enemy4_input_event( camera, event, click_pos, click_normal, shape_idx ):
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyHPValue").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy4").getHp()))
+	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyInfoText2").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy4").get_child(0).get_name()))
+	get_tree().get_root().get_node("Battle/HUD").enemy = 1
+	if turn == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 0:
+				isSelected = get_tree().get_root().get_node("Battle/Enemies/Enemy4")
+				selected = 1
+				
+	if turn == 0 and buttonAttack == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 1:
+				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy4")
+				target = 1
+				attackEnemy("Aliado atacou")
+			buttonAttack = 0
+	elif turn == 0 and buttonSpell == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 1:
+				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy4")
+				target = 1
+				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
+	pass # replace with function body
+	
+	
+	
 # Retorna 1 caso o objeto tenha algum bloco ao lado não obstruido
 func checkAllSides(a):
 	var posX=a.getPosX()
@@ -397,5 +451,8 @@ func setTeamOnMat(a,n):
 		x.move_to(Vector3(pos1*2-9,4.6,pos2*2-9))
 		x.setPos(pos1,pos2)
 		colMat[pos1][pos2]=n;
+
+
+
 
 
