@@ -11,7 +11,7 @@ func _ready():
 
 
 func _on_MenuButton_pressed():
-	get_tree().change_scene("res://BeforeBattle1Cut.tscn")
+	Transition.fade_to("res://BeforeBattle1Cut.tscn")
 	pass # replace with function body
 
 
@@ -21,5 +21,5 @@ func _on_MenuButton2_pressed():
 
 
 func _on_Credits_pressed():
-	get_tree().change_scene("res://Credits.tscn")
+	Transition.fade_to("res://Credits.tscn")
 	pass # replace with function body

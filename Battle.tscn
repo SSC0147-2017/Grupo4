@@ -754,9 +754,9 @@ margin/bottom = 317.0
 custom_fonts/font = ExtResource( 16 )
 text = "Botão esquerdo do mouse: realiza ações ao clicar no personagem
 
-W, S, A, D: change camera direction
+W, S, A, D: muda a direção da câmera
 
-H: open/close this screen"
+H: abre/fecha essa tela"
 align = 1
 valign = 1
 autowrap = true
