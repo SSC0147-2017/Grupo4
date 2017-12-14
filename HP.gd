@@ -40,6 +40,16 @@ func _fixed_process(delta):
 			orbs.hide()
 			gotTarget = 0
 			orbsPressed = 0
+			
+		if grid.isSelected.spellNumber == 3:
+			spell1.get_child(2).set_text(str(grid.isSelected.get_child(2).charges[0]))
+			spell2.get_child(2).set_text(str(grid.isSelected.get_child(2).charges[1]))
+			spell3.get_child(2).set_text(str(grid.isSelected.get_child(2).charges[2]))
+		if grid.isSelected.spellNumber == 2:
+			spell1.get_child(2).set_text(str(grid.isSelected.get_child(2).charges[0]))
+			spell2.get_child(2).set_text(str(grid.isSelected.get_child(2).charges[1]))
+		if grid.isSelected.spellNumber == 1:
+			spell1.get_child(2).set_text(str(grid.isSelected.get_child(2).charges[0]))	
 	else:
 		HUD.hide()
 		orbs.hide()
@@ -47,6 +57,8 @@ func _fixed_process(delta):
 		get_tree().get_root().get_node("Battle/HUD/Enemy").show()
 	else:
 		get_tree().get_root().get_node("Battle/HUD/Enemy").hide()
+	
+	
 		
 	
 	# Called every time the node is added to the scene.
@@ -80,16 +92,22 @@ func _on_Orbs_pressed():
 		orbs.show()
 		if grid.isSelected.spellNumber == 3:
 			spell1.get_child(1).set_text(grid.isSelected.get_child(2).get_child(0).name)
+			spell1.get_child(2).set_text(str(grid.isSelected.get_child(2).get_child(0).uses))
 			spell2.get_child(1).set_text(grid.isSelected.get_child(2).get_child(1).name)
+			spell2.get_child(2).set_text(str(grid.isSelected.get_child(2).get_child(1).uses))
 			spell3.get_child(1).set_text(grid.isSelected.get_child(2).get_child(2).name)
+			spell3.get_child(2).set_text(str(grid.isSelected.get_child(2).get_child(2).uses))
 		if grid.isSelected.spellNumber == 2:
 			spell3.hide()
 			spell1.get_child(1).set_text(grid.isSelected.get_child(2).get_child(0).name)
+			spell1.get_child(2).set_text(str(grid.isSelected.get_child(2).get_child(0).uses))
 			spell2.get_child(1).set_text(grid.isSelected.get_child(2).get_child(1).name)
+			spell2.get_child(2).set_text(str(grid.isSelected.get_child(2).get_child(1).uses))
 		if grid.isSelected.spellNumber == 1:
 			spell3.hide()
 			spell2.hide()
 			spell1.get_child(1).set_text(grid.isSelected.get_child(2).get_child(0).name)
+			spell1.get_child(2).set_text(str(grid.isSelected.get_child(2).get_child(0).uses))
 		if grid.isSelected.spellNumber == 0:
 			spell3.hide()
 			spell2.hide()

@@ -219,9 +219,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 555.0
-margin/top = 506.0
+margin/top = 413.0
 margin/right = 702.0
-margin/bottom = 600.0
+margin/bottom = 601.0
 
 [node name="Spell1" type="Button" parent="Orbs/Spell1"]
 
@@ -239,6 +239,21 @@ shortcut = null
 text = "Spell1"
 flat = false
 
+[node name="Spell1T" type="Label" parent="Orbs/Spell1"]
+
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 614.0
+margin/top = 466.0
+margin/right = 672.0
+margin/bottom = 500.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Spell2" type="Node2D" parent="Orbs"]
 
 [node name="SpellC2" type="Panel" parent="Orbs/Spell2"]
@@ -249,7 +264,7 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 408.0
-margin/top = 506.0
+margin/top = 413.0
 margin/right = 555.0
 margin/bottom = 600.0
 
@@ -269,6 +284,21 @@ shortcut = null
 text = "Spell2"
 flat = false
 
+[node name="Spell2T" type="Label" parent="Orbs/Spell2"]
+
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 468.0
+margin/top = 466.0
+margin/right = 486.0
+margin/bottom = 486.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Spell3" type="Node2D" parent="Orbs"]
 
 [node name="SpellC3" type="Panel" parent="Orbs/Spell3"]
@@ -279,7 +309,7 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 261.0
-margin/top = 506.0
+margin/top = 413.0
 margin/right = 408.0
 margin/bottom = 600.0
 
@@ -298,6 +328,37 @@ enabled_focus_mode = 2
 shortcut = null
 text = "Spell3"
 flat = false
+
+[node name="Spell3T" type="Label" parent="Orbs/Spell3"]
+
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 323.0
+margin/top = 466.0
+margin/right = 353.0
+margin/bottom = 494.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Usos" type="Label" parent="Orbs"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 272.0
+margin/top = 420.0
+margin/right = 376.0
+margin/bottom = 436.0
+text = "Usos restantes: "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="pressed" from="Player/Move" to="." method="_on_Move_pressed"]
 
