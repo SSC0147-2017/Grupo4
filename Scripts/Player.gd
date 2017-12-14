@@ -9,7 +9,7 @@ var mov = 1 #Se pode mover
 var movDist = 3 #Quanto ele pode se mover
 var attack = 1 #Se pode atacar
 var attackDist = 1
-var dmg = 1 #Dano do ataque
+var dmg = 3 #Dano do ataque
 
 var moving = 0
 var movStart = 0
@@ -40,7 +40,7 @@ func _ready():
 	team=get_children()
 	for x in team:
 		if(x.get_name()=="Loli"):
-			dmg=6
+			dmg=2
 		if x.get_name() == "Criminal":
 			 movDist = movDist - 1
 	anim = self.get_child(0).get_node("AnimationPlayer")

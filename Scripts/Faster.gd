@@ -6,8 +6,9 @@ extends "res://Spells.gd"
 
 func _ready():
 	 rang = 5
-	 power = 20 #para propósitos de teste, depois diminuir para 2 ou 1
+	 power = 2 #para propósitos de teste, depois diminuir para 2 ou 1
 	 special = 2
 	 mode = 3#1 DEF 2 ATK 3 MOVE RANGE
 	 uses = 1
-	 name = "Faster buff"
+	 name = "Speed buff"
+	 explic = "Aumenta o deslocamento de um personagem"

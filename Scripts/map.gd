@@ -23,6 +23,8 @@ var colMat = []
 
 var flarg = 0
 
+var targetAlly = 0
+
 
 # class member variables go here, for example:
 # var a = 2
@@ -142,7 +144,7 @@ func _fixed_process(delta):
 	
 	
 func attackEnemy(a):
-	if dist(isSelected, isTarget) <= isSelected.getAttackDist() and isSelected.getAttack() == 1:
+	if dist(isSelected, isTarget) <= isSelected.getAttackDist() and isSelected.getAttack() == 1 and isTarget.get_parent().get_name() == "Enemies":
 		isSelected.rotate(isTarget.getPosX(),isTarget.getPosZ())
 		isTarget.receiveDmg(int(isSelected.getDmg()))
 		isSelected.setAttack(0)
@@ -159,7 +161,7 @@ func attackEnemy(a):
 		print("Ataque falhou!")
 		
 func attackEnemyAI(a, b):
-	if dist(a, b) <= a.getAttackDist() and a.getAttack() == 1:
+	if dist(a, b) <= a.getAttackDist() and a.getAttack() == 1 and isTarget.get_parent().get_name() == "Allies":
 		a.rotate(b.getPosX(),b.getPosZ())
 		b.receiveDmg(int(a.getDmg()))
 		a.setAttack(0)
@@ -317,12 +319,12 @@ func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 			if selected == 0:
 				isSelected = get_tree().get_root().get_node("Battle/Allies/Ally1")
 				selected = 1
-	if turn == 1:
-		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 2 and event.is_pressed():
+	if turn == 0 and targetAlly == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
 				isTarget = get_tree().get_root().get_node("Battle/Allies/Ally1")
 				target = 1
-				attackEnemy("Inimigo atacou")
+				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
 	pass # replace with function body
 
 func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx ):

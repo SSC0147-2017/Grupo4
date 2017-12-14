@@ -11,3 +11,4 @@ func _ready():
 	 special = 1
 	 mode = 0
 	 uses = 2
+	 explic = "Aumenta a vida de um aliado"

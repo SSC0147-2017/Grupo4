@@ -95,6 +95,12 @@ func _on_Orbs_pressed():
 			spell2.hide()
 			spell1.hide()
 			orbsPressed = 0
+		if grid.isSelected.spellNumber >= 1 and grid.isSelected.get_child(2).get_child(0).special == 1 or grid.isSelected.get_child(2).get_child(0).special == 2:
+			grid.targetAlly = 1
+		elif grid.isSelected.spellNumber >= 2 and grid.isSelected.get_child(2).get_child(1).special == 1 or grid.isSelected.get_child(2).get_child(1).special == 2:
+			grid.targetAlly = 1
+		elif grid.isSelected.spellNumber == 3and grid.isSelected.get_child(2).get_child(2).special == 1 or grid.isSelected.get_child(2).get_child(2).special == 2:
+			grid.targetAlly = 1
 		orbsPressed = 1
 	else:
 		grid.buttonSpell = 0

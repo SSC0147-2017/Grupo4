@@ -21,7 +21,9 @@ func _ready():
 
 func usespell(i):
 	if charges[i] >= 1:
-		spell[i].hocuspocus() #usa o feitiço no primeiro slot da orb
-		charges[i] = charges[i] - 1
+		var ret = spell[i].hocuspocus() #usa o feitiço no primeiro slot da orb
+		print (ret)
+		if ret != 0:
+			charges[i] = charges[i] - 1
 	else: 
 		print("Você não pode mais usar esse feitiço durante essa batalha")
