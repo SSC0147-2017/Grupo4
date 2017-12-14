@@ -18,6 +18,8 @@ var dirX
 var dirZ
 var sec = 0
 
+var myTarget
+
 
 var it = 0
 var token
@@ -88,7 +90,7 @@ func _fixed_process(delta):
 			movStart = 0
 			anim.play("Idle", -1, 1, false)
 			if map.turn == 1 and map.dist(map.isSelected, map.isTarget) <= map.isSelected.getAttackDist():
-				map.attackEnemy("Inimigo atacou1")
+				map.attackEnemyAI(self, myTarget)
 			
 	
 		
