@@ -20,7 +20,7 @@ func _ready():
 
 
 func usespell(i):
-	if charges[i] > 1:
+	if charges[i] >= 1:
 		spell[i].hocuspocus() #usa o feitiço no primeiro slot da orb
 		charges[i] = charges[i] - 1
 	else: 

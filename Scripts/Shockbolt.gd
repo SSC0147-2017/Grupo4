@@ -5,6 +5,7 @@ extends "res://Spells.gd"
 # var b = "textvar"
 
 func _ready():
+	 name = "Shockbolt"
 	 rang = 2
 	 power = 2
 	 special = 4

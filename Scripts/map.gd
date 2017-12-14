@@ -17,6 +17,7 @@ var obstructionTeam
 
 var buttonMove = 0
 var buttonAttack = 0
+var buttonSpell = 0
 
 var colMat = []
 
@@ -113,6 +114,7 @@ func _fixed_process(delta):
 			for x in get_tree().get_root().get_node("Battle/Allies").get_children():
 				x.setMov(1)
 				x.setAttack(1)
+				x.usedSpell = 0
 			turn = 1
 		if enemies <= 0:
 			print ("Enemy Turn : ",turnNumber + 1)
@@ -340,6 +342,12 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 				target = 1
 				attackEnemy("Aliado atacou")
 			buttonAttack = 0
+	elif turn == 0 and buttonSpell == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 1:
+				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
+				target = 1
+				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
 	pass # replace with function body
 	
 func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx ):
@@ -359,6 +367,12 @@ func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx )
 				target = 1
 				attackEnemy("Aliado atacou")
 			buttonAttack = 0
+	elif turn == 0 and buttonSpell == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 1:
+				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
+				target = 1
+				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
 	pass # replace with function body
 # Retorna 1 caso o objeto tenha algum bloco ao lado não obstruido
 func checkAllSides(a):

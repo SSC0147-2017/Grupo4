@@ -1,5 +1,6 @@
 extends Node
 
+var name
 var rang
 var power
 var special
@@ -19,6 +20,9 @@ func _ready():
 func hocuspocus():
 	isSelected = get_tree().get_root().get_node("Battle/KinematicBody/GridMap").isSelected
 	isTarget = get_tree().get_root().get_node("Battle/KinematicBody/GridMap").isTarget
+	isSelected.get_child(0).get_node("AnimationPlayer").play("AttackSword", -1, 1, false)
+	isTarget.get_child(0).get_node("AnimationPlayer").play("DamageTake", -1, 1, false)
+
 	#primeiro checa se é special (Heal ou Buff, para AoE, Chain etc... ele checa depois)
 	if special == 1: #heal
 		spellAlly()
@@ -29,14 +33,14 @@ func hocuspocus():
 	else:
 		spellEnemy()
 		if special == 3:
-			a = isTarget
+			var a = isTarget
 			var b = get_tree().get_root().get_node("Battle/Enemies").get_children()
 			for x in b:
 				if a != x:
 					AoE(a, x, rang/2, power)
 		#splash damage
 		if special == 4:
-			a = isTarget
+			var a = isTarget
 			var b = get_tree().get_root().get_node("Battle/Enemies").get_children()
 			while mode > 0:
 				for x in b:
@@ -53,6 +57,7 @@ func spellEnemy():
 		isTarget.receiveDmg(int(power))
 		isSelected.setAttack(0)
 		print ("Vida agora: ",int(isTarget.getHp()))
+		self.get_parent().get_parent().usedSpell = 1
 		if int(isTarget.getHp()) <= 0:
 			get_tree().get_root().get_node("Battle/KinematicBody/GridMap").colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
 			isTarget.queue_free()
@@ -62,9 +67,11 @@ func spellEnemy():
 		
 		
 func AoE(base, a, subrang, subpower): #onde a é um inimigo, base é o quadrado onde o feitiço originalmente foi lançado, subrange e subpower são o alcance e o dano do splash
-	if dist(base, a) <= subrang == 1:
+	if get_tree().get_root().get_node("Battle/KinematicBody/GridMap").dist(base, a) <= subrang == 1:
 		a.receiveDmg(int(subpower))
+		isSelected.setAttack(0)
 		print ("Vida agora: ",int(a.getHp()))
+		self.get_parent().get_parent().usedSpell = 1
 		if int(a.getHp()) <= 0:
 			get_tree().get_root().get_node("Battle/KinematicBody/GridMap").colMat[a.getPosX()][a.getPosZ()] = 0
 			a.queue_free()
@@ -74,7 +81,7 @@ func AoE(base, a, subrang, subpower): #onde a é um inimigo, base é o quadrado 
 	
 func spellAlly(): #onde a é um aliado
 	var a = get_tree().get_root().get_node("Battle/KinematicBody/GridMap").isTarget
-	if dist(isSelected, a) <= rang and isSelected.getAttack() == 1 and a.get_parent().get_name() == "Allies":
+	if get_tree().get_root().get_node("Battle/KinematicBody/GridMap").dist(isSelected, a) <= rang and isSelected.getAttack() == 1 and a.get_parent().get_name() == "Allies":
 		isSelected.rotate(a.getPosX(),a.getPosZ())
 		if special == 1:
 			a.receiveHeal(int(power))
@@ -82,5 +89,6 @@ func spellAlly(): #onde a é um aliado
 		if special == 2:
 			a.buff(int(power), mode)
 		isSelected.setAttack(0)
+		self.get_parent().get_parent().usedSpell = 1
 	else:
 		print("Cura Buffa falhou!")

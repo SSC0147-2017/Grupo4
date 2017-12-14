@@ -5,6 +5,7 @@ extends "res://Spells.gd"
 # var b = "textvar"
 
 func _ready():
+	 name = "Shield"
 	 rang = 5
 	 power = 11 #para propósitos de teste, depois diminuir para 1
 	 special = 2

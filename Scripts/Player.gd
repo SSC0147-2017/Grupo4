@@ -20,6 +20,7 @@ var dirZ
 var sec = 0
 
 var myTarget
+var usedSpell = 0 
 
 
 var it = 0
@@ -29,6 +30,7 @@ var prevx
 var nx
 var nz
 var anim
+var spellNumber = 0
 
 # class member variables go here, for example:
 # var a = 2
@@ -43,6 +45,8 @@ func _ready():
 			 movDist = movDist - 1
 	anim = self.get_child(0).get_node("AnimationPlayer")
 	anim.play("Idle", -1, 1, false)
+	if self.get_child_count() == 3:
+		spellNumber = self.get_child(2).get_child_count()
 	pass
 
 func _fixed_process(delta):
