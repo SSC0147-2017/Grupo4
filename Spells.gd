@@ -36,8 +36,8 @@ func hocuspocus():
 			var a = isTarget
 			var b = get_tree().get_root().get_node("Battle/Enemies").get_children()
 			for x in b:
-				if a != x:
-					AoE(a, x, rang/2, power)
+				#if a != x:
+				AoE(a, x, rang/2, power)
 		#splash damage
 		if special == 4:
 			var a = isTarget
@@ -67,7 +67,7 @@ func spellEnemy():
 		
 		
 func AoE(base, a, subrang, subpower): #onde a é um inimigo, base é o quadrado onde o feitiço originalmente foi lançado, subrange e subpower são o alcance e o dano do splash
-	if get_tree().get_root().get_node("Battle/KinematicBody/GridMap").dist(base, a) <= subrang == 1:
+	if get_tree().get_root().get_node("Battle/KinematicBody/GridMap").dist(base, a) <= subrang:
 		a.receiveDmg(int(subpower))
 		isSelected.setAttack(0)
 		print ("Vida agora: ",int(a.getHp()))
