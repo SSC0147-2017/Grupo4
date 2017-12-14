@@ -109,7 +109,7 @@ func _fixed_process(delta):
 		if allies <= 0:
 			print ("Ally Turn  : ",turnNumber + 1)
 			turnNumber = turnNumber + 1
-			get_tree().get_root().get_node("Battle/TurnPanel/AELabel").set_text("Enemy")
+			get_tree().get_root().get_node("Battle/TurnPanel/AELabel").set_text("Inimigos")
 			allies = get_tree().get_root().get_node("Battle/Allies").get_child_count()
 			for x in get_tree().get_root().get_node("Battle/Allies").get_children():
 				x.setMov(1)
@@ -119,13 +119,13 @@ func _fixed_process(delta):
 		if enemies <= 0:
 			print ("Enemy Turn : ",turnNumber + 1)
 			turnNumber = turnNumber + 1
-			get_tree().get_root().get_node("Battle/TurnPanel/AELabel").set_text("Ally")
+			get_tree().get_root().get_node("Battle/TurnPanel/AELabel").set_text("Aliados")
 			enemies = get_tree().get_root().get_node("Battle/Enemies").get_child_count()
 			for x in get_tree().get_root().get_node("Battle/Enemies").get_children():
 				x.setMov(1)
 				x.setAttack(1)
 			turn = 0
-		get_tree().get_root().get_node("Battle/TurnPanel/TurnLabel").set_text("Turn " + str(floor(turnNumber/2+1)))
+		get_tree().get_root().get_node("Battle/TurnPanel/TurnLabel").set_text("Turno " + str(floor(turnNumber/2+1)))
 		if turn == 1:
 			var vector = enemyTeam.get_children()
 			for a in vector:
@@ -133,10 +133,12 @@ func _fixed_process(delta):
 					enemyAI(a)
 		if get_tree().get_root().get_node("Battle/Enemies").get_child_count() == 0:
 			get_tree().get_root().get_node("Battle/WinLosePanel").show()
-			get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU WIN!")
+			get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("VITÓRIA!")
+			get_tree().get_root().get_node("Battle/WinLosePanel/Return").set_text("Terminar batalha.")
 		if get_tree().get_root().get_node("Battle/Allies").get_child_count() == 0:
 			get_tree().get_root().get_node("Battle/WinLosePanel").show()
-			get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("YOU LOSE!")
+			get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("DERROTA!")
+			get_tree().get_root().get_node("Battle/WinLosePanel/Return").set_text("Voltar para o menu.")
 	
 	
 func attackEnemy(a):

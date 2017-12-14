@@ -21,8 +21,8 @@ func _on_Next_pressed():
 		readConfig(file, nextLine)
 	elif file.eof_reached():
 		file.close()
-		var scene = preload("res://Battle.tscn")
-		get_tree().change_scene("res://Battle.tscn")
+		var scene = preload("res://MainMenu.tscn")
+		get_tree().change_scene("res://MainMenu.tscn")
 	else:
 		readNewText(file, nextLine)
 	pass

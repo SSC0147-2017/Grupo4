@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=1]
+[gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://HP.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Converted/Models/Terrain/Meshes.tres" type="MeshLibrary" id=2]
@@ -10,16 +10,13 @@
 [ext_resource path="res://Scripts/camera.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=9]
 [ext_resource path="res://Converted/Models/Allies/LoliDrills3.scn" type="PackedScene" id=10]
-[ext_resource path="res://orb.gd" type="Script" id=11]
-[ext_resource path="res://Scripts/MagicMissile.gd" type="Script" id=12]
-[ext_resource path="res://Scripts/Fireball.gd" type="Script" id=13]
-[ext_resource path="res://Converted/Models/Enemies/Criminal2.scn" type="PackedScene" id=14]
-[ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=15]
-[ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=16]
-[ext_resource path="res://Source/Music/Földhullám.ogg" type="AudioStream" id=17]
-[ext_resource path="res://Source/Background/back.cube" type="CubeMap" id=18]
-[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=19]
-[ext_resource path="res://WinLosePanel.gd" type="Script" id=20]
+[ext_resource path="res://Converted/Models/Enemies/Criminal2.scn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=12]
+[ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=13]
+[ext_resource path="res://Source/Music/Földhullám.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Source/Background/back.cube" type="CubeMap" id=15]
+[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=16]
+[ext_resource path="res://WinLosePanel.gd" type="Script" id=17]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -151,7 +148,7 @@ ambient_light/energy = 1.0
 fxaa/enabled = false
 background/mode = 4
 background/color = Color( 0, 0, 0, 1 )
-background/cubemap = ExtResource( 18 )
+background/cubemap = ExtResource( 15 )
 background/energy = 1.0
 background/scale = 1.0
 background/glow = 0.0
@@ -429,7 +426,7 @@ shadow/zoffset_scale = 2.0
 [node name="Ally1" type="KinematicBody" parent="Allies"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, -3, 0.838406, 4.6, 9 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, -3, 0.585778, 4.6, 9 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
@@ -457,18 +454,6 @@ shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Orb" type="Node" parent="Allies/Ally1"]
-
-script/script = ExtResource( 11 )
-
-[node name="MM" type="Node" parent="Allies/Ally1/Orb"]
-
-script/script = ExtResource( 12 )
-
-[node name="FB" type="Node" parent="Allies/Ally1/Orb"]
-
-script/script = ExtResource( 13 )
-
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy2" type="KinematicBody" parent="Enemies"]
@@ -490,7 +475,7 @@ collide_with/character = false
 collision/margin = 0.001
 script/script = ExtResource( 9 )
 
-[node name="Criminal" parent="Enemies/Enemy2" instance=ExtResource( 14 )]
+[node name="Criminal" parent="Enemies/Enemy2" instance=ExtResource( 11 )]
 
 transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
 
@@ -521,7 +506,7 @@ collide_with/character = false
 collision/margin = 0.001
 script/script = ExtResource( 9 )
 
-[node name="Criminal" parent="Enemies/Enemy1" instance=ExtResource( 14 )]
+[node name="Criminal" parent="Enemies/Enemy1" instance=ExtResource( 11 )]
 
 transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
 
@@ -554,7 +539,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 15 )
+script/script = ExtResource( 12 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure1"]
 
@@ -574,7 +559,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 16 )
+mesh/mesh = ExtResource( 13 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -603,7 +588,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 15 )
+script/script = ExtResource( 12 )
 
 [node name="LongGayRock" type="MeshInstance" parent="Obstructions/Obstructure2"]
 
@@ -623,7 +608,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 16 )
+mesh/mesh = ExtResource( 13 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -637,7 +622,7 @@ _update_shape_index = 0
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 17 )
+stream/stream = ExtResource( 14 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 9.0
@@ -669,12 +654,12 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 40.0
+margin/left = 30.0
 margin/top = 46.0
-margin/right = 190.0
+margin/right = 205.0
 margin/bottom = 92.0
-custom_fonts/font = ExtResource( 19 )
-text = "Turn 0"
+custom_fonts/font = ExtResource( 16 )
+text = "Turno 0"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -686,12 +671,12 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 85.0
-margin/top = 8.0
-margin/right = 185.0
-margin/bottom = 54.0
-custom_fonts/font = ExtResource( 19 )
-text = "Ally"
+margin/left = 65.0
+margin/top = 11.0
+margin/right = 240.0
+margin/bottom = 57.0
+custom_fonts/font = ExtResource( 16 )
+text = "Aliados"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -707,7 +692,7 @@ margin/left = 345.0
 margin/top = 182.0
 margin/right = 681.0
 margin/bottom = 366.0
-script/script = ExtResource( 20 )
+script/script = ExtResource( 17 )
 
 [node name="Return" type="MenuButton" parent="WinLosePanel"]
 
@@ -716,16 +701,16 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 74.0
-margin/top = 121.0
-margin/right = 436.0
-margin/bottom = 173.0
-custom_fonts/font = ExtResource( 19 )
+margin/left = 52.0
+margin/top = 117.0
+margin/right = 514.0
+margin/bottom = 169.0
+custom_fonts/font = ExtResource( 16 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
 shortcut = null
-text = "Return to menu"
+text = "Voltar para o menu"
 flat = true
 items = [  ]
 
@@ -735,12 +720,12 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 76.0
+margin/left = 71.0
 margin/top = 48.0
-margin/right = 251.0
+margin/right = 271.0
 margin/bottom = 94.0
-custom_fonts/font = ExtResource( 19 )
-text = "YOU WIN"
+custom_fonts/font = ExtResource( 16 )
+text = "VITÓRIA!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -766,8 +751,8 @@ margin/left = 25.0
 margin/top = 22.0
 margin/right = 928.0
 margin/bottom = 317.0
-custom_fonts/font = ExtResource( 19 )
-text = "Left Click on mouse: issue actions
+custom_fonts/font = ExtResource( 16 )
+text = "Botão esquerdo do mouse: realiza ações ao clicar no personagem
 
 W, S, A, D: change camera direction
 

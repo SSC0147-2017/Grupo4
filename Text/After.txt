@@ -11,7 +11,8 @@ Ainda bem que nós tinhamos essas orbes.|
 Rowan: É, sem zoeira. Dois contra um a gente podia acabar com ele,|
 mas dois contra dois complica.|
 Felizmente esses marginais de baixo escalão não tem uma dessas.|
-Alice: Bem, agora só nos falta esperar o líder, mas o quê nós vamos fazer com...|
+Alice: Bem, agora só nos falta esperar o líder, mas o quê nós vamos fazer|
+com...|
 start_config|
 left|
 alice|
@@ -24,8 +25,8 @@ end_config|
 Rowan: Procura-se estagiária para vendedora, experiência necessária, não| 
 renumerado.|
 Alice: Não esse seu idiota, o outro!|
-Rowan: Procurado: Por roubo e coerção de cidadãos do Glorioso Império de Gradivar|
-Recompensa: 100 Moedas Imperiais.|
+Rowan: Procurado: Por roubo e coerção de cidadãos do Glorioso Império|
+de Gradivar Recompensa: 100 Moedas Imperiais.|
 Ei, esse cara no poster não é...|
 Alice: Difícil dizer com essa máscara, mas considerando o que acabou de|
 acontecer, quase certeza que é nosso novo amigo aqui.|
@@ -44,8 +45,8 @@ Pois bem então Rowan Marthus, o que "até nós podemos fazer"?|
 Rowan: Caçar recompensas!|
 Agora me arranje três medidas de corda, Alice.|
 Quando o líder voltar nós vamos levar esses caras até a delegacia.|
-E depois disso, nós vamos discutir nossa nova guilda com o líder durante o jantar|
-tão generosamente providenciado pela guarda municipal de Arjal.|
+E depois disso, nós vamos discutir nossa nova guilda com o líder durante o|
+jantar tão generosamente providenciado pela guarda municipal de Arjal.|
 E nossos novos colegas de trabalho aqui, claro.|
 Alice: Com medo de saber onde isso vai acabar, eu tenho que perguntar... Que|
 tipo de guilda?|
