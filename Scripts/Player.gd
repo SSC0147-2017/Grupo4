@@ -1,7 +1,8 @@
 extends Spatial
 var team
 var posx  #Posicao atual
-var posz 
+var posz
+var maxhp = 10 
 var hp = 10 #Vida
 var def = 0 #Defesa
 var mov = 1 #Se pode mover
@@ -134,6 +135,21 @@ func receiveDmg(dmg):
 	if total > 0:
 		hp = hp - total
 			
+func receiveHeal(heal):
+		if hp + heal <= maxhp:
+			hp = hp + heal
+		else:
+			hp = maxhp
+		
+		
+func buff(power, mode):
+	if mode == 1:
+		def = def + power
+	elif mode == 2:
+		dmg = dmg + power
+	else:
+		movDist = movDist + power
+	
 func rotate(x,z):
 	if(abs(x-posx)>abs(z-posz)):
 		if(x>posx):

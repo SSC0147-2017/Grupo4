@@ -139,6 +139,7 @@ func attackEnemy(a):
 		isSelected.rotate(isTarget.getPosX(),isTarget.getPosZ())
 		isTarget.receiveDmg(int(isSelected.getDmg()))
 		isSelected.setAttack(0)
+		
 		print ("Vida agora: ",int(isTarget.getHp()))
 		if int(isTarget.getHp()) <= 0:
 			colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
