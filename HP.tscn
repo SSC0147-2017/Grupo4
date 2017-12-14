@@ -86,8 +86,6 @@ max_lines_visible = -1
 
 [node name="Player" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="HPInfo" type="Panel" parent="Player"]
 
 visibility/opacity = 0.5
@@ -211,6 +209,8 @@ flat = false
 
 [node name="Spell1" type="Node2D" parent="Orbs"]
 
+editor/display_folded = true
+
 [node name="SpellC1" type="Panel" parent="Orbs/Spell1"]
 
 visibility/opacity = 0.5
@@ -255,6 +255,8 @@ lines_skipped = 0
 max_lines_visible = -1
 
 [node name="Spell2" type="Node2D" parent="Orbs"]
+
+editor/display_folded = true
 
 [node name="SpellC2" type="Panel" parent="Orbs/Spell2"]
 
@@ -360,6 +362,33 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="Explic" type="Node2D" parent="."]
+
+[node name="ExplicP" type="Panel" parent="Explic"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 261.0
+margin/top = 413.0
+margin/right = 694.0
+margin/bottom = 517.0
+
+[node name="Explic" type="Label" parent="Explic"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 269.0
+margin/top = 423.0
+margin/right = 683.0
+margin/bottom = 509.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [connection signal="pressed" from="Player/Move" to="." method="_on_Move_pressed"]
 
 [connection signal="pressed" from="Player/Attack" to="." method="_on_Attack_pressed"]
@@ -368,9 +397,21 @@ max_lines_visible = -1
 
 [connection signal="pressed" from="Player/Orbs" to="." method="_on_Orbs_pressed"]
 
+[connection signal="mouse_enter" from="Orbs/Spell1/Spell1" to="." method="_on_Spell1_mouse_enter"]
+
+[connection signal="mouse_exit" from="Orbs/Spell1/Spell1" to="." method="_on_Spell1_mouse_exit"]
+
 [connection signal="pressed" from="Orbs/Spell1/Spell1" to="." method="_on_Spell1_pressed"]
 
+[connection signal="mouse_enter" from="Orbs/Spell2/Spell2" to="." method="_on_Spell2_mouse_enter"]
+
+[connection signal="mouse_exit" from="Orbs/Spell2/Spell2" to="." method="_on_Spell2_mouse_exit"]
+
 [connection signal="pressed" from="Orbs/Spell2/Spell2" to="." method="_on_Spell2_pressed"]
+
+[connection signal="mouse_enter" from="Orbs/Spell3/Spell3" to="." method="_on_Spell3_mouse_enter"]
+
+[connection signal="mouse_exit" from="Orbs/Spell3/Spell3" to="." method="_on_Spell3_mouse_exit"]
 
 [connection signal="pressed" from="Orbs/Spell3/Spell3" to="." method="_on_Spell3_pressed"]
 

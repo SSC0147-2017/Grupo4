@@ -9,6 +9,7 @@ var spell1
 var spell2
 var spell3
 var gotTarget = 0
+var explic
 
 # class member variables go here, for example:
 # var a = 2
@@ -22,6 +23,8 @@ func _ready():
 	spell1 = get_tree().get_root().get_node("Battle/HUD/Orbs/Spell1")
 	spell2 = get_tree().get_root().get_node("Battle/HUD/Orbs/Spell2")
 	spell3 = get_tree().get_root().get_node("Battle/HUD/Orbs/Spell3")
+	explic = get_tree().get_root().get_node("Battle/HUD/Explic")
+	explic.hide()
 	
 	set_fixed_process(true)
 func _fixed_process(delta):
@@ -143,4 +146,37 @@ func _on_Spell2_pressed():
 func _on_Spell3_pressed():
 	if gotTarget == 1:
 		grid.isSelected.get_child(2).usespell(2)
+	pass # replace with function body
+
+
+func _on_Spell1_mouse_enter():
+	explic.get_child(1).set_text(grid.isSelected.get_child(2).get_child(0).explic)
+	explic.show()
+	pass # replace with function body
+
+
+func _on_Spell1_mouse_exit():
+	explic.hide()
+	pass # replace with function body
+
+
+func _on_Spell2_mouse_enter():
+	explic.get_child(1).set_text(grid.isSelected.get_child(2).get_child(1).explic)
+	explic.show()
+	pass # replace with function body
+
+
+func _on_Spell2_mouse_exit():
+	explic.hide()
+	pass # replace with function body
+
+
+func _on_Spell3_mouse_enter():
+	explic.get_child(1).set_text(grid.isSelected.get_child(2).get_child(2).explic)
+	explic.show()
+	pass # replace with function body
+
+
+func _on_Spell3_mouse_exit():
+	explic.hide()
 	pass # replace with function body
