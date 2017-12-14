@@ -3,7 +3,7 @@ extends Node
 var rang
 var power
 var special
-var mode #1 DEF 2 ATK 3 MOVE RANGE
+var mode #1 DEF 2 ATK 3 MOVE RANGE para buffs, número de chains para chainable spells (shockbolt)
 var uses
 var isSelected
 var isTarget
@@ -22,23 +22,30 @@ func hocuspocus():
 	#primeiro checa se é special (Heal ou Buff, para AoE, Chain etc... ele checa depois)
 	if special == 1: #heal
 		spellAlly()
-		pass
+		
 	if special == 2: #buff de ataque ou defesa ou range
 		spellAlly()
-		pass
+		
 	else:
 		spellEnemy()
-		#em seguida, função checa se o alvo tá no range do spell
-		#se sim, dá o damage
 		if special == 3:
-#			AoE()
+			a = isTarget
+			var b = get_tree().get_root().get_node("Battle/Enemies").get_children()
+			for x in b:
+				if a != x:
+					AoE(a, x, rang/2, power)
 		#splash damage
-			pass
 		if special == 4:
+			a = isTarget
+			var b = get_tree().get_root().get_node("Battle/Enemies").get_children()
+			while mode > 0:
+				for x in b:
+					if a != x:
+						AoE(a, x, rang, power/2)
+						mode - 1
 			#chaina pra outra pessoa
-			pass
 			#
-		pass
+#		pass
 
 func spellEnemy():
 	if get_tree().get_root().get_node("Battle/KinematicBody/GridMap").dist(isSelected, isTarget) <= rang and isSelected.getAttack() == 1:
@@ -63,7 +70,7 @@ func AoE(base, a, subrang, subpower): #onde a é um inimigo, base é o quadrado 
 			a.queue_free()
 			a = 0
 	else:
-		print("Ataque falhou!")
+		print("Splash Damage Falhou!")
 	
 func spellAlly(): #onde a é um aliado
 	var a = get_tree().get_root().get_node("Battle/KinematicBody/GridMap").isTarget

@@ -4,9 +4,9 @@ extends "res://Spells.gd"
 # var a = 2
 # var b = "textvar"
 
-func _ready():
-	 rang = 100
-	 power = 10
+func _ready(): #Instakill Single Use for test purposes
+	 rang = 100 #Final range = 8
+	 power = 10 #Final power = 1
 	 special = 0
-	 mode = 0#1 DEF 2 ATK 3 MOVE RANGE
-	 uses = 3
+	 mode = 0
+	 uses = 1 #Final 5
