@@ -11,5 +11,8 @@ func _ready():
 
 
 func _on_Return_pressed():
-	get_tree().change_scene("res://MainMenu.tscn")
+	if get_node("Return").get_text().match("Voltar para o menu."):
+		get_tree().change_scene("res://MainMenu.tscn")
+	else:
+		get_tree().change_scene("res://AfterBattle1Cut.tscn")
 	pass # replace with function body

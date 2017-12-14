@@ -11,7 +11,7 @@ func _ready():
 
 
 func _on_MenuButton_pressed():
-	get_tree().change_scene("res://Battle.tscn")
+	get_tree().change_scene("res://BeforeBattle1Cut.tscn")
 	pass # replace with function body
 
 

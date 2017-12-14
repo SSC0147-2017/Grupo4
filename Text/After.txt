@@ -1,0 +1,54 @@
+﻿start_config|
+bg|
+small_village|
+left|
+alice_armed|
+right|
+rowan_armed|
+end_config|
+Alice: Ufa... eu não pensava que ele tinha reforços.|
+Ainda bem que nós tinhamos essas orbes.|
+Rowan: É, sem zoeira. Dois contra um a gente podia acabar com ele,|
+mas dois contra dois complica.|
+Felizmente esses marginais de baixo escalão não tem uma dessas.|
+Alice: Bem, agora só nos falta esperar o líder, mas o quê nós vamos fazer|
+com...|
+start_config|
+left|
+alice|
+end_config|
+Ei Rowan, olhe ali!|
+start_config|
+right|
+rowan|
+end_config|
+Rowan: Procura-se estagiária para vendedora, experiência necessária, não| 
+renumerado.|
+Alice: Não esse seu idiota, o outro!|
+Rowan: Procurado: Por roubo e coerção de cidadãos do Glorioso Império|
+de Gradivar Recompensa: 100 Moedas Imperiais.|
+Ei, esse cara no poster não é...|
+Alice: Difícil dizer com essa máscara, mas considerando o que acabou de|
+acontecer, quase certeza que é nosso novo amigo aqui.|
+Rowan: Quem diria. Nós aqui quase sendo vítimas de assalto, e no final nós...|
+É ISSO ALICE!|
+Alice: Sim, nós vamos poder comer bem pelo menos uma semana.|
+Rowan: Você está sonhando baixo demais, sua pamonha!|
+Só Deus sabe quanto tempo vai demorar até encontramos o Sr. e a Sra. Chester.|
+Até lá, dinheiro é indispensável.|
+Mas nós não temos treinamento formal algum, então uma profissão de artesão|
+está fora de cogitação.|
+Mas isso até nós podemos fazer!|
+Alice: Pamonha...! Ora seu... Calma Alice, respire fundo, não deixe o Rowan|
+te aborrecer.|
+Pois bem então Rowan Marthus, o que "até nós podemos fazer"?|
+Rowan: Caçar recompensas!|
+Agora me arranje três medidas de corda, Alice.|
+Quando o líder voltar nós vamos levar esses caras até a delegacia.|
+E depois disso, nós vamos discutir nossa nova guilda com o líder durante o|
+jantar tão generosamente providenciado pela guarda municipal de Arjal.|
+E nossos novos colegas de trabalho aqui, claro.|
+Alice: Com medo de saber onde isso vai acabar, eu tenho que perguntar... Que|
+tipo de guilda?|
+Rowan: Oras, uma de caçadores de recompensas, claro!|
+.|
