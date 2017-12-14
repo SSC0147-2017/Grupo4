@@ -11,3 +11,4 @@ func _ready():
 	 special = 3
 	 mode = 0
 	 uses = 2
+	 explic = "Ataque de longo alcance com splash damage"

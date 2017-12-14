@@ -11,3 +11,4 @@ func _ready():
 	 special = 4
 	 mode = 1#número de chains para chainable spell
 	 uses = 3
+	 explic = "Ataque que acerta 2 inimgios se eles estiverem próximos"
