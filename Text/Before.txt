@@ -1,0 +1,87 @@
+﻿start_config|
+bg|
+small_village|
+left|
+alice|
+right|
+rowan|
+end_config|
+Rowan: Finalmente a gente chegou, eu estava quase morrendo de tédio.| 
+Três dias de carruagem realmente põe em perspectiva quão fim de mundo nossa casa|
+realmente é.|
+Alice: Não entendo porque você está reclamando, você estava inconsciente|
+pelo menos metade do trajeto.|
+E na outra metade você ainda ficou jogando ""Eu espio com meu olhinho algo| 
+que começa com M"" com o líder.|
+Depois da décima sétima vez você acharia que um de vocês perceberia que|
+a resposta é sempre mato.|
+Rowan: Olha, você também acharia que ele tinha finalmente mudado a palavra depois|
+da quarta ou quinta rodada.|
+...A propósito, falando no líder, onde ele está?|
+Alice: Você esqueceu ou estava dormindo? Ele foi encontrar um lugar pra gente|
+ficar. Ou você quer dormir aqui fora, ao relento?|
+Rowan: Eu fico com o canto debaixo do telhado daquela casa.|
+Alice: Eu genuinamente não sei se você está fazendo palhaçada ou se você|
+realmente está animado para dormir na rua.|
+Rowan: Bem, piadas a parte, eu não sei quanto tempo vai demorar até a gente|
+encontrar os pais dele, e não é como se a gente tivesse alguma fonte de renda.|
+Qualquer medida que nós possamos tomar para cortar custos é uma boa medida,|
+mesmo que em pior caso tenhamos que dormir ao relento ou tomar banho|
+nas fontes.|
+Alice: Você está louco se acha que eu consigo viver sem tomar quatro banhos|
+ao dia!|
+Rowan: A madame por favor se contente com apenas dois ou nós vamos ter|
+que declarar falência antes do final da semana.|
+Alice: Qual é Rowan, o dinheiro que nós trouxemos é no mínimo o suficiente para|
+nós três ficarmos no mínimo um mês em uma pousada de luxo.|
+Quanto tempo você acha que vai demorar para encontrar os pais do...|
+Rowan: SHH! Olhe ao seu redor, você acha que isso é lá lugar para falar de|
+dinheiro, ainda mais nessa quantia?|
+Até parece que você quer que...|
+start_config|
+right|
+criminal|
+end_config|
+Criminoso: Olá crianças. Eu não pude deixar de ouvir a conversa de vocês.|
+start_config|
+left|
+rowan|
+end_config|
+Rowan: ...Isso aconteça...|
+Criminoso: Então, cadê o dinheiro para pagar ""Um mês de estadia para três em uma|
+pousada de luxo""?|
+Se vocês passarem para cá agora eu vou até poupar vocês de um sequestro.|
+Rowan: Olha cara, se você acha que eu, futuro capitão de cavaleiros vou me|
+curvar a um mero ladrão?|
+Um de quinta categoria que ameaça crianças de todas as coisas?|
+Você está severamente enganado.|
+Criminoso: Ora seu...|
+start_config|
+left|
+alice|
+end_config|
+Alice: Então essa é a capital? Você mal sai da estação e escória já começa a|
+chafurdar como se eles fossem os donos do lugar.|
+Os cavaleiros que você admira tanto não estão fazendo por merecer a armadura|
+deles, Rowan.|
+Criminoso: QUE SEJA, EU VOU TIRAR A BOLSA DE DINHEIRO DE VOCÊS DEPOIS DE|
+ENSINAR A VOCÊS PESTES UMA LIÇÃO.|
+Alice: Que seria?|
+start_config|
+right|
+criminal_armed|
+end_config|
+Criminoso: PENSEM DUAS VEZES ANTES DE AGRAVAR ALGUÉM ARMADO!|
+Alice: Nós poderíamos dizer o mesmo para você.|
+start_config|
+right|
+rowan_armed|
+end_config|
+Rowan: Pronta Alice?|
+start_config|
+left|
+alice_armed|
+end_config|
+Alice: Pronta.|
+Rowan: Hora de tirar o lixo!|
+.|
