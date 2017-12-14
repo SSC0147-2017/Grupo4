@@ -134,18 +134,24 @@ func _on_Orbs_pressed():
 func _on_Spell1_pressed():
 	if gotTarget == 1:
 		grid.isSelected.get_child(2).usespell(0)
+		explic.hide()
+		orbs.hide()
 	pass # replace with function body
 
 
 func _on_Spell2_pressed():
 	if gotTarget == 1:
 		grid.isSelected.get_child(2).usespell(1)
+		explic.hide()
+		orbs.hide()
 	pass # replace with function body
 
 
 func _on_Spell3_pressed():
 	if gotTarget == 1:
 		grid.isSelected.get_child(2).usespell(2)
+		explic.hide()
+		orbs.hide()
 	pass # replace with function body
 
 
