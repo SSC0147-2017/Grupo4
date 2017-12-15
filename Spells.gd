@@ -85,7 +85,7 @@ func AoE(base, a, subrang, subpower): #onde a é um inimigo, base é o quadrado 
 		if int(a.getHp()) <= 0:
 			get_tree().get_root().get_node("Battle/KinematicBody/GridMap").colMat[a.getPosX()][a.getPosZ()] = 0
 			a.queue_free()
-			aget_tree().get_root().get_node("Battle/KinematicBody/GridMap").target = 0
+			get_tree().get_root().get_node("Battle/KinematicBody/GridMap").target = 0
 	else:
 		print("Splash Damage Falhou!")
 	
