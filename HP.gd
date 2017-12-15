@@ -136,6 +136,7 @@ func _on_Spell1_pressed():
 		grid.isSelected.get_child(2).usespell(0)
 		explic.hide()
 		orbs.hide()
+		orbsPressed = 0
 	pass # replace with function body
 
 
@@ -144,6 +145,7 @@ func _on_Spell2_pressed():
 		grid.isSelected.get_child(2).usespell(1)
 		explic.hide()
 		orbs.hide()
+		orbsPressed = 0
 	pass # replace with function body
 
 
@@ -152,6 +154,7 @@ func _on_Spell3_pressed():
 		grid.isSelected.get_child(2).usespell(2)
 		explic.hide()
 		orbs.hide()
+		orbsPressed = 0
 	pass # replace with function body
 
 
