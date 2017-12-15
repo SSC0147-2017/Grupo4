@@ -68,7 +68,7 @@ margin/right = 40.0
 margin/bottom = 40.0
 stretch_mode = 0
 
-[node name="TextPanel" type="Panel" parent="."]
+[node name="TextPanel 2" type="Panel" parent="."]
 
 visibility/opacity = 0.7
 focus/ignore_mouse = false
@@ -81,47 +81,7 @@ margin/right = 995.0
 margin/bottom = 587.0
 script/script = ExtResource( 4 )
 
-[node name="Next" type="MenuButton" parent="TextPanel"]
-
-rect/scale = Vector2( 0.7, 0.7 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 821.0
-margin/top = 68.0
-margin/right = 1008.0
-margin/bottom = 120.0
-custom_fonts/font = ExtResource( 5 )
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 0
-shortcut = null
-text = "Próximo"
-flat = true
-items = [  ]
-
-[node name="Skip" type="MenuButton" parent="TextPanel"]
-
-rect/scale = Vector2( 0.7, 0.7 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 857.0
-margin/top = 31.0
-margin/right = 994.0
-margin/bottom = 83.0
-custom_fonts/font = ExtResource( 5 )
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 0
-shortcut = null
-text = "Pular"
-flat = true
-items = [  ]
-
-[node name="Text" type="Label" parent="TextPanel"]
+[node name="Text" type="Label" parent="TextPanel 2"]
 
 rect/scale = Vector2( 0.8, 0.8 )
 focus/ignore_mouse = true
@@ -130,7 +90,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 21.0
 margin/top = 8.0
-margin/right = 1016.0
+margin/right = 1017.0
 margin/bottom = 123.0
 custom_fonts/font = ExtResource( 5 )
 valign = 1
@@ -139,8 +99,42 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = 2
 
-[connection signal="pressed" from="TextPanel/Next" to="TextPanel" method="_on_Next_pressed"]
+[node name="Next" type="Button" parent="TextPanel 2"]
 
-[connection signal="pressed" from="TextPanel/Skip" to="TextPanel" method="_on_Skip_pressed"]
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 723.0
+margin/top = -57.0
+margin/right = 962.0
+margin/bottom = -5.0
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Próximo"
+flat = false
+
+[node name="Skip" type="Button" parent="TextPanel 2"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 471.0
+margin/top = -57.0
+margin/right = 710.0
+margin/bottom = -5.0
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Pular"
+flat = false
+
+[connection signal="pressed" from="TextPanel 2/Next" to="TextPanel 2" method="_on_Next_pressed"]
+
+[connection signal="pressed" from="TextPanel 2/Skip" to="TextPanel 2" method="_on_Skip_pressed"]
 
 

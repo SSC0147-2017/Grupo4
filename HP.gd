@@ -38,8 +38,10 @@ func _fixed_process(delta):
 		HUD.show()
 		if grid.isSelected.getAttack() == 0:
 			get_tree().get_root().get_node("Battle/HUD/Player/Attack").hide()
+			get_tree().get_root().get_node("Battle/HUD/Player/Orbs").hide()
 		else:
 			get_tree().get_root().get_node("Battle/HUD/Player/Attack").show()
+			get_tree().get_root().get_node("Battle/HUD/Player/Orbs").show()
 		if grid.isSelected.getMov() == 0:
 			get_tree().get_root().get_node("Battle/HUD/Player/Move").hide()
 		else:
