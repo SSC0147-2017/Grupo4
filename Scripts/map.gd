@@ -131,7 +131,7 @@ func _fixed_process(delta):
 		if turn == 1:
 			var vector = enemyTeam.get_children()
 			for a in vector:
-				if flarg == 0:
+				if flarg == 0 and turn == 1:
 					enemyAI(a)
 		if get_tree().get_root().get_node("Battle/Enemies").get_child_count() == 0:
 			get_tree().get_root().get_node("Battle/WinLosePanel").show()
