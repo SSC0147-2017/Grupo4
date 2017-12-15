@@ -13,3 +13,7 @@ func _ready():
 func _on_MenuButton_pressed():
 	Transition.fade_to("res://MainMenu.tscn")
 	pass # replace with function body
+	
+func _on_SecretButton_pressed():
+	Transition.fade_to("res://Battle2.tscn")
+	pass # replace with function body

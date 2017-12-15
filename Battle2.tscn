@@ -517,8 +517,8 @@ shape_count = 1
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
 shapes/0/trigger = false
-collision/layers = 2048
-collision/mask = 2048
+collision/layers = 1024
+collision/mask = 1024
 collide_with/static = false
 collide_with/kinematic = false
 collide_with/rigid = false
@@ -531,6 +531,68 @@ script/script = ExtResource( 9 )
 transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Enemy4" type="KinematicBody" parent="Enemies"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -2.91061, 4.6, -9.09289 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 8192
+collision/mask = 8192
+collide_with/static = false
+collide_with/kinematic = false
+collide_with/rigid = false
+collide_with/character = false
+collision/margin = 0.001
+script/script = ExtResource( 9 )
+
+[node name="Criminal" parent="Enemies/Enemy4" instance=ExtResource( 15 )]
+
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy4"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Enemy3" type="KinematicBody" parent="Enemies"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -9.15572, 4.6, -8.85227 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 4096
+collision/mask = 4096
+collide_with/static = false
+collide_with/kinematic = false
+collide_with/rigid = false
+collide_with/character = false
+collision/margin = 0.001
+script/script = ExtResource( 9 )
+
+[node name="Criminal" parent="Enemies/Enemy3" instance=ExtResource( 15 )]
+
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy3"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
@@ -1690,6 +1752,10 @@ max_lines_visible = -1
 [connection signal="input_event" from="Enemies/Enemy2" to="KinematicBody/GridMap" method="_on_Enemy2_input_event"]
 
 [connection signal="input_event" from="Enemies/Enemy1" to="KinematicBody/GridMap" method="_on_Enemy1_input_event"]
+
+[connection signal="input_event" from="Enemies/Enemy4" to="KinematicBody/GridMap" method="_on_Enemy4_input_event"]
+
+[connection signal="input_event" from="Enemies/Enemy3" to="KinematicBody/GridMap" method="_on_Enemy3_input_event"]
 
 [connection signal="pressed" from="WinLosePanel/Return" to="WinLosePanel" method="_on_Return_pressed"]
 
