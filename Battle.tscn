@@ -193,6 +193,10 @@ srgb/enabled = false
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
+[node name="Lights" type="Spatial" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
 [node name="HUD" parent="." instance=ExtResource( 1 )]
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
@@ -460,6 +464,7 @@ _update_shape_index = 0
 
 [node name="Orbs" type="Node" parent="Allies/Ally1"]
 
+editor/display_folded = true
 script/script = ExtResource( 11 )
 
 [node name="Spell1" type="Node" parent="Allies/Ally1/Orbs"]
@@ -473,6 +478,30 @@ script/script = ExtResource( 13 )
 [node name="Spell3" type="Node" parent="Allies/Ally1/Orbs"]
 
 script/script = ExtResource( 14 )
+
+[node name="Select" type="SpotLight" parent="Allies/Ally1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 0, 0, -8.74228e-09, 0.2, 0, 0.333333, 1.45705e-08, -0.00488193, 0.698655, -0.0396399 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 28.42
+colors/diffuse = Color( 0.0313725, 0.0873162, 0.682353, 1 )
+colors/specular = Color( 0.0156863, 0.0156863, 0.815686, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 5.69
+params/attenuation = 1.0
+params/spot_angle = 15.14
+params/spot_attenuation = 1.0
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -507,6 +536,30 @@ shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
+[node name="Select" type="SpotLight" parent="Enemies/Enemy2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.333333, -1.45705e-08, 0, 0.698655, 0 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 28.42
+colors/diffuse = Color( 0.898438, 0.00350952, 0.00350952, 1 )
+colors/specular = Color( 0.0156863, 0.0156863, 0.815686, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 5.69
+params/attenuation = 1.0
+params/spot_angle = 15.14
+params/spot_attenuation = 1.0
+
 [node name="Enemy1" type="KinematicBody" parent="Enemies"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -537,6 +590,30 @@ transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
+
+[node name="Select" type="SpotLight" parent="Enemies/Enemy1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.333333, -1.45705e-08, -0.0767175, 0.698655, -0.121972 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 28.42
+colors/diffuse = Color( 0.898438, 0.00350952, 0.00350952, 1 )
+colors/specular = Color( 0.0156863, 0.0156863, 0.815686, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 5.69
+params/attenuation = 1.0
+params/spot_angle = 15.14
+params/spot_attenuation = 1.0
 
 [node name="Obstructions" type="Node" parent="."]
 
