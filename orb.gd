@@ -22,8 +22,10 @@ func _ready():
 func usespell(i):
 	if charges[i] >= 1:
 		var ret = spell[i].hocuspocus() #usa o feitiço no primeiro slot da orb
-		print (ret)
 		if ret != 0:
 			charges[i] = charges[i] - 1
+			get_tree().get_root().get_node("Battle/KinematicBody/GridMap").isTarget.get_child(0).get_node("AnimationPlayer").play("DamageTake", -1, 1, false)
+			self.get_parent().get_child(0).get_node("AnimationPlayer").play("AttackSword", -1, 1, false)
+			
 	else: 
 		print("Você não pode mais usar esse feitiço durante essa batalha")
