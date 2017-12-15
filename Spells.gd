@@ -22,8 +22,7 @@ func hocuspocus():
 	var ret 
 	isSelected = get_tree().get_root().get_node("Battle/KinematicBody/GridMap").isSelected
 	isTarget = get_tree().get_root().get_node("Battle/KinematicBody/GridMap").isTarget
-	isSelected.get_child(0).get_node("AnimationPlayer").play("AttackSword", -1, 1, false)
-	isTarget.get_child(0).get_node("AnimationPlayer").play("DamageTake", -1, 1, false)
+	
 
 	#primeiro checa se é special (Heal ou Buff, para AoE, Chain etc... ele checa depois)
 	if special == 1: #heal

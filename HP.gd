@@ -137,6 +137,7 @@ func _on_Spell1_pressed():
 		explic.hide()
 		orbs.hide()
 		orbsPressed = 0
+		get_tree().get_root().get_node("Battle/HUD/Enemy").hide()
 	pass # replace with function body
 
 
@@ -146,6 +147,7 @@ func _on_Spell2_pressed():
 		explic.hide()
 		orbs.hide()
 		orbsPressed = 0
+		get_tree().get_root().get_node("Battle/HUD/Enemy").hide()
 	pass # replace with function body
 
 
@@ -155,6 +157,7 @@ func _on_Spell3_pressed():
 		explic.hide()
 		orbs.hide()
 		orbsPressed = 0
+		get_tree().get_root().get_node("Battle/HUD/Enemy").hide()
 	pass # replace with function body
 
 
