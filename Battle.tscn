@@ -197,7 +197,6 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.1251, 0 )
-visibility/visible = false
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 0
@@ -209,16 +208,38 @@ collide_with/rigid = false
 collide_with/character = false
 collision/margin = 0.001
 
-[node name="00" type="OmniLight" parent="Lights"]
+[node name="Ok" type="OmniLight" parent="Lights"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.09541, 0 )
 layers = 1
-params/enabled = true
+params/enabled = false
 params/editor_only = false
 params/bake_mode = 0
 params/energy = 1.0
-colors/diffuse = Color( 1, 1, 1, 1 )
+colors/diffuse = Color( 0.0987854, 0.972656, 0, 1 )
+colors/specular = Color( 1, 1, 1, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.001
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 2.0
+params/attenuation = 1.0
+
+[node name="Nope" type="OmniLight" parent="Lights"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.09541, 0 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 1.0
+colors/diffuse = Color( 0.964844, 0, 0, 1 )
 colors/specular = Color( 1, 1, 1, 1 )
 shadow/shadow = false
 shadow/darkening = 0.0

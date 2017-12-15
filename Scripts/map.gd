@@ -180,21 +180,37 @@ func attackEnemyAI(a, b):
 
 func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if selected == 1 and buttonMove == 1:
-#		var x = 
+		var x = click_pos.x
+		var z = click_pos.z
+		var xx = calc_pos(x)
+		var zz = calc_pos(z)
+		get_tree().get_root().get_node("Battle/Lights").move_to(Vector3(x, 11.1251, z))
+		if distGrid(isSelected,xx,zz)>isSelected.getMovDist():
+			get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(false)
+			get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(true)
+		else:
+			get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(true)
+			get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(false)
 		if isSelected.getMov() == 1 and event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			var posx = click_pos.x
 			var posz = click_pos.z
 			posx = calc_pos(posx)
 			posz = calc_pos(posz)
 			if distGrid(isSelected,posx,posz)>isSelected.getMovDist():
+				get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(false)
+				get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(false)
 				return 0
 			if(colMat[posx][posz]!=0):
+				get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(false)
+				get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(false)
 				return 0
 			
 			colMat[isSelected.getPosX()][isSelected.getPosZ()]=0;
 			isSelected.move_in_path(colMat,posx,posz)
 			isSelected.setMov(0)
 			buttonMove = 0
+			get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(false)
+			get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(false)
 	
 
 	pass # replace with function body

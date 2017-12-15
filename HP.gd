@@ -92,6 +92,8 @@ func _on_Pass_pressed():
 		grid.isTarget.get_child(3).set_enabled(false)
 	elif grid.target == 1 and grid.isTarget.get_parent().get_name() == "Enemies":
 		grid.isTarget.get_child(2).set_enabled(false)
+	get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(false)
+	get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(false)
 	grid.isSelected.setMov(0)
 	grid.isSelected.setAttack(0)
 	grid.allies = grid.allies - 1
