@@ -118,6 +118,7 @@ func _fixed_process(delta):
 				x.setMov(1)
 				x.setAttack(1)
 				x.usedSpell = 0
+				print(x.getPosX(), " ", x.getPosZ())
 			turn = 1
 		if enemies <= 0:
 			print ("Enemy Turn : ",turnNumber + 1)
@@ -157,7 +158,7 @@ func attackEnemy(a):
 			get_tree().get_root().get_node("Battle/HUD").enemy = 0
 			colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
 			isTarget.queue_free()
-			isTarget = 0
+			target = 0
 	else:
 		print("Ataque falhou!")
 		
@@ -173,13 +174,13 @@ func attackEnemyAI(a, b):
 		if int(b.getHp()) <= 0:
 			colMat[b.getPosX()][b.getPosZ()] = 0
 			b.queue_free()
-			b = 0
 	else:
 		print("Ataque falhou!")
 
 
 func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if selected == 1 and buttonMove == 1:
+#		var x = 
 		if isSelected.getMov() == 1 and event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			var posx = click_pos.x
 			var posz = click_pos.z
