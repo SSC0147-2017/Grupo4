@@ -538,118 +538,7 @@ shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Enemy4" type="KinematicBody" parent="Enemies"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -9.14386, 4.6, -8.38996 )
-input/ray_pickable = true
-input/capture_on_drag = false
-shape_count = 1
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
-shapes/0/trigger = false
-collision/layers = 2048
-collision/mask = 2048
-collide_with/static = false
-collide_with/kinematic = false
-collide_with/rigid = false
-collide_with/character = false
-collision/margin = 0.001
-script/script = ExtResource( 9 )
-
-[node name="Criminal" parent="Enemies/Enemy4" instance=ExtResource( 15 )]
-
-transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy4"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
-shape = SubResource( 5 )
-trigger = false
-_update_shape_index = 0
-
-[node name="Enemy3" type="KinematicBody" parent="Enemies"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -1.02988, 4.6, -1.37102 )
-input/ray_pickable = true
-input/capture_on_drag = false
-shape_count = 1
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
-shapes/0/trigger = false
-collision/layers = 2048
-collision/mask = 2048
-collide_with/static = false
-collide_with/kinematic = false
-collide_with/rigid = false
-collide_with/character = false
-collision/margin = 0.001
-script/script = ExtResource( 9 )
-
-[node name="Criminal" parent="Enemies/Enemy3" instance=ExtResource( 15 )]
-
-transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Enemies/Enemy3"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
-shape = SubResource( 5 )
-trigger = false
-_update_shape_index = 0
-
 [node name="Obstructions" type="Node" parent="."]
-
-[node name="Obstructure1" type="KinematicBody" parent="Obstructions"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 8.59727, 4.6, 5.19236 )
-input/ray_pickable = true
-input/capture_on_drag = false
-shape_count = 1
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
-shapes/0/trigger = false
-collision/layers = 524288
-collision/mask = 524288
-collide_with/static = true
-collide_with/kinematic = true
-collide_with/rigid = true
-collide_with/character = true
-collision/margin = 0.001
-script/script = ExtResource( 16 )
-
-[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure1"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
-layers = 1
-geometry/visible = true
-geometry/material_override = null
-geometry/cast_shadow = 1
-geometry/receive_shadows = true
-geometry/range_begin = 0.0
-geometry/range_end = 0.0
-geometry/extra_cull_margin = 0.0
-geometry/billboard = false
-geometry/billboard_y = false
-geometry/depth_scale = false
-geometry/visible_in_all_rooms = false
-geometry/use_baked_light = false
-geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
-mesh/skeleton = NodePath("..")
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure1"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
-shape = SubResource( 5 )
-trigger = false
-_update_shape_index = 0
 
 [node name="Obstructure11" type="KinematicBody" parent="Obstructions"]
 
@@ -704,7 +593,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, 8.84683, 4.6, -8.83709 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -775,7 +664,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 8.84683, 4.6, -6.85112 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -846,7 +735,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 6.85518, 4.6, -0.490117 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -939,7 +828,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 9.04279, 4.6, -0.490117 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -1032,7 +921,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 9.04279, 4.6, 9.5799 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -1125,7 +1014,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 7.09273, 4.6, 9.5799 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -1218,7 +1107,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 5.27382, 4.6, -0.490117 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -1801,10 +1690,6 @@ max_lines_visible = -1
 [connection signal="input_event" from="Enemies/Enemy2" to="KinematicBody/GridMap" method="_on_Enemy2_input_event"]
 
 [connection signal="input_event" from="Enemies/Enemy1" to="KinematicBody/GridMap" method="_on_Enemy1_input_event"]
-
-[connection signal="input_event" from="Enemies/Enemy4" to="KinematicBody/GridMap" method="_on_Enemy4_input_event"]
-
-[connection signal="input_event" from="Enemies/Enemy3" to="KinematicBody/GridMap" method="_on_Enemy3_input_event"]
 
 [connection signal="pressed" from="WinLosePanel/Return" to="WinLosePanel" method="_on_Return_pressed"]
 
