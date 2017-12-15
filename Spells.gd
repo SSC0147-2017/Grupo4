@@ -66,7 +66,7 @@ func spellEnemy():
 		if int(isTarget.getHp()) <= 0:
 			get_tree().get_root().get_node("Battle/KinematicBody/GridMap").colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
 			isTarget.queue_free()
-			isTarget = 0
+			get_tree().get_root().get_node("Battle/KinematicBody/GridMap").target = 0
 		return 1
 	else:
 		print("Ataque falhou!")

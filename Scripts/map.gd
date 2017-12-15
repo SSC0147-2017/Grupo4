@@ -348,6 +348,24 @@ func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 				target = 1
 				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
 	pass # replace with function body
+	
+func _on_Ally2_input_event( camera, event, click_pos, click_normal, shape_idx ):
+	if turn == 0:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 0:
+				isSelected = get_tree().get_root().get_node("Battle/Allies/Ally2")
+				selected = 1
+	if turn == 0 and targetAlly == 1:
+		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
+			if selected == 1:
+				if target == 1 and isTarget.get_parent().get_name() == "Allies":
+					isTarget.get_child(3).set_enabled(false)
+				elif target == 1 and isTarget.get_parent().get_name() == "Enemies":
+					isTarget.get_child(2).set_enabled(false)
+				isTarget = get_tree().get_root().get_node("Battle/Allies/Ally2")
+				target = 1
+				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
+	pass # replace with function body
 
 func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	get_tree().get_root().get_node("Battle/HUD/Enemy/EnemyHPValue").set_text(str(get_tree().get_root().get_node("Battle/Enemies/Enemy1").getHp()))
