@@ -486,6 +486,8 @@ shadow/zoffset_scale = 2.0
 
 [node name="Allies" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="Ally1" type="KinematicBody" parent="Allies"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -559,6 +561,8 @@ params/spot_angle = 15.14
 params/spot_attenuation = 1.0
 
 [node name="Enemies" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="Enemy2" type="KinematicBody" parent="Enemies"]
 
@@ -672,13 +676,11 @@ params/spot_attenuation = 1.0
 
 [node name="Obstructions" type="Node" parent="."]
 
-editor/display_folded = true
-
 [node name="Obstructure1" type="KinematicBody" parent="Obstructions"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, 0.8, 4.6, 5.19236 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -727,7 +729,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -6.93743, 4.6, 5.19236 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
