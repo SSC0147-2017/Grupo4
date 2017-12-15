@@ -45,7 +45,7 @@ func _ready():
 			 movDist = movDist - 1
 	anim = self.get_child(0).get_node("AnimationPlayer")
 	anim.play("Idle", -1, 1, false)
-	if self.get_child_count() == 3:
+	if self.get_child_count() == 4:
 		spellNumber = self.get_child(2).get_child_count()
 	pass
 
