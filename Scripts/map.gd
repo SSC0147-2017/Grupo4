@@ -131,7 +131,7 @@ func _fixed_process(delta):
 		if turn == 1:
 			var vector = enemyTeam.get_children()
 			for a in vector:
-				if flarg == 0:
+				if flarg == 0 and turn == 1:
 					enemyAI(a)
 		if get_tree().get_root().get_node("Battle/Enemies").get_child_count() == 0:
 			get_tree().get_root().get_node("Battle/WinLosePanel").show()
@@ -170,6 +170,11 @@ func attackEnemyAI(a, b):
 		b.anim.play("DamageTake", -1, 1, false)
 		print ("Vida agora: ",int(b.getHp()))
 		if int(b.getHp()) <= 0:
+			if get_tree().get_root().get_node("Battle/Allies").get_child_count() == 1:
+				turn = 1
+				get_tree().get_root().get_node("Battle/WinLosePanel").show()
+				get_tree().get_root().get_node("Battle/WinLosePanel/WinLoseLabel").set_text("VITÓRIA!")
+				get_tree().get_root().get_node("Battle/WinLosePanel/Return").set_text("Terminar batalha.")
 			colMat[b.getPosX()][b.getPosZ()] = 0
 			b.queue_free()
 			b = 0
