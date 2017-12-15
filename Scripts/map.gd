@@ -71,6 +71,7 @@ func _ready():
 func _input(event):
 	if event.type == InputEvent.KEY:
 		if event.is_action_pressed("ui_camera_N"):
+			printMat()
 			get_tree().get_root().get_node("Battle/Camera1").make_current()
 			get_tree().get_root().get_node("Battle/DirectionalLight").set_enabled(true)
 			get_tree().get_root().get_node("Battle/DirectionalLight1").set_enabled(false)
@@ -117,6 +118,7 @@ func _fixed_process(delta):
 				x.setMov(1)
 				x.setAttack(1)
 				x.usedSpell = 0
+				print(x.getPosX(), " ", x.getPosZ())
 			turn = 1
 		if enemies <= 0:
 			print ("Enemy Turn : ",turnNumber + 1)
@@ -156,7 +158,7 @@ func attackEnemy(a):
 			get_tree().get_root().get_node("Battle/HUD").enemy = 0
 			colMat[isTarget.getPosX()][isTarget.getPosZ()] = 0
 			isTarget.queue_free()
-			isTarget = 0
+			target = 0
 	else:
 		print("Ataque falhou!")
 		
@@ -172,27 +174,43 @@ func attackEnemyAI(a, b):
 		if int(b.getHp()) <= 0:
 			colMat[b.getPosX()][b.getPosZ()] = 0
 			b.queue_free()
-			b = 0
 	else:
 		print("Ataque falhou!")
 
 
 func _on_KinematicBody_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if selected == 1 and buttonMove == 1:
+		var x = click_pos.x
+		var z = click_pos.z
+		var xx = calc_pos(x)
+		var zz = calc_pos(z)
+		get_tree().get_root().get_node("Battle/Lights").move_to(Vector3(x, 11.1251, z))
+		if distGrid(isSelected,xx,zz)>isSelected.getMovDist():
+			get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(false)
+			get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(true)
+		else:
+			get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(true)
+			get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(false)
 		if isSelected.getMov() == 1 and event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			var posx = click_pos.x
 			var posz = click_pos.z
 			posx = calc_pos(posx)
 			posz = calc_pos(posz)
 			if distGrid(isSelected,posx,posz)>isSelected.getMovDist():
+				get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(false)
+				get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(false)
 				return 0
 			if(colMat[posx][posz]!=0):
+				get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(false)
+				get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(false)
 				return 0
 			
 			colMat[isSelected.getPosX()][isSelected.getPosZ()]=0;
 			isSelected.move_in_path(colMat,posx,posz)
 			isSelected.setMov(0)
 			buttonMove = 0
+			get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(false)
+			get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(false)
 	
 
 	pass # replace with function body
@@ -322,6 +340,10 @@ func _on_Ally1_input_event( camera, event, click_pos, click_normal, shape_idx ):
 	if turn == 0 and targetAlly == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
+				if target == 1 and isTarget.get_parent().get_name() == "Allies":
+					isTarget.get_child(3).set_enabled(false)
+				elif target == 1 and isTarget.get_parent().get_name() == "Enemies":
+					isTarget.get_child(2).set_enabled(false)
 				isTarget = get_tree().get_root().get_node("Battle/Allies/Ally1")
 				target = 1
 				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
@@ -342,6 +364,10 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 	if turn == 0 and buttonAttack == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
+				if target == 1 and isTarget.get_parent().get_name() == "Allies":
+					isTarget.get_child(3).set_enabled(false)
+				elif target == 1 and isTarget.get_parent().get_name() == "Enemies":
+					isTarget.get_child(2).set_enabled(false)
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy1")
 				target = 1
 				attackEnemy("Aliado atacou")
@@ -349,6 +375,10 @@ func _on_Enemy1_input_event( camera, event, click_pos, click_normal, shape_idx )
 	elif turn == 0 and buttonSpell == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
+				if target == 1 and isTarget.get_parent().get_name() == "Allies":
+					isTarget.get_child(3).set_enabled(false)
+				elif target == 1 and isTarget.get_parent().get_name() == "Enemies":
+					isTarget.get_child(2).set_enabled(false)
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy1")
 				target = 1
 				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
@@ -367,6 +397,10 @@ func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx )
 	if turn == 0 and buttonAttack == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
+				if target == 1 and isTarget.get_parent().get_name() == "Allies":
+					isTarget.get_child(3).set_enabled(false)
+				elif target == 1 and isTarget.get_parent().get_name() == "Enemies":
+					isTarget.get_child(2).set_enabled(false)
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
 				target = 1
 				attackEnemy("Aliado atacou")
@@ -374,6 +408,10 @@ func _on_Enemy2_input_event( camera, event, click_pos, click_normal, shape_idx )
 	elif turn == 0 and buttonSpell == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
+				if target == 1 and isTarget.get_parent().get_name() == "Allies":
+					isTarget.get_child(3).set_enabled(false)
+				elif target == 1 and isTarget.get_parent().get_name() == "Enemies":
+					isTarget.get_child(2).set_enabled(false)
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy2")
 				target = 1
 				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
@@ -392,6 +430,10 @@ func _on_Enemy3_input_event( camera, event, click_pos, click_normal, shape_idx )
 	if turn == 0 and buttonAttack == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
+				if target == 1 and isTarget.get_parent().get_name() == "Allies":
+					isTarget.get_child(3).set_enabled(false)
+				elif target == 1 and isTarget.get_parent().get_name() == "Enemies":
+					isTarget.get_child(2).set_enabled(false)
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy3")
 				target = 1
 				attackEnemy("Aliado atacou")
@@ -399,6 +441,10 @@ func _on_Enemy3_input_event( camera, event, click_pos, click_normal, shape_idx )
 	elif turn == 0 and buttonSpell == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
+				if target == 1 and isTarget.get_parent().get_name() == "Allies":
+					isTarget.get_child(3).set_enabled(false)
+				elif target == 1 and isTarget.get_parent().get_name() == "Enemies":
+					isTarget.get_child(2).set_enabled(false)
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy3")
 				target = 1
 				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1
@@ -418,6 +464,10 @@ func _on_Enemy4_input_event( camera, event, click_pos, click_normal, shape_idx )
 	if turn == 0 and buttonAttack == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
+				if target == 1 and isTarget.get_parent().get_name() == "Allies":
+					isTarget.get_child(3).set_enabled(false)
+				elif target == 1 and isTarget.get_parent().get_name() == "Enemies":
+					isTarget.get_child(2).set_enabled(false)
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy4")
 				target = 1
 				attackEnemy("Aliado atacou")
@@ -425,6 +475,10 @@ func _on_Enemy4_input_event( camera, event, click_pos, click_normal, shape_idx )
 	elif turn == 0 and buttonSpell == 1:
 		if event.type == InputEvent.MOUSE_BUTTON and event.button_index == 1 and event.is_pressed():
 			if selected == 1:
+				if target == 1 and isTarget.get_parent().get_name() == "Allies":
+					isTarget.get_child(3).set_enabled(false)
+				elif target == 1 and isTarget.get_parent().get_name() == "Enemies":
+					isTarget.get_child(2).set_enabled(false)
 				isTarget = get_tree().get_root().get_node("Battle/Enemies/Enemy4")
 				target = 1
 				get_tree().get_root().get_node("Battle/HUD").gotTarget = 1

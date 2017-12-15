@@ -193,6 +193,65 @@ srgb/enabled = false
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
+[node name="Lights" type="KinematicBody" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.9227, 0 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 0
+collision/layers = 1
+collision/mask = 1
+collide_with/static = false
+collide_with/kinematic = false
+collide_with/rigid = false
+collide_with/character = false
+collision/margin = 0.001
+
+[node name="Ok" type="OmniLight" parent="Lights"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.09541, 0 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 1.0
+colors/diffuse = Color( 0.0980392, 0.972549, 0, 1 )
+colors/specular = Color( 1, 1, 1, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.001
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 2.0
+params/attenuation = 1.0
+
+[node name="Nope" type="OmniLight" parent="Lights"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.09541, 0 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 1.0
+colors/diffuse = Color( 0.964706, 0, 0, 1 )
+colors/specular = Color( 1, 1, 1, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.001
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 2.0
+params/attenuation = 1.0
+
 [node name="HUD" parent="." instance=ExtResource( 1 )]
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
@@ -460,6 +519,7 @@ _update_shape_index = 0
 
 [node name="Orbs" type="Node" parent="Allies/Ally1"]
 
+editor/display_folded = true
 script/script = ExtResource( 11 )
 
 [node name="Spell1" type="Node" parent="Allies/Ally1/Orbs"]
@@ -473,6 +533,30 @@ script/script = ExtResource( 13 )
 [node name="Spell3" type="Node" parent="Allies/Ally1/Orbs"]
 
 script/script = ExtResource( 14 )
+
+[node name="Select" type="SpotLight" parent="Allies/Ally1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, -0.004882, 0.698655, -0.03964 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 28.42
+colors/diffuse = Color( 0.027451, 0.0862745, 0.682353, 1 )
+colors/specular = Color( 0.0156863, 0.0156863, 0.811765, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 5.69
+params/attenuation = 1.0
+params/spot_angle = 15.14
+params/spot_attenuation = 1.0
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -507,6 +591,30 @@ shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
+[node name="Select" type="SpotLight" parent="Enemies/Enemy2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 7.54979e-08, 1, 0, 1, -7.54979e-08, 0, 0.698655, -0.046004 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 28.42
+colors/diffuse = Color( 0.898039, 0, 0, 1 )
+colors/specular = Color( 0.0156863, 0.0156863, 0.811765, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 5.69
+params/attenuation = 1.0
+params/spot_angle = 15.14
+params/spot_attenuation = 1.0
+
 [node name="Enemy1" type="KinematicBody" parent="Enemies"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
@@ -517,8 +625,8 @@ shape_count = 1
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
 shapes/0/trigger = false
-collision/layers = 2048
-collision/mask = 2048
+collision/layers = 1024
+collision/mask = 1024
 collide_with/static = false
 collide_with/kinematic = false
 collide_with/rigid = false
@@ -538,18 +646,42 @@ shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
+[node name="Select" type="SpotLight" parent="Enemies/Enemy1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 7.54979e-08, 1, 0, 1, -7.54979e-08, 0.0418484, 0.698655, -0.0268434 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 28.42
+colors/diffuse = Color( 0.898039, 0, 0, 1 )
+colors/specular = Color( 0.0156863, 0.0156863, 0.811765, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 5.69
+params/attenuation = 1.0
+params/spot_angle = 15.14
+params/spot_attenuation = 1.0
+
 [node name="Enemy4" type="KinematicBody" parent="Enemies"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -9.14386, 4.6, -8.38996 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -2.91061, 4.6, -9.09289 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
 shapes/0/trigger = false
-collision/layers = 2048
-collision/mask = 2048
+collision/layers = 8192
+collision/mask = 8192
 collide_with/static = false
 collide_with/kinematic = false
 collide_with/rigid = false
@@ -569,18 +701,42 @@ shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
+[node name="Select" type="SpotLight" parent="Enemies/Enemy4"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 7.54979e-08, 1, 0, 1, -7.54979e-08, 0.00152916, 0.698655, -0.0272286 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 28.42
+colors/diffuse = Color( 0.898039, 0, 0, 1 )
+colors/specular = Color( 0.0156863, 0.0156863, 0.811765, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 5.69
+params/attenuation = 1.0
+params/spot_angle = 15.14
+params/spot_attenuation = 1.0
+
 [node name="Enemy3" type="KinematicBody" parent="Enemies"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -1.02988, 4.6, -1.37102 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, 3, -9.15572, 4.6, -8.85227 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
 shapes/0/trigger = false
-collision/layers = 2048
-collision/mask = 2048
+collision/layers = 4096
+collision/mask = 4096
 collide_with/static = false
 collide_with/kinematic = false
 collide_with/rigid = false
@@ -600,56 +756,31 @@ shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Obstructions" type="Node" parent="."]
-
-[node name="Obstructure1" type="KinematicBody" parent="Obstructions"]
+[node name="Select" type="SpotLight" parent="Enemies/Enemy3"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 2, 0, 0, 0, 3, 0, 0, 0, 2, 8.59727, 4.6, 5.19236 )
-input/ray_pickable = true
-input/capture_on_drag = false
-shape_count = 1
-shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
-shapes/0/trigger = false
-collision/layers = 524288
-collision/mask = 524288
-collide_with/static = true
-collide_with/kinematic = true
-collide_with/rigid = true
-collide_with/character = true
-collision/margin = 0.001
-script/script = ExtResource( 16 )
-
-[node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure1"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.333333, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.333333, 0, -0.251848, 0 )
+transform/local = Transform( 1, 0, 0, 0, 7.54979e-08, 1, 0, 1, -7.54979e-08, 0.0593998, 0.698655, -0.107435 )
 layers = 1
-geometry/visible = true
-geometry/material_override = null
-geometry/cast_shadow = 1
-geometry/receive_shadows = true
-geometry/range_begin = 0.0
-geometry/range_end = 0.0
-geometry/extra_cull_margin = 0.0
-geometry/billboard = false
-geometry/billboard_y = false
-geometry/depth_scale = false
-geometry/visible_in_all_rooms = false
-geometry/use_baked_light = false
-geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
-mesh/skeleton = NodePath("..")
-material/0 = null
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 28.42
+colors/diffuse = Color( 0.898039, 0, 0, 1 )
+colors/specular = Color( 0.0156863, 0.0156863, 0.811765, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 5.69
+params/attenuation = 1.0
+params/spot_angle = 15.14
+params/spot_attenuation = 1.0
 
-[node name="CollisionShape" type="CollisionShape" parent="Obstructions/Obstructure1"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
-shape = SubResource( 5 )
-trigger = false
-_update_shape_index = 0
+[node name="Obstructions" type="Node" parent="."]
 
 [node name="Obstructure11" type="KinematicBody" parent="Obstructions"]
 
@@ -704,7 +835,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 5, 0, 0, 0, 2, 8.84683, 4.6, -8.83709 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -775,7 +906,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 8.84683, 4.6, -6.85112 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -846,7 +977,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 6.85518, 4.6, -0.490117 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -939,7 +1070,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 9.04279, 4.6, -0.490117 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -1032,7 +1163,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 9.04279, 4.6, 9.5799 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -1125,7 +1256,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 7.09273, 4.6, 9.5799 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
@@ -1218,7 +1349,7 @@ _update_shape_index = 0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 5.27382, 4.6, -0.490117 )
-input/ray_pickable = true
+input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )

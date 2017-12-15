@@ -29,6 +29,11 @@ func _ready():
 	set_fixed_process(true)
 func _fixed_process(delta):
 	if grid.selected == 1:
+		grid.isSelected.get_child(3).set_enabled(true)
+		if grid.target == 1 and grid.isTarget.get_parent().get_name() == "Allies":
+			grid.isTarget.get_child(3).set_enabled(true)
+		elif grid.target == 1 and grid.isTarget.get_parent().get_name() == "Enemies":
+			grid.isTarget.get_child(2).set_enabled(true)
 		HP.set_text(str(grid.isSelected.getHp()))
 		HUD.show()
 		if grid.isSelected.getAttack() == 0:
@@ -56,6 +61,7 @@ func _fixed_process(delta):
 	else:
 		HUD.hide()
 		orbs.hide()
+		
 	if enemy == 1:
 		get_tree().get_root().get_node("Battle/HUD/Enemy").show()
 	else:
@@ -81,6 +87,13 @@ func _on_Attack_pressed():
 
 
 func _on_Pass_pressed():
+	grid.isSelected.get_child(3).set_enabled(false)
+	if grid.target == 1 and grid.isTarget.get_parent().get_name() == "Allies":
+		grid.isTarget.get_child(3).set_enabled(false)
+	elif grid.target == 1 and grid.isTarget.get_parent().get_name() == "Enemies":
+		grid.isTarget.get_child(2).set_enabled(false)
+	get_tree().get_root().get_node("Battle/Lights/Ok").set_enabled(false)
+	get_tree().get_root().get_node("Battle/Lights/Nope").set_enabled(false)
 	grid.isSelected.setMov(0)
 	grid.isSelected.setAttack(0)
 	grid.allies = grid.allies - 1
