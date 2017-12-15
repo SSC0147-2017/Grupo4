@@ -11,4 +11,4 @@ func _ready(): #Instakill Single Use for test purposes
 	special = 0
 	mode = 0
 	uses = 5 #Final 5
-	explic = "Ataque mágico fraco, mas com longo alcance"
+	explic = "Ataque mágico fraco, mas com longo alcance (8 quadrados)"

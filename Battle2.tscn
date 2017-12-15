@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=1]
+[gd_scene load_steps=29 format=1]
 
 [ext_resource path="res://HP.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Converted/Models/Terrain/Meshes.tres" type="MeshLibrary" id=2]
@@ -14,13 +14,14 @@
 [ext_resource path="res://Scripts/Shield.gd" type="Script" id=12]
 [ext_resource path="res://Scripts/Faster.gd" type="Script" id=13]
 [ext_resource path="res://Scripts/Shockbolt.gd" type="Script" id=14]
-[ext_resource path="res://Converted/Models/Enemies/Criminal2.scn" type="PackedScene" id=15]
-[ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=16]
-[ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=17]
-[ext_resource path="res://Source/Music/Földhullám.ogg" type="AudioStream" id=18]
-[ext_resource path="res://Source/Background/back.cube" type="CubeMap" id=19]
-[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=20]
-[ext_resource path="res://WinLosePanel.gd" type="Script" id=21]
+[ext_resource path="res://Converted/Models/Allies/MCF2.scn" type="PackedScene" id=15]
+[ext_resource path="res://Converted/Models/Enemies/Criminal2.scn" type="PackedScene" id=16]
+[ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=17]
+[ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=18]
+[ext_resource path="res://Source/Music/Földhullám.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Source/Background/back.cube" type="CubeMap" id=20]
+[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=21]
+[ext_resource path="res://WinLosePanel.gd" type="Script" id=22]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -152,7 +153,7 @@ ambient_light/energy = 1.0
 fxaa/enabled = false
 background/mode = 4
 background/color = Color( 0, 0, 0, 1 )
-background/cubemap = ExtResource( 19 )
+background/cubemap = ExtResource( 20 )
 background/energy = 1.0
 background/scale = 1.0
 background/glow = 0.0
@@ -558,6 +559,96 @@ params/attenuation = 1.0
 params/spot_angle = 15.14
 params/spot_attenuation = 1.0
 
+[node name="Ally2" type="KinematicBody" parent="Allies"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 3, 0, 0, 0, 5, 0, 0, 0, -3, -2.94357, 4.6, 9 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collide_with/static = false
+collide_with/kinematic = false
+collide_with/rigid = false
+collide_with/character = false
+collision/margin = 0.001
+script/script = ExtResource( 9 )
+
+[node name="MCF2" type="MeshInstance" parent="Allies/Ally2" instance=ExtResource( 15 )]
+
+_import_path = NodePath(".")
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.273594, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = null
+mesh/skeleton = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Allies/Ally2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.331147, 0, 1.77636e-15, 0, 0.3, 0, -1.77636e-15, 0, 0.331147, 0, 0.0644534, 0 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Orbs" type="Node" parent="Allies/Ally2"]
+
+editor/display_folded = true
+script/script = ExtResource( 11 )
+
+[node name="Spell1" type="Node" parent="Allies/Ally2/Orbs"]
+
+script/script = ExtResource( 12 )
+
+[node name="Spell2" type="Node" parent="Allies/Ally2/Orbs"]
+
+script/script = ExtResource( 13 )
+
+[node name="Spell3" type="Node" parent="Allies/Ally2/Orbs"]
+
+script/script = ExtResource( 14 )
+
+[node name="Select" type="SpotLight" parent="Allies/Ally2"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, -0.004882, 0.698655, -0.03964 )
+layers = 1
+params/enabled = false
+params/editor_only = false
+params/bake_mode = 0
+params/energy = 28.42
+colors/diffuse = Color( 0.027451, 0.0862745, 0.682353, 1 )
+colors/specular = Color( 0.0156863, 0.0156863, 0.811765, 1 )
+shadow/shadow = false
+shadow/darkening = 0.0
+shadow/z_offset = 0.05
+shadow/z_slope_scale = 0.0
+shadow/esm_multiplier = 60.0
+shadow/blur_passes = 1.0
+projector = null
+operator = 0
+params/radius = 5.69
+params/attenuation = 1.0
+params/spot_angle = 15.14
+params/spot_attenuation = 1.0
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy2" type="KinematicBody" parent="Enemies"]
@@ -579,7 +670,7 @@ collide_with/character = false
 collision/margin = 0.001
 script/script = ExtResource( 9 )
 
-[node name="Criminal" parent="Enemies/Enemy2" instance=ExtResource( 15 )]
+[node name="Criminal" parent="Enemies/Enemy2" instance=ExtResource( 16 )]
 
 transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
 
@@ -634,7 +725,7 @@ collide_with/character = false
 collision/margin = 0.001
 script/script = ExtResource( 9 )
 
-[node name="Criminal" parent="Enemies/Enemy1" instance=ExtResource( 15 )]
+[node name="Criminal" parent="Enemies/Enemy1" instance=ExtResource( 16 )]
 
 transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
 
@@ -689,7 +780,7 @@ collide_with/character = false
 collision/margin = 0.001
 script/script = ExtResource( 9 )
 
-[node name="Criminal" parent="Enemies/Enemy4" instance=ExtResource( 15 )]
+[node name="Criminal" parent="Enemies/Enemy4" instance=ExtResource( 16 )]
 
 transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
 
@@ -744,7 +835,7 @@ collide_with/character = false
 collision/margin = 0.001
 script/script = ExtResource( 9 )
 
-[node name="Criminal" parent="Enemies/Enemy3" instance=ExtResource( 15 )]
+[node name="Criminal" parent="Enemies/Enemy3" instance=ExtResource( 16 )]
 
 transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
 
@@ -799,7 +890,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure11"]
 
@@ -819,7 +910,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -848,7 +939,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="BigRock1" type="MeshInstance" parent="Obstructions/LongRocks"]
 
@@ -868,7 +959,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -890,7 +981,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -919,7 +1010,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="SmallRock1" type="MeshInstance" parent="Obstructions/SmallRocks"]
 
@@ -939,7 +1030,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -961,7 +1052,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -990,7 +1081,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="SmallRock1" type="MeshInstance" parent="Obstructions/BunchOfRocks"]
 
@@ -1010,7 +1101,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1032,7 +1123,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1054,7 +1145,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1083,7 +1174,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="SmallRock1" type="MeshInstance" parent="Obstructions/BunchOfRocks1"]
 
@@ -1103,7 +1194,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1125,7 +1216,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1147,7 +1238,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1176,7 +1267,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="SmallRock1" type="MeshInstance" parent="Obstructions/BunchOfRocks3"]
 
@@ -1196,7 +1287,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1218,7 +1309,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1240,7 +1331,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1269,7 +1360,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="SmallRock1" type="MeshInstance" parent="Obstructions/BunchOfRocks4"]
 
@@ -1289,7 +1380,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1311,7 +1402,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1333,7 +1424,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1362,7 +1453,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="SmallRock1" type="MeshInstance" parent="Obstructions/BunchOfRocks2"]
 
@@ -1382,7 +1473,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1404,7 +1495,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1426,7 +1517,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1455,7 +1546,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure8"]
 
@@ -1475,7 +1566,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1504,7 +1595,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure6"]
 
@@ -1524,7 +1615,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1553,7 +1644,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure7"]
 
@@ -1573,7 +1664,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1602,7 +1693,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure5"]
 
@@ -1622,7 +1713,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1651,7 +1742,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure4"]
 
@@ -1671,7 +1762,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1700,7 +1791,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure3"]
 
@@ -1720,7 +1811,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1749,7 +1840,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 16 )
+script/script = ExtResource( 17 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure2"]
 
@@ -1769,7 +1860,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 17 )
+mesh/mesh = ExtResource( 18 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -1783,7 +1874,7 @@ _update_shape_index = 0
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 18 )
+stream/stream = ExtResource( 19 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 9.0
@@ -1819,7 +1910,7 @@ margin/left = 30.0
 margin/top = 46.0
 margin/right = 205.0
 margin/bottom = 92.0
-custom_fonts/font = ExtResource( 20 )
+custom_fonts/font = ExtResource( 21 )
 text = "Turno 0"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1836,7 +1927,7 @@ margin/left = 65.0
 margin/top = 11.0
 margin/right = 240.0
 margin/bottom = 57.0
-custom_fonts/font = ExtResource( 20 )
+custom_fonts/font = ExtResource( 21 )
 text = "Aliados"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1853,7 +1944,7 @@ margin/left = 345.0
 margin/top = 182.0
 margin/right = 681.0
 margin/bottom = 366.0
-script/script = ExtResource( 21 )
+script/script = ExtResource( 22 )
 
 [node name="Return" type="MenuButton" parent="WinLosePanel"]
 
@@ -1866,7 +1957,7 @@ margin/left = 52.0
 margin/top = 117.0
 margin/right = 514.0
 margin/bottom = 169.0
-custom_fonts/font = ExtResource( 20 )
+custom_fonts/font = ExtResource( 21 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -1885,7 +1976,7 @@ margin/left = 71.0
 margin/top = 48.0
 margin/right = 271.0
 margin/bottom = 94.0
-custom_fonts/font = ExtResource( 20 )
+custom_fonts/font = ExtResource( 21 )
 text = "VITÓRIA!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -1912,7 +2003,7 @@ margin/left = 25.0
 margin/top = 22.0
 margin/right = 928.0
 margin/bottom = 317.0
-custom_fonts/font = ExtResource( 20 )
+custom_fonts/font = ExtResource( 21 )
 text = "Botão esquerdo do mouse: realiza ações ao clicar no personagem
 
 W, S, A, D: muda a direção da câmera

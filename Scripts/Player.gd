@@ -9,7 +9,7 @@ var mov = 1 #Se pode mover
 var movDist = 3 #Quanto ele pode se mover
 var attack = 1 #Se pode atacar
 var attackDist = 1
-var dmg = 1 #Dano do ataque
+var dmg = 2 #Dano do ataque
 
 var moving = 0
 var movStart = 0
