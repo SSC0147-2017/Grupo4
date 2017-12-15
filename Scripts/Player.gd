@@ -51,7 +51,7 @@ func _ready():
 
 func _fixed_process(delta):
 	if moving == 1 and sec > 0:
-		move(Vector3(dirX,0,dirZ) * delta * 2/sqrt(pow(dirX, 2) + pow(dirZ, 2)))
+		move(Vector3(dirX,0,dirZ) * delta * 4/sqrt(pow(dirX, 2) + pow(dirZ, 2)))
 		sec = sec - delta
 	if sec <= 0:
 		moving = 0
@@ -80,7 +80,7 @@ func _fixed_process(delta):
 		dirX = prevx - posx
 		dirZ = prevz - posz
 		var Distancia = sqrt(pow(dirX, 2) + pow(dirZ, 2))
-		wait(Distancia)
+		wait(Distancia/2)
 		moving = 1
 		rotate(prevx,prevz)
 		it = it + 1
