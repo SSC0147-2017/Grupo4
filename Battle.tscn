@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=1]
+[gd_scene load_steps=30 format=1]
 
 [ext_resource path="res://HP.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Converted/Models/Terrain/Meshes.tres" type="MeshLibrary" id=2]
@@ -13,15 +13,16 @@
 [ext_resource path="res://orb.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/Shield.gd" type="Script" id=12]
 [ext_resource path="res://Scripts/Faster.gd" type="Script" id=13]
-[ext_resource path="res://Scripts/MagicMissile.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/Shockbolt.gd" type="Script" id=14]
 [ext_resource path="res://Converted/Models/Allies/MCF2.scn" type="PackedScene" id=15]
-[ext_resource path="res://Converted/Models/Enemies/Criminal2.scn" type="PackedScene" id=16]
-[ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=17]
-[ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=18]
-[ext_resource path="res://Source/Music/Földhullám.ogg" type="AudioStream" id=19]
-[ext_resource path="res://Source/Background/back.cube" type="CubeMap" id=20]
-[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=21]
-[ext_resource path="res://WinLosePanel.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/Fireball.gd" type="Script" id=16]
+[ext_resource path="res://Converted/Models/Enemies/Criminal2.scn" type="PackedScene" id=17]
+[ext_resource path="res://Scripts/Obstruction.gd" type="Script" id=18]
+[ext_resource path="res://Converted/Models/Terrain/Rock.msh" type="Mesh" id=19]
+[ext_resource path="res://Source/Music/Földhullám.ogg" type="AudioStream" id=20]
+[ext_resource path="res://Source/Background/back.cube" type="CubeMap" id=21]
+[ext_resource path="res://Source/OxygenMono-Regular.fnt" type="BitmapFont" id=22]
+[ext_resource path="res://WinLosePanel.gd" type="Script" id=23]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -153,7 +154,7 @@ ambient_light/energy = 1.0
 fxaa/enabled = false
 background/mode = 4
 background/color = Color( 0, 0, 0, 1 )
-background/cubemap = ExtResource( 20 )
+background/cubemap = ExtResource( 21 )
 background/energy = 1.0
 background/scale = 1.0
 background/glow = 0.0
@@ -621,7 +622,7 @@ script/script = ExtResource( 13 )
 
 [node name="Spell3" type="Node" parent="Allies/Ally2/Orbs"]
 
-script/script = ExtResource( 14 )
+script/script = ExtResource( 16 )
 
 [node name="Select" type="SpotLight" parent="Allies/Ally2"]
 
@@ -668,7 +669,7 @@ collide_with/character = false
 collision/margin = 0.001
 script/script = ExtResource( 9 )
 
-[node name="Criminal" parent="Enemies/Enemy2" instance=ExtResource( 16 )]
+[node name="Criminal" parent="Enemies/Enemy2" instance=ExtResource( 17 )]
 
 transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
 
@@ -723,7 +724,7 @@ collide_with/character = false
 collision/margin = 0.001
 script/script = ExtResource( 9 )
 
-[node name="Criminal" parent="Enemies/Enemy1" instance=ExtResource( 16 )]
+[node name="Criminal" parent="Enemies/Enemy1" instance=ExtResource( 17 )]
 
 transform/local = Transform( 0.333333, 0, 0, 0, 0.2, 0, 0, 0, 0.333333, 0, -0.287266, 0 )
 
@@ -778,7 +779,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 17 )
+script/script = ExtResource( 18 )
 
 [node name="Rock" type="MeshInstance" parent="Obstructions/Obstructure1"]
 
@@ -798,7 +799,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 18 )
+mesh/mesh = ExtResource( 19 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -827,7 +828,7 @@ collide_with/kinematic = true
 collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
-script/script = ExtResource( 17 )
+script/script = ExtResource( 18 )
 
 [node name="LongGayRock" type="MeshInstance" parent="Obstructions/Obstructure2"]
 
@@ -847,7 +848,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = ExtResource( 18 )
+mesh/mesh = ExtResource( 19 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
@@ -861,7 +862,7 @@ _update_shape_index = 0
 
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 19 )
+stream/stream = ExtResource( 20 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 9.0
@@ -897,7 +898,7 @@ margin/left = 30.0
 margin/top = 46.0
 margin/right = 205.0
 margin/bottom = 92.0
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 22 )
 text = "Turno 0"
 percent_visible = 1.0
 lines_skipped = 0
@@ -914,7 +915,7 @@ margin/left = 65.0
 margin/top = 11.0
 margin/right = 240.0
 margin/bottom = 57.0
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 22 )
 text = "Aliados"
 percent_visible = 1.0
 lines_skipped = 0
@@ -931,7 +932,7 @@ margin/left = 345.0
 margin/top = 182.0
 margin/right = 681.0
 margin/bottom = 366.0
-script/script = ExtResource( 22 )
+script/script = ExtResource( 23 )
 
 [node name="Return" type="MenuButton" parent="WinLosePanel"]
 
@@ -944,7 +945,7 @@ margin/left = 52.0
 margin/top = 117.0
 margin/right = 514.0
 margin/bottom = 169.0
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 22 )
 toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 0
@@ -963,7 +964,7 @@ margin/left = 71.0
 margin/top = 48.0
 margin/right = 271.0
 margin/bottom = 94.0
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 22 )
 text = "VITÓRIA!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -990,7 +991,7 @@ margin/left = 25.0
 margin/top = 22.0
 margin/right = 928.0
 margin/bottom = 317.0
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 22 )
 text = "Botão esquerdo do mouse: realiza ações ao clicar no personagem
 
 W, S, A, D: muda a direção da câmera

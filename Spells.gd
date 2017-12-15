@@ -38,6 +38,7 @@ func hocuspocus():
 		if special == 3:
 			var a = isTarget
 			var b = get_tree().get_root().get_node("Battle/Enemies").get_children()
+			var d = get_tree().get_root().get_node("Battle/Enemies").get_child_count()
 			for x in b:
 				#if a != x:
 				AoE(a, x, rang/2, power)
@@ -46,11 +47,13 @@ func hocuspocus():
 			var a = isTarget
 			var b = get_tree().get_root().get_node("Battle/Enemies").get_children()
 			var c = mode
+			var d = get_tree().get_root().get_node("Battle/Enemies").get_child_count()
 			while c > 0:
 				for x in b:
-					if a != x:
-						AoE(a, x, rang, power/2)
-						c = c - 1
+					if d > 1:
+						if a != x:
+							AoE(a, x, rang, power/2)
+							c = c - 1
 			#chaina pra outra pessoa
 			#
 	return ret
@@ -82,7 +85,7 @@ func AoE(base, a, subrang, subpower): #onde a é um inimigo, base é o quadrado 
 		if int(a.getHp()) <= 0:
 			get_tree().get_root().get_node("Battle/KinematicBody/GridMap").colMat[a.getPosX()][a.getPosZ()] = 0
 			a.queue_free()
-			a = 0
+			aget_tree().get_root().get_node("Battle/KinematicBody/GridMap").target = 0
 	else:
 		print("Splash Damage Falhou!")
 	
